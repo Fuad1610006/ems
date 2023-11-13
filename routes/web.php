@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthenticationController as auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/register', [auth::class,'signUpForm'])->name('register');
-// Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
-// Route::get('/login', [auth::class,'signInForm'])->name('login');
-// Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
-// Route::get('/logout', [auth::class,'singOut'])->name('logOut');
+Route::get('/register', [auth::class,'signUpForm'])->name('register');
+Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
+Route::get('/login', [auth::class,'signInForm'])->name('login');
+Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
+Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,9 +27,9 @@ Route::get('/dashboard', function () {
     return view('welcome');
 })->name('dashboard');
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/login', function () {
+//     return view('Authentication.login');
+// });
+// Route::get('/register', function () {
+//     return view('Authentication.register');
+// });
