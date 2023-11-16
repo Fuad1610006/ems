@@ -48,12 +48,12 @@ class AuthenticationController extends Controller
                     $this->setSession($user);
                     return redirect()->route('dashboard')->with('success','Successfully login');
                 }else
-                    return redirect()->route('login')->with('error','Your phone number or password is wrong1!');
+                    return redirect()->route('login')->with('error','Your phone number or password is wrong.!');
             }else
-                return redirect()->route('login')->with('error','Your phone number or password is wrong2!');
+                return redirect()->route('login')->with('error','Your phone number or password is wrong..!');
             }catch(Exception $e){
                 dd($e);
-                return redirect()->route('login')->with('error','Your phone number or password is wrong3!');
+                return redirect()->route('login')->with('error','Your phone number or password is wrong...!');
             }
         }
     
@@ -62,6 +62,8 @@ class AuthenticationController extends Controller
                     'userId'=>encryptor('encrypt',$user->id),
                     'userName'=>encryptor('encrypt',$user->name),
                     'role'=>encryptor('encrypt',$user->role->type),
+                    'role_id'=>encryptor('encrypt',$user->role_id),
+                    'accessType'=>encryptor('encrypt',$user->full_access),
                     'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                     'language'=>encryptor('encrypt',$user->language),
                     'image'=>$user->image ?? 'no-image.png'
@@ -71,7 +73,7 @@ class AuthenticationController extends Controller
     
         public function singOut(){
             request()->session()->flush();
-            return redirect('login')->with($this->resMessageHtml(false,'error',currentUserId()));
+            return redirect('login')->with('danger','Succesfully logged out!');
         }
     }
     

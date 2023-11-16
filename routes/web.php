@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController as auth;
+use App\Http\Controllers\UserController as user;
+use App\Http\Controllers\DashboardController as dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,13 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
 Route::middleware(['checkrole'])->group(function(){
     Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');  
+    Route::resource('/user', user::class)->except(['update','store']);  
  });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+// Route::get('/dashboard', function () {
+//     return view('welcome');
+// })->name('dashboard');
