@@ -30,12 +30,22 @@
                         <input type="text" name="username" class="form-control" id="username" value="{{old('username')}}" required>
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
+                      @if($errors->has('username'))
+													<small class="d-block text-danger">
+														{{$errors->first('username')}}
+													</small>
+												@endif
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
+                      @if($errors->has('password'))
+													<small class="d-block text-danger">
+														{{$errors->first('password')}}
+													</small>
+												@endif
                     </div>
 
                     <div class="col-12">

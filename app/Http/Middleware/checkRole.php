@@ -7,9 +7,8 @@ use App\Models\User; // custome
 use Illuminate\Http\Request;
 use Session; // custome
 
-class isSuperadmin
+class checkRole
 {
-    use ResponseTrait;
     /**
      * Handle an incoming request.
      *
@@ -17,18 +16,27 @@ class isSuperadmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next,...$param)
     {
-        if(!Session::has('userId') || Session::has('userId')==null || !Session::has('roleIdentity')){
+        // list($controller, $action) = explode('@', $request->route()->getActionName());
+        // $controller= explode('\\', $controller);
+
+        // print_r(end($controller));
+
+        // exit;
+       //$request->route()->getName()
+
+        if(!Session::has('userId') || Session::has('userId')==null){
             return redirect()->route('logOut');
         }else{
             $user=User::findOrFail(currentUserId());
-            app()->setLocale($user->language); // language
             if(!$user){
                 return redirect()->route('logOut');
-            }else if(currentUser() != 'superadmin'){
-                return redirect()->back()->with($this->resMessageHtml(false,'error','Access Denied'));
-            }else{
+            }else if($user->full_access=="1"){
+                return $next($request);
+            }
+                //return redirect()->back()->with('danger','Access Denied');
+            else{
                 return $next($request);
             }
         }

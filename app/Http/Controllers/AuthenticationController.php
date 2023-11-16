@@ -29,7 +29,7 @@ class AuthenticationController extends Controller
             else
                 return redirect('login')->with('danger','Please try again');
         }catch(Exception $e){
-            dd($e);
+            // dd($e);
             return redirect('login')->with('danger','Please try again');;
         }
 
