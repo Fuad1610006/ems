@@ -25,12 +25,12 @@ class AuthenticationController extends Controller
             $user->password=Hash::make($request->password);
             $user->role_id=4;
             if($user->save())
-                return redirect('login')->with('success','Successfully Registred');
+                return redirect('login');
             else
-                return redirect('login')->with('danger','Please try again');
+                return redirect('login');
         }catch(Exception $e){
             // dd($e);
-            return redirect('login')->with('danger','Please try again');;
+            return redirect('login');
         }
 
     }
@@ -46,14 +46,14 @@ class AuthenticationController extends Controller
             if($user){
                 if(Hash::check($request->password , $user->password)){
                     $this->setSession($user);
-                    return redirect()->route('dashboard')->with('success','Successfully login');
+                    return redirect()->route('dashboard');
                 }else
-                    return redirect()->route('login')->with('error','Your phone number or password is wrong.!');
+                    return redirect()->route('login');
             }else
-                return redirect()->route('login')->with('error','Your phone number or password is wrong..!');
+                return redirect()->route('login');
             }catch(Exception $e){
                 dd($e);
-                return redirect()->route('login')->with('error','Your phone number or password is wrong...!');
+                return redirect()->route('login');
             }
         }
     
@@ -73,7 +73,7 @@ class AuthenticationController extends Controller
     
         public function singOut(){
             request()->session()->flush();
-            return redirect('login')->with('danger','Succesfully logged out!');
+            return redirect('login');
         }
     }
     

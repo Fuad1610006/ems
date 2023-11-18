@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\User; // custome
+use App\Models\User; // custom
 use Illuminate\Http\Request;
-use Session; // custome
+use Session; // custom
 
 class checkRole
 {
@@ -29,7 +29,7 @@ class checkRole
         if(!Session::has('userId') || Session::has('userId')==null){
             return redirect()->route('logOut');
         }else{
-            $user=User::findOrFail(currentUserId());
+            $user=User::find(currentUserId());
             if(!$user){
                 return redirect()->route('logOut');
             }else if($user->full_access=="1"){
