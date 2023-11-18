@@ -124,7 +124,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Permission $permission)
+    public function destroy($id)
     {
         $data= User::findOrFail(encryptor('decrypt',$id));
         $image_path=public_path('uploads/users/').$data->image;

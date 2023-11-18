@@ -1,21 +1,33 @@
 @extends('layouts.app')
-@section('title',trans('Users List'))
 
 @section('content')
 
-<!-- Bordered table start -->
-<section class="section">
-    <div class="row" id="table-bordered">
-        <div class="col-12">
+<div class="pagetitle">
+      <h1>Users</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item active">User List</li>
+        </ol>
+      </nav>
+    </div>
+    <section class="section">
+      <div class="row">
+        <div class="col-md-12">
+
+        <a href="{{route('user.create')}}">
+            <button type="button" class="btn btn-primary">Add New</button>
+        </a>
+
             <div class="card">
-                
-                <!-- table bordered -->
-                <div class="table-responsive"><div>
-                    <a class="pull-right fs-1" href="{{route('user.create')}}"><i class="fa fa-plus"></i></a>
-                </div>
-                    <table class="table table-bordered mb-0">
-                        <thead>
-                            <tr>
+                <div class="card-body">
+                   
+               
+                <!-- Table with stripped rows -->
+                <table class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('Name')}}</th>
                                 <th scope="col">{{__('Email')}}</th>
@@ -25,8 +37,8 @@
                                 <th scope="col">{{__('Status')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                             @forelse($data as $p)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
@@ -39,10 +51,10 @@
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td class="white-space-nowrap">
                                     <a href="{{route('user.edit',encryptor('encrypt',$p->id))}}">
-                                        <i class="fa fa-edit"></i>
+                                    <button type="button" class="btn btn-warning">Edit</button>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
-                                        <i class="fa fa-trash"></i>
+                                    <button type="button" class="btn btn-danger">Delete</button>
                                     </a>
                                     <form id="form{{$p->id}}" action="{{route('user.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
@@ -52,14 +64,17 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="8" class="text-center">No User Found</th>
+                                <th colspan="8" class="text-center">No Pruduct Found</th>
                             </tr>
                             @endforelse
                         </tbody>
-                    </table>
+                </table>
+                <!-- End Table with stripped rows -->
+
                 </div>
             </div>
-        </div>
+                
+            </div>
     </div>
 </section>
 @endsection
