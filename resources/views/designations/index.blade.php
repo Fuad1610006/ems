@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Designations</h2>
 
-        <a href="{{ route('designations.create') }}" class="btn btn-primary mb-3">Create Designation</a>
+        <a href="{{ route('designations.create') }}" class="btn btn-primary mb-3">Add New</a>
 
         <table class="table">
             <thead>

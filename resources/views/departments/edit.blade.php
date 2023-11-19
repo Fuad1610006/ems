@@ -11,7 +11,7 @@
                 <label for="department">Name:</label>
                 <input type="text" class="form-control" id="department" name="department" value="{{ $department->department }}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary my-2">Update</button>
         </form>
     </div>
 @endsection

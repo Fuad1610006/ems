@@ -4,6 +4,7 @@
 
 @section('content')
   <!-- // Basic multiple Column Form section start -->
+  <h2>Edit User</h2>
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
@@ -121,7 +122,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-primary  my-2">Save</button>
                                         
                                     </div>
                                 </div>

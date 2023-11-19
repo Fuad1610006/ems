@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Departments</h2>
 
-        <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3">Create Department</a>
+        <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3">Add New</a>
 
         <table class="table">
             <thead>

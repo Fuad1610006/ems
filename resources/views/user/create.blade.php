@@ -4,6 +4,7 @@
 
 @section('content')
   <!-- // Basic multiple Column Form section start -->
+  <h2>Add User</h2>
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
