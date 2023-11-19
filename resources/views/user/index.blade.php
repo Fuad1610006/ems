@@ -17,7 +17,7 @@
         <div class="col-md-12">
 
         <a href="{{route('user.create')}}">
-            <button type="button" class="btn btn-primary">Add New</button>
+            <button type="button" class="btn btn-primary my-2">Add New</button>
         </a>
 
             <div class="card">
@@ -45,10 +45,11 @@
                                 <td>{{$p->name_en}}</td>
                                 <td>{{$p->email}}</td>
                                 <td>{{$p->contact_no_en}}</td>
+                                
                                 <td>{{$p->role?->type}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/users/'.$p->image)}}" alt=""></td>
                                 <td>@if($p->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
-                                <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
+                                 <!-- <td>{{ $p->status == 1?"Active":"Inactive" }}</td>  -->
                                 <td class="white-space-nowrap">
                                     <a href="{{route('user.edit',encryptor('encrypt',$p->id))}}">
                                     <button type="button" class="btn btn-warning">Edit</button>
