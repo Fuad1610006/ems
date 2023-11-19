@@ -25,6 +25,7 @@ class DesignationController extends Controller
     {
         $designation=new Designation;
         $designation->designation=$request->designation;
+        $designation->department_id = $request->department_id;
         $designation->save();
         return redirect('designations');
     }
