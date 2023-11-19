@@ -9,13 +9,13 @@
             @method('PUT')
             <div class="form-group">
                 <label for="designation">Name:</label>
-                <input type="text" class="form-control" id="designation" name="designation" value="{{ $d->designation }}" required>
+                <input type="text" class="form-control" id="designation" name="designation" value="{{ $designation->designation }}" required>
             </div>
             <div class="form-group">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
-                    @foreach($departments as $d)
-                        <option value="{{ $d->id }}" {{ $d->id == $d->department_id ? 'selected' : '' }}>{{ $d->department }}</option>
+                    @foreach($departments as $department)
+                        <option value="{{ $department->id }}" {{ $department->id == $department->department_id ? 'selected' : '' }}>{{ $department->department }}</option>
                     @endforeach
                 </select>
             </div>

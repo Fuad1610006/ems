@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
-                    @foreach($departments as $d)
+                    @foreach($department as $d)
                         <option value="{{ $d->id }}">{{ $d->department }}</option>
                     @endforeach
                 </select>

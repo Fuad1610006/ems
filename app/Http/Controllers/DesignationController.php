@@ -17,7 +17,8 @@ class DesignationController extends Controller
     public function create()
     {
         $department=Department::all();
-        return view('designations.create');
+        $designation=Designation::all();
+        return view('designations.create',compact('department','designation'));
     }
 
     public function store(Request $request)
