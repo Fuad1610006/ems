@@ -60,7 +60,7 @@ class AuthenticationController extends Controller
         public function setSession($user){
             return request()->session()->put([
                     'userId'=>encryptor('encrypt',$user->id),
-                    'userName'=>encryptor('encrypt',$user->name),
+                    'userName'=>encryptor('encrypt',$user->name_en),
                     'role'=>encryptor('encrypt',$user->role->type),
                     'role_id'=>encryptor('encrypt',$user->role_id),
                     'accessType'=>encryptor('encrypt',$user->full_access),
