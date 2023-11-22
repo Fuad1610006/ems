@@ -26,9 +26,15 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::resource('departments', department::class);
 Route::resource('designations', designation::class);
 
-Route::middleware(['checkrole'])->group(function(){
-    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');  
-    Route::resource('/user', user::class);
+Route::middleware(['checkauth'])->prefix('admin')->group(function(){
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+});
+Route::middleware(['checkrole'])->prefix('admin')->group(function(){
+    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::resource('user', user::class);
+    Route::resource('role', role::class);
+    Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
+    Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
  });
 
 Route::get('/', function () {
@@ -38,3 +44,6 @@ Route::get('/', function () {
 // Route::get('/dashboard', function () {
 //     return view('welcome');
 // })->name('dashboard');
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
