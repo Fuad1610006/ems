@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController as user;
 use App\Http\Controllers\DashboardController as dashboard;
 use App\Http\Controllers\DepartmentController as department;
 use App\Http\Controllers\DesignationController as designation;
+use App\Http\Controllers\PermissionController as permission;
+use App\Http\Controllers\RoleController as role;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
