@@ -12,6 +12,7 @@ use App\Http\Requests\Authentication\SigninRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 
+
 class AuthenticationController extends Controller
 {
     public function signUpForm(){
@@ -31,7 +32,7 @@ class AuthenticationController extends Controller
             else
                 return redirect('login')->with('danger','Please try again');
         }catch(Exception $e){
-            //dd($e);
+            // dd($e);
             return redirect('login')->with('danger','Please try again');;
         }
 
@@ -57,7 +58,7 @@ class AuthenticationController extends Controller
         }else
                 return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }
     }
@@ -65,7 +66,7 @@ class AuthenticationController extends Controller
     public function setSession($user){
         return request()->session()->put([
                 'userId'=>encryptor('encrypt',$user->id),
-                'userName'=>encryptor('encrypt',$user->name),
+                'userName'=>encryptor('encrypt',$user->name_en),
                 'role_id'=>encryptor('encrypt',$user->role_id),
                 'accessType'=>encryptor('encrypt',$user->full_access),
                 'role'=>encryptor('encrypt',$user->role->type),
@@ -78,6 +79,6 @@ class AuthenticationController extends Controller
 
     public function singOut(){
         request()->session()->flush();
-        return redirect('login')->with('danger','Succfully Logged Out');
+        return redirect('login')->with('danger','Successfully Logged Out');
     }
 }
