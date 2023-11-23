@@ -1,7 +1,4 @@
-@extends('backend.layouts.app')
-
-@section('title',trans('Role'))
-@section('page',trans('Update'))
+@extends('layouts.app')
 
 @section('content')
 <div class="row">

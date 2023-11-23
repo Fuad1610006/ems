@@ -1,6 +1,5 @@
-@extends('backend.layouts.app')
-@section('title',trans('Role'))
-@section('page',trans('List'))
+@extends('layouts.app')
+
 @section('content')
 
 <!-- Bordered table start -->

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Http\Requests\Backend\Role\AddNewRequest;
-use App\Http\Requests\Backend\Role\UpdateRequest;
+use App\Http\Requests\Role\AddNewRequest;
+use App\Http\Requests\Role\UpdateRequest;
 
 class RoleController extends Controller
 {
@@ -16,15 +16,16 @@ class RoleController extends Controller
     public function index()
     {
         $data=Role::paginate(10);
-        return view('backend.role.index',compact('data'));
+        return view('role.index',compact('data'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('backend.role.create');
+    {   
+        $data=Role::all;
+        return view('role.create', compact('data'));
     }
 
     /**
@@ -61,7 +62,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role=Role::findOrFail(encryptor('decrypt',$id));
-        return view('backend.role.edit',compact('role'));
+        return view('role.edit',compact('role'));
     }
 
     /**

@@ -28,8 +28,8 @@ return new class extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->unsignedBigInteger('department_id')->index();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedBigInteger('desination_id')->index();
-            $table->foreign('desination_id')->references('id')->on('designations')->onDelete('cascade');
+            $table->unsignedBigInteger('designation_id')->index();
+            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
             $table->string('image')->nullable();           
             $table->rememberToken();
             $table->timestamps();
