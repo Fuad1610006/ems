@@ -482,9 +482,9 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('employees.index')}}">
           <i class="bi bi-person"></i>
-          <span>Permission</span>
+          <span>Employee</span>
         </a>
       </li><!-- End Login Page Nav -->
 

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\Backend\Role\AddNewRequest;
+use App\Http\Requests\Backend\Role\UpdateRequest;
 
 class RoleController extends Controller
 {
@@ -14,7 +16,7 @@ class RoleController extends Controller
     public function index()
     {
         $data=Role::paginate(10);
-        return view('role.index',compact('data'));
+        return view('backend.role.index',compact('data'));
     }
 
     /**
@@ -22,7 +24,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('role.create');
+        return view('backend.role.create');
     }
 
     /**
@@ -32,14 +34,14 @@ class RoleController extends Controller
     {
         try{
             $data=new Role();
-            $data->type=$request->Type;
-            $data->identity=$request->Name;
+            $data->name=$request->Name;
+            $data->identity=$request->Identity;
             if($data->save()){
                 $this->notice::success('Successfully saved');
                 return redirect()->route('role.index');
             }
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
         }
@@ -59,7 +61,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role=Role::findOrFail(encryptor('decrypt',$id));
-        return view('role.edit',compact('role'));
+        return view('backend.role.edit',compact('role'));
     }
 
     /**
@@ -69,7 +71,7 @@ class RoleController extends Controller
     {
         try{
             $data=Role::findOrFail(encryptor('decrypt',$id));
-            $data->type=$request->Name;
+            $data->name=$request->Name;
             $data->identity=$request->Identity;
             if($data->save()){
                 $this->notice::success('Successfully updated');

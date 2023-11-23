@@ -13,4 +13,8 @@ class Department extends Model
     {
         return $this->hasMany(Designation::class);
     }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

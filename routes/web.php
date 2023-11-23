@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentController as department;
 use App\Http\Controllers\DesignationController as designation;
 use App\Http\Controllers\PermissionController as permission;
 use App\Http\Controllers\RoleController as role;
+use App\Http\Controllers\EmployeeController as employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
 Route::resource('departments', department::class);
 Route::resource('designations', designation::class);
+Route::resource('employees', employee::class);
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
