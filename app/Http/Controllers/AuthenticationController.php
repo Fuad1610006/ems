@@ -28,7 +28,7 @@ class AuthenticationController extends Controller
             $user->password=Hash::make($request->password);
             $user->role_id=4;
             if($user->save())
-                return redirect('login')->with('success','Successfully Registred');
+                return redirect('login')->with('success','Successfully Registered');
             else
                 return redirect('login')->with('danger','Please try again');
         }catch(Exception $e){

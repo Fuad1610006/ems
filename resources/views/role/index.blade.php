@@ -28,13 +28,13 @@
                             <td>{{$p->identity}}</td>
                             <td class="white-space-nowrap">
                                 <a href="{{route('role.edit',encryptor('encrypt',$p->id))}}">
-                                    <i class="fa fa-edit"></i>
+                                <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <a href="{{route('permission.list',encryptor('encrypt',$p->id))}}">
-                                    <i class="fa fa-unlock"></i>
+                                <i class="bi bi-shield-lock-fill"></i>
                                 </a>
                                 <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
-                                    <i class="fa fa-trash"></i>
+                                <i class="bi bi-trash"></i>
                                 </a>
                                 <form id="form{{$p->id}}" action="{{route('role.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                     @csrf
