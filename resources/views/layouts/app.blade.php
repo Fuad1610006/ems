@@ -12,6 +12,7 @@
   <!-- Favicons -->
   <link href="{{asset('public/assets/img/favicon.png')}}" rel="icon">
   <link href="{{asset('public/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -28,7 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('public/assets/css/style.css')}}" rel="stylesheet">
-
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
