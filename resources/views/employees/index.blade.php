@@ -3,20 +3,11 @@
 @section('content')
 
 <div class="pagetitle">
-      <h1>Users</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item active">User List</li>
-        </ol>
-      </nav>
-    </div>
     <section class="section">
       <div class="row">
         <div class="col-md-12">
 
-        <a href="{{route('user.create')}}">
+        <a href="{{route('employees.create')}}">
             <button type="button" class="btn btn-primary my-2">Add New</button>
         </a>
 
@@ -32,32 +23,39 @@
                                 <th scope="col">{{__('Name')}}</th>
                                 <th scope="col">{{__('Email')}}</th>
                                 <th scope="col">{{__('Contact')}}</th>
-                                <th scope="col">{{__('Role')}}</th>
+                                <th scope="col">{{__('Present Address')}}</th>
+                                <th scope="col">{{__('Permanent Address')}}</th>
+                                <th scope="col">{{__('Date of Birth')}}</th>
+                                <th scope="col">{{__('Joining Date')}}</th>
+                                <th scope="col">{{__('NID No.')}}</th>
+                                <th scope="col">{{__('Blood Group')}}</th>           
                                 <th scope="col">{{__('Image')}}</th>
-                                <th scope="col">{{__('Status')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                     </thead>
                     <tbody>
-                            @forelse($data as $p)
+                            @forelse($employee as $e)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$p->name_en}}</td>
-                                <td>{{$p->email}}</td>
-                                <td>{{$p->contact_no_en}}</td>
-
-                                <td>{{$p->role?->name}}</td>
+                                <td>{{$e->name_en}}</td>
+                                <td>{{$e->email}}</td>
+                                <td>{{$e->contact_no_en}}</td>
+                                <td>{{$e->present_address}}</td>
+                                <td>{{$e->permanent_address}}</td>
+                                <td>{{$e->date_of_birth}}</td>
+                                <td>{{$e->joining_date}}</td>
+                                <td>{{$e->nid_no}}</td>
+                                <td>{{$e->blood_group}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/users/'.$p->image)}}" alt=""></td>
-                                <td>@if($p->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
-                                 <!-- <td>{{ $p->status == 1?"Active":"Inactive" }}</td>  -->
+                                
                                 <td class="white-space-nowrap">
-                                    <a href="{{route('user.edit',encryptor('encrypt',$p->id))}}">
+                                    <a href="{{route('employees.edit',encryptor('encrypt',$e->id))}}">
                                     <button type="button" class="btn btn-warning">Edit</button>
                                     </a>
-                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    <a href="javascript:void()" onclick="$('#form{{$e->id}}').submit()">
                                     <button type="button" class="btn btn-danger">Delete</button>
                                     </a>
-                                    <form id="form{{$p->id}}" action="{{route('user.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                    <form id="form{{$p->id}}" action="{{route('employees.destroy',encryptor('encrypt',$e->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -65,7 +63,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="8" class="text-center">No Data Found</th>
+                                <th colspan="12" class="text-center">No Data Found</th>
                             </tr>
                             @endforelse
                         </tbody>

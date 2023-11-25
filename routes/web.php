@@ -9,6 +9,7 @@ use App\Http\Controllers\DesignationController as designation;
 use App\Http\Controllers\PermissionController as permission;
 use App\Http\Controllers\RoleController as role;
 use App\Http\Controllers\EmployeeController as employee;
+use App\Http\Controllers\ProfileController as profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::resource('employees', employee::class);
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('profile', [profile::class,'index'])->name('profile');
 });
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
