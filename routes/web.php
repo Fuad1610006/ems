@@ -38,6 +38,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
 });
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('profile', [profile::class,'index'])->name('profile');
     Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');

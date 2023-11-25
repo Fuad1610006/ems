@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name')->nullable();
+            $table->string('employee_id')->unique()->nullable();
+            $table->string('name_en');
+            $table->string('name_bn')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('contact_no')->unique();
-            $table->string('contact_no_home')->unique()->nullable();
+            $table->string('contact_no_en')->unique();
+            $table->string('contact_no_bn')->unique()->nullable();
             $table->text('permanent_address')->nullable();
             $table->text('present_address')->nullable();
             $table->date('date_of_birth')->nullable();
@@ -30,7 +31,7 @@ return new class extends Migration
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->unsignedBigInteger('designation_id')->index();
             $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
-            $table->string('image')->nullable();           
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
