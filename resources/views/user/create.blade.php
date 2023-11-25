@@ -20,7 +20,7 @@
                                             <select class="form-control" name="roleId" id="roleId">
                                                 <option value="">Select Role</option>
                                                 @forelse($role as $r)
-                                                    <option value="{{$r->id}}" {{ old('roleId')==$r->id?"selected":""}}> {{ $r->type}}</option>
+                                                    <option value="{{$r->id}}" {{ old('roleId')==$r->id?"selected":""}}> {{ $r->name}}</option>
                                                 @empty
                                                     <option value="">No Role found</option>
                                                 @endforelse
@@ -48,7 +48,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                
+
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="EmailAddress">Email <i class="text-danger">*</i></label>
@@ -101,7 +101,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">  
+                                <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password <i class="text-danger">*</i></label>
@@ -121,7 +121,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
-                                        
+
                                     </div>
                                 </div>
                             </form>
