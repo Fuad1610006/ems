@@ -99,10 +99,10 @@ class UserController extends Controller
         try{
             $user=User::findOrFail(encryptor('decrypt',$id));
             $user->name_en=$request->userName_en;
-            // $user->name_bn=$request->userName_bn;
+            $user->name_bn=$request->userName_bn;
             $user->email=$request->EmailAddress;
             $user->contact_no_en=$request->contactNumber_en;
-            // $user->contact_no_bn=$request->contactNumber_bn;
+            $user->contact_no_bn=$request->contactNumber_bn;
             $user->role_id=$request->roleId;
             $user->status=$request->status;
             $user->full_access=$request->fullAccess;

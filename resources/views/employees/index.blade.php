@@ -12,11 +12,11 @@
         </a>
 
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
 
 
                 <!-- Table with stripped rows -->
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped">
                     <thead>
                     <tr>
                                 <th scope="col">{{__('#SL')}}</th>

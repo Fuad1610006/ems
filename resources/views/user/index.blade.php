@@ -21,11 +21,11 @@
         </a>
 
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
 
 
                 <!-- Table with stripped rows -->
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped">
                     <thead>
                     <tr>
                                 <th scope="col">{{__('#SL')}}</th>
@@ -39,25 +39,25 @@
                             </tr>
                     </thead>
                     <tbody>
-                            @forelse($data as $p)
+                            @forelse($user as $e)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$p->name_en}}</td>
-                                <td>{{$p->email}}</td>
-                                <td>{{$p->contact_no_en}}</td>
+                                <td>{{$e->name_en}}</td>
+                                <td>{{$e->email}}</td>
+                                <td>{{$e->contact_no_en}}</td>
 
-                                <td>{{$p->role?->name}}</td>
-                                <td><img width="50px" src="{{asset('public/uploads/users/'.$p->image)}}" alt=""></td>
-                                <td>@if($p->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
-                                 <!-- <td>{{ $p->status == 1?"Active":"Inactive" }}</td>  -->
+                                <td>{{$e->role?->name}}</td>
+                                <td><img width="50px" src="{{asset('public/uploads/users/'.$e->image)}}" alt=""></td>
+                                <td>@if($e->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
+                                 <!-- <td>{{ $e->status == 1?"Active":"Inactive" }}</td>  -->
                                 <td class="white-space-nowrap">
-                                    <a href="{{route('user.edit',encryptor('encrypt',$p->id))}}">
+                                    <a href="{{route('user.edit',encryptor('encrypt',$e->id))}}">
                                     <button type="button" class="btn btn-warning">Edit</button>
                                     </a>
-                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    <a href="javascript:void()" onclick="$('#form{{$e->id}}').submit()">
                                     <button type="button" class="btn btn-danger">Delete</button>
                                     </a>
-                                    <form id="form{{$p->id}}" action="{{route('user.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                    <form id="form{{$e->id}}" action="{{route('user.destroy',encryptor('encrypt',$e->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>
