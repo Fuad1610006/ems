@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Employee;
 use App\Http\Requests\User\AddNewRequest;
 use App\Http\Requests\User\UpdateRequest;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data=User::paginate(10);
-        return view('user.index',compact('data'));
+        $user=User::paginate(10);
+        return view('user.index',compact('user'));
     }
 
     /**
@@ -29,7 +30,8 @@ class UserController extends Controller
     public function create()
     {
         $role=Role::get();
-        return view('user.create',compact('role'));
+        $employee=Employee::get();
+        return view('user.create',compact('role','employee'));
     }
 
     /**
@@ -38,32 +40,35 @@ class UserController extends Controller
     public function store(AddNewRequest $request)
     {
         try{
-            $data=new User();
-            $data->name_en=$request->userName_en;
-            $data->name_bn=$request->userName_bn;
-            $data->email=$request->EmailAddress;
-            $data->contact_no_en=$request->contactNumber_en;
-            $data->contact_no_bn=$request->contactNumber_bn;
-            $data->role_id=$request->roleId;
-            $data->status=$request->status;
-            $data->full_access=$request->fullAccess;
-            $data->language='en';
-            $data->password=Hash::make($request->password);
+            $user=new User();
+            $user->name_en=$request->userName_en;
+            $user->name_bn=$request->userName_bn;
+            $user->email=$request->EmailAddress;
+            $user->contact_no_en=$request->contactNumber_en;
+            $user->contact_no_bn=$request->contactNumber_bn;
+            $user->role_id=$request->roleId;
+            $user->status=$request->status;
+            $user->full_access=$request->fullAccess;
+            $user->language='en';
+            $user->password=Hash::make($request->password);
 
-            if($request->hasFile('image')){
-                $imageName = rand(111,999).time().'.'.$request->image->extension();
-                $request->image->move(public_path('uploads/users'), $imageName);
-                $data->image=$imageName;
-            }
+            // if($request->hasFile('image')){
+            //     $imageName = rand(111,999).time().'.'.$request->image->extension();
+            //     $request->image->move(public_path('uploads/users'), $imageName);
+            //     $user->image=$imageName;
+            // }
 
-            if($data->save())
+            if($user->save()){
                 return redirect()->route('user.index');
-            else
+                Toastr::success('Successfully Saved User!');
+            }else{
                 return redirect()->back()->withInput();
-            
+                Toastr::error('Please try again!');
+            }
         }catch(Exception $e){
             //dd($e);
-            return redirect()->back();
+            return redirect()->back()->withInput();
+            Toastr::error('Please try again!');
         }
     }
 
@@ -82,6 +87,7 @@ class UserController extends Controller
     {
         $role=Role::get();
         $user=User::findOrFail(encryptor('decrypt',$id));
+        $employee=Employee::get();
         return view('user.edit',compact('user','role'));
     }
 
@@ -91,33 +97,36 @@ class UserController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         try{
-            $data=User::findOrFail(encryptor('decrypt',$id));
-            $data->name_en=$request->userName_en;
-            $data->name_bn=$request->userName_bn;
-            $data->email=$request->EmailAddress;
-            $data->contact_no_en=$request->contactNumber_en;
-            $data->contact_no_bn=$request->contactNumber_bn;
-            $data->role_id=$request->roleId;
-            $data->status=$request->status;
-            $data->full_access=$request->fullAccess;
+            $user=User::findOrFail(encryptor('decrypt',$id));
+            $user->name_en=$request->userName_en;
+            // $user->name_bn=$request->userName_bn;
+            $user->email=$request->EmailAddress;
+            $user->contact_no_en=$request->contactNumber_en;
+            // $user->contact_no_bn=$request->contactNumber_bn;
+            $user->role_id=$request->roleId;
+            $user->status=$request->status;
+            $user->full_access=$request->fullAccess;
 
             if($request->password)
-                $data->password=Hash::make($request->password);
+                $user->password=Hash::make($request->password);
 
-            if($request->hasFile('image')){
-                $imageName = rand(111,999).time().'.'.$request->image->extension();
-                $request->image->move(public_path('uploads/users'), $imageName);
-                $data->image=$imageName;
-            }
+            // if($request->hasFile('image')){
+            //     $imageName = rand(111,999).time().'.'.$request->image->extension();
+            //     $request->image->move(public_path('uploads/users'), $imageName);
+            //     $user->image=$imageName;
+            // }
 
-            if($data->save())
+            if($user->save()){
                 return redirect()->route('user.index');
-            else
+                Toastr::success('Successfully Updated User!');
+            }else{
                 return redirect()->back()->withInput();
-            
+                Toastr::error('Please try again!');
+            }
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->withInput();
+            Toastr::error('Please try again!');
         }
     }
 
@@ -126,10 +135,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $data= User::findOrFail(encryptor('decrypt',$id));
-        $image_path=public_path('uploads/users/').$data->image;
+        $user= User::findOrFail(encryptor('decrypt',$id));
+        $image_path=public_path('uploads/users/').$user->image;
         
-        if($data->delete()){
+        if($user->delete()){
             if(File::exists($image_path)) 
                 File::delete($image_path);
             

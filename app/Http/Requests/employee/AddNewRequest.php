@@ -11,7 +11,7 @@ class AddNewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class AddNewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name_en'=>'required|max:255',
+            'roleId'=>'required|max:2',
+            'contact_no_en'=>'required|unique:users',
+            'EmailAddress'=>'required|unique:users,email',
+            'password'=>'required'
         ];
     }
 }

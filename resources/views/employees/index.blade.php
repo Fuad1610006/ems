@@ -46,7 +46,7 @@
                                 <td>{{$e->joining_date}}</td>
                                 <td>{{$e->nid_no}}</td>
                                 <td>{{$e->blood_group}}</td>
-                                <td><img width="50px" src="{{asset('public/uploads/users/'.$p->image)}}" alt=""></td>
+                                <td><img width="50px" src="{{asset('public/uploads/users/'.$e->image)}}" alt=""></td>
                                 
                                 <td class="white-space-nowrap">
                                     <a href="{{route('employees.edit',encryptor('encrypt',$e->id))}}">
@@ -55,7 +55,7 @@
                                     <a href="javascript:void()" onclick="$('#form{{$e->id}}').submit()">
                                     <button type="button" class="btn btn-danger">Delete</button>
                                     </a>
-                                    <form id="form{{$p->id}}" action="{{route('employees.destroy',encryptor('encrypt',$e->id))}}" method="post">
+                                    <form id="form{{$e->id}}" action="{{route('employees.destroy',encryptor('encrypt',$e->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

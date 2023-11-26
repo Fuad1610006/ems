@@ -29,10 +29,6 @@ return new class extends Migration
             'identity' => 'admin',
             'created_at' => Carbon::now(),
         ],[
-            'name' => 'HR Executive',
-            'identity' => 'hrexecutive',
-            'created_at' => Carbon::now(),
-        ],[
             'name' => 'Employee',
             'identity' => 'employee',
             'created_at' => Carbon::now(),

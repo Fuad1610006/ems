@@ -11,14 +11,61 @@
                         <div class="card-body mt-4">
                             <form class="form" method="post" enctype="multipart/form-data" action="{{route('employees.store')}}">
                                 @csrf
-                                <div class="row">
-                                    
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="roleId">Role  <i class="text-danger">*</i></label>
+                                            <select class="form-control" name="roleId" id="roleId">
+                                                <option value="">Select Role</option>
+                                                @forelse($role as $r)
+                                                    <option value="{{$r->id}}" {{ old('roleId')==$r->id?"selected":""}}> {{ $r->name}}</option>
+                                                @empty
+                                                    <option value="">No Role found</option>
+                                                @endforelse
+                                            </select>
+                                            @if($errors->has('roleId'))
+                                                <span class="text-danger"> {{ $errors->first('roleId') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="userName_en">Name (English) <i class="text-danger">*</i></label>
-                                            <input type="text" id="userName_en" class="form-control" value="{{ old('userName_en')}}" name="userName_en">
-                                            @if($errors->has('userName_en'))
-                                                <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
+                                            <label for="roleId">Department  <i class="text-danger">*</i></label>
+                                            <select class="form-control" name="department_id" id="department_id">
+                                                <option value="">Select Department</option>
+                                                @forelse($department as $d)
+                                                    <option value="{{$d->id}}" {{ old('department_id')==$d->id?"selected":""}}> {{ $d->department}}</option>
+                                                @empty
+                                                    <option value="">No Data found</option>
+                                                @endforelse
+                                            </select>
+                                            @if($errors->has('department_id'))
+                                                <span class="text-danger"> {{ $errors->first('department_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="roleId">Designation  <i class="text-danger">*</i></label>
+                                            <select class="form-control" name="designation_id" id="designation_id">
+                                                <option value="">Select Designation</option>
+                                                @forelse($designation as $d)
+                                                    <option value="{{$d->id}}" {{ old('designation_id')==$d->id?"selected":""}}> {{ $d->designation}}</option>
+                                                @empty
+                                                    <option value="">No Data found</option>
+                                                @endforelse
+                                            </select>
+                                            @if($errors->has('designation_id'))
+                                                <span class="text-danger"> {{ $errors->first('designation_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="name_en">Name (English) <i class="text-danger">*</i></label>
+                                            <input type="text" id="name_en" class="form-control" value="{{ old('name_en')}}" name="name_en">
+                                            @if($errors->has('name_en'))
+                                                <span class="text-danger"> {{ $errors->first('name_en') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -36,10 +83,10 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="contactNumber_en">Contact Number<i class="text-danger">*</i></label>
-                                            <input type="text" id="contactNumber_en" class="form-control" value="{{ old('contactNumber_en')}}" name="contactNumber_en">
-                                            @if($errors->has('contactNumber_en'))
-                                                <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                            <label for="contact_no_en">Contact Number<i class="text-danger">*</i></label>
+                                            <input type="text" id="contact_no_en" class="form-control" value="{{ old('contact_no_en')}}" name="contact_no_en">
+                                            @if($errors->has('contact_no_en'))
+                                                <span class="text-danger"> {{ $errors->first('contact_no_en') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -65,28 +112,40 @@
                                         <div class="form-group">
                                             <label for="date_of_birth">Date of Birth</label>
                                             <input type="date" id="date_of_birth" class="form-control"  name="date_of_birth">
+                                            @if($errors->has('date_of_birth'))
+                                                <span class="text-danger"> {{ $errors->first('date_of_birth') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="blood_group">Blood Group</label>
-                                            <input type="text" id="blood_group" class="form-control"  name="blood_group">
+                                            <select id="blood_group" class="form-control" name="blood_group">
+                                                <option value="">Select Blood Group</option>
+                                                <option value="A+" {{ old('blood_group') == 'A+' ? 'selected' : '' }}>A+</option>
+                                                <option value="A-" {{ old('blood_group') == 'A-' ? 'selected' : '' }}>A-</option>
+                                                <option value="B+" {{ old('blood_group') == 'B+' ? 'selected' : '' }}>B+</option>
+                                                <option value="B-" {{ old('blood_group') == 'B-' ? 'selected' : '' }}>B-</option>
+                                                <option value="AB+" {{ old('blood_group') == 'AB+' ? 'selected' : '' }}>AB+</option>
+                                                <option value="AB-" {{ old('blood_group') == 'AB-' ? 'selected' : '' }}>AB-</option>
+                                                <option value="O+" {{ old('blood_group') == 'O+' ? 'selected' : '' }}>O+</option>
+                                                <option value="O-" {{ old('blood_group') == 'O-' ? 'selected' : '' }}>O-</option>
+                                                <option value="unknown" {{ old('blood_group') == 'unknown' ? 'selected' : '' }}>Unknown</option>
+                                            </select>
+                                            @if($errors->has('blood_group'))
+                                                <span class="text-danger"> {{ $errors->first('blood_group') }}</span>
+                                            @endif
                                         </div>
                                     </div>
+
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="nid_no">NID No:</label>
                                             <input type="text" id="nid_no" class="form-control" name="nid_no">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
+                                  
+                               
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password <i class="text-danger">*</i></label>
@@ -96,14 +155,20 @@
                                                 @endif
                                         </div>
                                     </div>
-                                   
-                                </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
+                                        </div>
+                                    </div>
+                                
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary px-5 mt-3">Save</button>
-
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

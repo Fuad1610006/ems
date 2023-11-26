@@ -11,14 +11,16 @@ class Employee extends Model
 
     public function department()
     {
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Department::class);
     }
+
     public function designation()
     {
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Designation::class);
     }
+
     public function role()
     {
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Role::class);
     }
 }

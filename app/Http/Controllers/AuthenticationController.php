@@ -26,7 +26,7 @@ class AuthenticationController extends Controller
             $user->contact_no_en=$request->contact_no_en;
             $user->email=$request->EmailAddress;
             $user->password=Hash::make($request->password);
-            $user->role_id=4;
+            $user->role_id=3;
             if($user->save())
                 return redirect('login')->with('success','Successfully Registered');
             else
@@ -72,7 +72,7 @@ class AuthenticationController extends Controller
                 'role'=>encryptor('encrypt',$user->role->type),
                 'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                 'language'=>encryptor('encrypt',$user->language),
-                'image'=>$user->image ?? 'no-image.png'
+                'image'=>$user->employee?->image
             ]
         );
     }

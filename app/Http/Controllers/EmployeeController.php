@@ -53,11 +53,14 @@ class EmployeeController extends Controller
             $employee->contact_no_bn = $request->contact_no_bn;
             $employee->present_address = $request->presentAddress;
             $employee->permanent_address = $request->permanentAddress;
-           
+            $employee->department_id = $request->department_id;
+            $employee->designation_id = $request->designation_id;
+            $employee->blood_group = $request->blood_group;
             $employee->gender = $request->gender;
             $employee->date_of_birth = $request->date_of_birth;
-            
-            $employee->status = $request->status;
+            $employee->role_id = $request->roleId;
+            $employee->password = Hash::make($request->password);
+            // $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();
@@ -66,15 +69,15 @@ class EmployeeController extends Controller
             }
 
             if ($employee->save()) {
-                $data=new User;
-                
-                $data->name_en = $request->full_name_en;
-                $data->email = $request->EmailAddress;
-                $data->contact_no_en = $request->contactNumber_en;
-               
-                
-                $data->password = Hash::make($request->password);
-                if($data->save()){
+                $user=new User;
+                $user->employee_id = $employee->id;
+                $user->name_en = $request->name_en;
+                $user->email = $request->EmailAddress;
+                $user->contact_no_en = $request->contact_no_en;
+                $user->role_id = $request->roleId;
+                // $user->status = $request->status;
+                $user->password = Hash::make($request->password);
+                if($user->save()){
                     DB::commit();
                     return redirect()->route('employees.index');
                     $this->notice::success('Employee Successfully Added');
@@ -114,18 +117,18 @@ class EmployeeController extends Controller
     {
         try {
             DB::beginTransaction();
-            $employee = EmployBasic::findOrFail(\encryptor('decrypt', $id));
-            $employee->name_en = $request->employeeName_en;
-            $employee->name_bn = $request->employeeName_bn;
+            $employee = Employee::findOrFail(\encryptor('decryptor',$id));
+            $employee->name_en = $request->name_en;
+            $employee->name_bn = $request->name_bn;
             $employee->email = $request->EmailAddress;
-            $employee->contact_no_en = $request->contactNumber_en;
-            $employee->contact_no_bn = $request->contactNumber_bn;
+            $employee->contact_no_en = $request->contact_no_en;
+            $employee->contact_no_bn = $request->contact_no_bn;
             $employee->present_address = $request->presentAddress;
             $employee->permanent_address = $request->permanentAddress;
-            $employee->role_id = $request->roleId;
+            $employee->blood_group = $request->blood_group;
             $employee->gender = $request->gender;
-            $employee->birth_date = $request->birthDate;
-            
+            $employee->date_of_birth = $request->date_of_birth;
+            $employee->role_id = $request->roleId;
             $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
@@ -135,20 +138,21 @@ class EmployeeController extends Controller
             }
 
             if ($employee->save()) {
-                $data=User::where('employee_id',$employee->id)->first();
-                $data->name_en = $request->employeeName_en;
-                $data->email = $request->EmailAddress;
-                $data->contact_no_en = $request->contactNumber_en;
-                $data->role_id = $request->roleId;
-                $data->status = $request->status;
-                if($request->password)
-                    $data->password = Hash::make($request->password);
-                if($data->save()){
+                $user=User::where('employee_id',$employee->id)->first();
+                $user->employee_id = $employee->id;
+                $user->name_en = $request->name_en;
+                $user->email = $request->EmailAddress;
+                $user->contact_no_en = $request->contactNumber_en;
+                $user->role_id = $request->roleId;
+                $user->status = $request->status;
+                $user->password = Hash::make($request->password);
+                if($user->save()){
                     DB::commit();
                     return redirect()->route('employees.index');
-                    $this->notice::success('Employee Successfully Updated');
+                    $this->notice::success('Employee Successfully Added');
                 }
             }
+
         } catch (Exception $e) {
             DB::rollback();
             dd($e);

@@ -33,11 +33,11 @@ Route::resource('designations', designation::class);
 Route::resource('employees', employee::class);
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
-    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::get('profile', [profile::class,'index'])->name('profile');
 });
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
-    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::get('profile', [profile::class,'index'])->name('profile');
     Route::resource('user', user::class);
     Route::resource('role', role::class);
@@ -48,6 +48,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('welcome');
