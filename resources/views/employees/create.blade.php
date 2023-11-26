@@ -69,7 +69,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                   
+
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -94,18 +94,27 @@
                                         <div class="form-group">
                                             <label for="present_address">Present Address</label>
                                             <input type="text" id="present_address" class="form-control"  name="present_address">
+                                            @if($errors->has('present_address'))
+                                                <span class="text-danger"> {{ $errors->first('present_address') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="permanent_address">Permanent Address</label>
                                             <input type="text" id="permanent_address" class="form-control"  name="permanent_address">
+                                            @if($errors->has('permanent_address'))
+                                                <span class="text-danger"> {{ $errors->first('permanent_address') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="joining_date">Joining Date</label>
                                             <input type="date" id="joining_date" class="form-control" name="joining_date">
+                                            @if($errors->has('joining_date'))
+                                                <span class="text-danger"> {{ $errors->first('joining_date') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -143,9 +152,12 @@
                                             <label for="nid_no">NID No:</label>
                                             <input type="text" id="nid_no" class="form-control" name="nid_no">
                                         </div>
+                                        @if($errors->has('nid_no'))
+                                                <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
+                                            @endif
                                     </div>
-                                  
-                               
+
+
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password <i class="text-danger">*</i></label>
@@ -162,7 +174,7 @@
                                             <input type="file" id="image" class="form-control" placeholder="Image" name="image">
                                         </div>
                                     </div>
-                                
+
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary px-5 mt-3">Save</button>

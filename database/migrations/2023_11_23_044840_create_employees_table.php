@@ -20,20 +20,20 @@ return new class extends Migration
             $table->string('contact_no_en')->unique();
             $table->string('contact_no_bn')->unique()->nullable();
             $table->string('password');
-            $table->text('permanent_address')->nullable();
-            $table->text('present_address')->nullable();
+            $table->string('permanent_address')->nullable();
+            $table->string('present_address')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->date('joining_date')->nullable();
             $table->integer('nid_no')->nullable();
             $table->enum('gender',['male','female','other'])->nullable();
             $table->string('blood_group');
-            
+
             $table->unsignedBigInteger('department_id')->index();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            
+
             $table->unsignedBigInteger('designation_id')->index();
             $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
-            
+
             $table->unsignedBigInteger('role_id')->index();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
