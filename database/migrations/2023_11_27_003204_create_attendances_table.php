@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('employee_id')->index();
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->date('date');
+            $table->string('status');
+           $table->time('check_in_time')->nullable();
+            $table->time('check_out_time')->nullable();
             $table->timestamps();
         });
     }

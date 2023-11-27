@@ -107,7 +107,9 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrFail(encryptor('decrypt', $id));
         $role = Role::get();
-        return view('employees.edit', compact('role', 'employee'));
+        $department= Department::get();
+        $designation= Designation::get();
+        return view('employees.edit', compact('role', 'employee','department','designation'));
     }
 
     /**
