@@ -11,6 +11,7 @@ use App\Http\Controllers\RoleController as role;
 use App\Http\Controllers\EmployeeController as employee;
 use App\Http\Controllers\ProfileController as profile;
 use App\Http\Controllers\AttendanceController as attendance;
+use App\Http\Controllers\LeaveController as leave;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,27 +31,29 @@ Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
-Route::resource('departments', department::class);
-Route::resource('designations', designation::class);
-Route::resource('employees', employee::class);
-Route::get('attendance', [attendance::class,'index'])->name('attendance');
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
-    Route::get('profile', [profile::class,'index'])->name('profile');
+    // Route::get('profile', [profile::class,'index'])->name('profile');
+    Route::resource('departments', department::class);
+    Route::resource('designations', designation::class);
+    Route::resource('employees', employee::class);
+    Route::resource('attendance', attendance::class);
+    Route::resource('leave', leave::class);
 });
+
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
-    Route::get('profile', [profile::class,'index'])->name('profile');
     Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
     Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
- });
+});
 
 Route::get('/', function () {
     return view('dashboard');
 });
 
+ Route::get('profile', [profile::class, 'index'])->name('profile');
 
 
 // Route::get('/dashboard', function () {

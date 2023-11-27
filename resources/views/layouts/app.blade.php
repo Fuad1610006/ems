@@ -491,17 +491,24 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('profile')}}">
-          <i class="bi bi-dash-circle"></i>
+          <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Error 404 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
+        <a class="nav-link collapsed" href="{{route('attendance.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Attendance</span>
         </a>
-      </li><!-- End Blank Page Nav -->
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('leave.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Leave</span>
+        </a>
+      </li>
 
     </ul>
 

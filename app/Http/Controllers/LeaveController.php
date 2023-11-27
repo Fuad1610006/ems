@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\Leave;
 use Illuminate\Http\Request;
-use App\Models\Employee;
-use App\Http\Requests\profile\AddNewRequest;
-use App\Http\Requests\profile\UpdateRequest;
-use Exception;
-use File;
-use Illuminate\Support\Facades\Hash;
-use DB;
 
-class ProfileController extends Controller
+class LeaveController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $leave = Leave::all();
+        return view('leave.index', compact('leave'));
     }
 
     /**
@@ -41,7 +35,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Profile $profile)
+    public function show(Leave $leave)
     {
         //
     }
@@ -49,7 +43,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Profile $profile)
+    public function edit(Leave $leave)
     {
         //
     }
@@ -57,7 +51,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Leave $leave)
     {
         //
     }
@@ -65,7 +59,7 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Profile $profile)
+    public function destroy(Leave $leave)
     {
         //
     }
