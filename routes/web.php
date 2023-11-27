@@ -10,6 +10,7 @@ use App\Http\Controllers\PermissionController as permission;
 use App\Http\Controllers\RoleController as role;
 use App\Http\Controllers\EmployeeController as employee;
 use App\Http\Controllers\ProfileController as profile;
+use App\Http\Controllers\AttendanceController as attendance;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,9 @@ use App\Http\Controllers\ProfileController as profile;
 |
 */
 
-Route::get('/register', [auth::class,'signUpForm'])->name('register');
-Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
+Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+// Route::get('/register', [auth::class,'signUpForm'])->name('register');
+// Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
@@ -31,7 +33,7 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::resource('departments', department::class);
 Route::resource('designations', designation::class);
 Route::resource('employees', employee::class);
-
+Route::get('attendance', [attendance::class,'index'])->name('attendance');
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::get('profile', [profile::class,'index'])->name('profile');
@@ -49,7 +51,7 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+
 
 // Route::get('/dashboard', function () {
 //     return view('welcome');
