@@ -51,8 +51,8 @@ class EmployeeController extends Controller
             $employee->email = $request->EmailAddress;
             $employee->contact_no_en = $request->contact_no_en;
             $employee->contact_no_bn = $request->contact_no_bn;
-            $employee->present_address = $request->presentAddress;
-            $employee->permanent_address = $request->permanentAddress;
+            $employee->present_address = $request->present_address;
+            $employee->permanent_address = $request->permanent_address;
             $employee->department_id = $request->department_id;
             $employee->designation_id = $request->designation_id;
             $employee->blood_group = $request->blood_group;
@@ -123,8 +123,8 @@ class EmployeeController extends Controller
             $employee->email = $request->EmailAddress;
             $employee->contact_no_en = $request->contact_no_en;
             $employee->contact_no_bn = $request->contact_no_bn;
-            $employee->present_address = $request->presentAddress;
-            $employee->permanent_address = $request->permanentAddress;
+            $employee->present_address = $request->present_address;
+            $employee->permanent_address = $request->permanent_address;
             $employee->blood_group = $request->blood_group;
             $employee->gender = $request->gender;
             $employee->date_of_birth = $request->date_of_birth;
