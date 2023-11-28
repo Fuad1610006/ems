@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Edit Department</h2>
 
-        <form action="{{ route('departments.update', $department->id) }}" method="POST">
+        <form action="{{ route('department.update', $department->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

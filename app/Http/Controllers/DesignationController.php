@@ -12,14 +12,14 @@ class DesignationController extends Controller
     public function index()
     {
         $designation = Designation::all();
-        return view('designations.index', compact('designation'));
+        return view('designation.index', compact('designation'));
     }
 
     public function create()
     {
         $department=Department::all();
         $designation=Designation::all();
-        return view('designations.create',compact('department','designation'));
+        return view('designation.create',compact('department','designation'));
     }
 
     public function store(Request $request)
@@ -29,14 +29,16 @@ class DesignationController extends Controller
         $designation->designation=$request->designation;
         $designation->department_id = $request->department_id;
         if( $designation->save()){
+        return redirect->route('designation.index');
         $this->notice::success('Successfully saved');
-        return redirect('designations.index');
-       }
+        }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
         }catch(Exception $e){
             dd($e);
-            $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-
+            $this->notice::error('Please try again');
         }
     }
 
@@ -45,35 +47,38 @@ class DesignationController extends Controller
         // return view('designations.show', compact('designation'));
     }
 
-    public function edit(Designation $designation)
+    public function edit($id)
     {
-        $designation = Designation::findorFail($id);
-        return view('designations.edit', compact('designation', 'department'));
+        $designation = Designation::findorFail(encryptor('decrypt', $id));
+        return view('designation.edit', compact('designation', 'department'));
     }
 
-    public function update(Request $request, Designation $designation)
+    public function update(Request $request, $id)
     {
         try{
-            $designation=Designation::findOrFail($id);
+            $designation=Designation::findOrFail(encryptor('decrypt', $id));
             $designation->designation=$request->designation;
             $designation->department_id=$request->department_id;
         if($designation->save()){
+            return redirect()->route('designation.index');
             $this->notice::success('Successfully updated');
-            return redirect()->route('designations.index');
+        }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
         }
         }catch(Exception $e){
-            $this->notice::error('Please try again');
             //dd($e);
             return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
         }
      }
 
-    public function destroy(Designation $designation)
+    public function destroy($id)
     {
-        $designation= Designation::findOrFail($id);
+        $designation= Designation::findOrFail(encryptor('decrypt', $id));
         if($designation->delete()){
-            $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
         }
     }
 }

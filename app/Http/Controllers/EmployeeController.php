@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Exception;
+use File;
+use Illuminate\Support\Facades\Hash;
+use DB;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Employee;
@@ -9,11 +14,6 @@ use App\Models\Department;
 use App\Models\Designation;
 use App\Http\Requests\employee\AddNewRequest;
 use App\Http\Requests\employee\UpdateRequest;
-use Illuminate\Http\Request;
-use Exception;
-use File;
-use Illuminate\Support\Facades\Hash;
-use DB;
 
 class EmployeeController extends Controller
 {
@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     public function index()
     {
        $employee= Employee::paginate(15);
-       return view('employees.index', compact('employee'));
+       return view('employee.index', compact('employee'));
     }
 
     /**
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
         $role= Role::get();
         $department= Department::get();
         $designation= Designation::get();
-        return view('employees.create', compact('role','department','designation'));
+        return view('employee.create', compact('role','department','designation'));
     }
 
     /**
@@ -81,8 +81,11 @@ class EmployeeController extends Controller
                 $user->password = Hash::make($request->password);
                 if($user->save()){
                     DB::commit();
-                    return redirect()->route('employees.index');
+                    return redirect()->route('employee.index');
                     $this->notice::success('Employee Successfully Added');
+                }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
                 }
             }
 
@@ -107,11 +110,11 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        $employee = Employee::findOrFail(encryptor('decrypt', $id));
+        $employee = Employee::findOrFail(\encryptor('decrypt', $id));
         $role = Role::get();
         $department= Department::get();
         $designation= Designation::get();
-        return view('employees.edit', compact('role', 'employee','department','designation'));
+        return view('employee.edit', compact('role', 'employee','department','designation'));
     }
 
     /**
@@ -154,8 +157,11 @@ class EmployeeController extends Controller
                 $user->password = Hash::make($request->password);
                 if($user->save()){
                     DB::commit();
-                    return redirect()->route('employees.index');
+                    return redirect()->route('employee.index');
                     $this->notice::success('Employee Successfully Added');
+                }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
                 }
             }
 
@@ -190,7 +196,7 @@ class EmployeeController extends Controller
     public function displayProfile(Employee $employee)
     {
         $employee= Employee::get();
-        return view('employees.profile', compact('employee'));
+        return view('employee.profile', compact('employee'));
     }
 
     /**
@@ -236,13 +242,13 @@ class EmployeeController extends Controller
             $user->save;
 
             DB::commit();
-            return redirect()->route('employees.profile');
+            return redirect()->route('employee.profile');
             $this->notice::success('Profile Updated Successfully');
 
         } catch (Exception $e) {
             DB::rollback();
             dd($e);
-            return redirect()->back();
+            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
         }
 

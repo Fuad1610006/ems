@@ -9,7 +9,7 @@ class Department extends Model
 {
     use HasFactory;
 
-    public function designations()
+    public function designation()
     {
         return $this->hasMany(Designation::class);
     }

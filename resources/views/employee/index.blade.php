@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-md-12">
 
-        <a href="{{route('employees.create')}}">
+        <a href="{{route('employee.create')}}">
             <button type="button" class="btn btn-primary my-2">Add New</button>
         </a>
 
@@ -28,7 +28,7 @@
                                 <th scope="col">{{__('Date of Birth')}}</th>
                                 <th scope="col">{{__('Joining Date')}}</th>
                                 <th scope="col">{{__('NID No.')}}</th>
-                                <th scope="col">{{__('Blood Group')}}</th>           
+                                <th scope="col">{{__('Blood Group')}}</th>
                                 <th scope="col">{{__('Image')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
@@ -47,15 +47,15 @@
                                 <td>{{$e->nid_no}}</td>
                                 <td>{{$e->blood_group}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
-                                
+
                                 <td class="white-space-nowrap">
-                                    <a href="{{route('employees.edit',encryptor('encrypt',$e->id))}}">
+                                    <a href="{{route('employee.edit',encryptor('encrypt',$e->id))}}">
                                     <button type="button" class="btn btn-warning">Edit</button>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$e->id}}').submit()">
                                     <button type="button" class="btn btn-danger">Delete</button>
                                     </a>
-                                    <form id="form{{$e->id}}" action="{{route('employees.destroy',encryptor('encrypt',$e->id))}}" method="post">
+                                    <form id="form{{$e->id}}" action="{{route('employee.destroy',encryptor('encrypt',$e->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

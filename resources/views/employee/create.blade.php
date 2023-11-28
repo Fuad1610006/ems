@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body mt-4">
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('employees.store')}}">
+                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('employee.store')}}">
                                 @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">

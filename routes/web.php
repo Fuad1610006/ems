@@ -33,9 +33,9 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::get('profile', [employee::class,'displayProfile'])->name('profile');
-    Route::resource('departments', department::class);
-    Route::resource('designations', designation::class);
-    Route::resource('employees', employee::class);
+    Route::resource('department', department::class);
+    Route::resource('designation', designation::class);
+    Route::resource('employee', employee::class);
     Route::resource('attendance', attendance::class);
     Route::resource('leave', leave::class);
 });

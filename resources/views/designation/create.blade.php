@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Add Designation</h2>
 
-        <form action="{{ route('designations.store') }}" method="POST">
+        <form action="{{ route('designation.store') }}" method="POST">
             @csrf
             <div class="form-group col-md-9 my-2">
                 <label for="designation">Name:</label>

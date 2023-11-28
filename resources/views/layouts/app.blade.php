@@ -462,14 +462,14 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('departments.index')}}">
+        <a class="nav-link collapsed" href="{{route('department.index')}}">
           <i class="bi bi-person"></i>
           <span>Department</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('designations.index')}}">
+        <a class="nav-link collapsed" href="{{route('designation.index')}}">
           <i class="bi bi-person"></i>
           <span>Designation</span>
         </a>
@@ -483,7 +483,7 @@
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('employees.index')}}">
+        <a class="nav-link collapsed" href="{{route('employee.index')}}">
           <i class="bi bi-person"></i>
           <span>Employee</span>
         </a>
