@@ -99,7 +99,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        return view('employees.show', compact('employee'));
+        //
     }
 
     /**
@@ -174,13 +174,55 @@ class EmployeeController extends Controller
     {
         $employee= Employee::findOrFail(encryptor('decrypt',$id));
         $image_path=public_path('uploads/employees/').$employee->image;
-        
+
         if($employee->delete()){
-            if(File::exists($image_path)) 
+            if(File::exists($image_path))
                 File::delete($image_path);
 
             $this->notice::error('Employee Deleted Permanently!');
             return redirect()->back();
         }
     }
+
+     /**
+     * To display employee profile.
+     */
+    public function displayProfile(Employee $employee)
+    {
+        $employee= Employee::get();
+        return view('employees.profile', compact('employee'));
+    }
+
+    /**
+     * To update employee profile.
+     */
+    public function updateProfile(Employee $employee)
+    {
+        $employee = Employee::findOrFail(\encryptor('decryptor',$id));
+        $employee->name_en = $request->name_en;
+        $employee->name_bn = $request->name_bn;
+        $employee->email = $request->EmailAddress;
+        $employee->contact_no_en = $request->contact_no_en;
+        $employee->contact_no_bn = $request->contact_no_bn;
+        $employee->present_address = $request->present_address;
+        $employee->permanent_address = $request->permanent_address;
+        $employee->blood_group = $request->blood_group;
+        $employee->gender = $request->gender;
+        $employee->date_of_birth = $request->date_of_birth;
+        $employee->joining_date = $request->joining_date;
+        $employee->nid_no = $request->nid_no;
+        $employee->role_id = $request->roleId;
+        $employee->status = $request->status;
+        if ($request->hasFile('image')) {
+            $imageName = rand(111, 999) . time() . '.' .
+                $request->image->extension();
+            $request->image->move(public_path('uploads/employees'), $imageName);
+            $employee->image = $imageName;
+        }
+
+        return redirect()->route('employees.profile');
+         $this->notice::success('Profile Updated Successfully');
+
+    }
+
 }
