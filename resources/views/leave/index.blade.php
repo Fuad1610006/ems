@@ -11,10 +11,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Leave Type</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>No. of Days</th>
-                    <th>Leave Type</th>
+                    <th>Remaining Leaves</th>
                     <th>Reason</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -25,9 +26,11 @@
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->employee->name_en }}</td>
+                         <td>{{ $d->leave_type }}</td>
                         <td>{{ $d->start_date }}</td>
                         <td>{{ $d->end_date }}</td>
                         <td>{{ $d->no_of_days }}</td>
+                        <td></td>
                         <td>{{ $d->reason }}</td>
                         <td>{{ $d->status }}</td>
                         <td>                          

@@ -9,7 +9,6 @@ use App\Http\Controllers\DesignationController as designation;
 use App\Http\Controllers\PermissionController as permission;
 use App\Http\Controllers\RoleController as role;
 use App\Http\Controllers\EmployeeController as employee;
-use App\Http\Controllers\ProfileController as profile;
 use App\Http\Controllers\AttendanceController as attendance;
 use App\Http\Controllers\LeaveController as leave;
 
@@ -53,7 +52,7 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
- Route::get('profile', [profile::class, 'index'])->name('profile');
+
 
 
 // Route::get('/dashboard', function () {

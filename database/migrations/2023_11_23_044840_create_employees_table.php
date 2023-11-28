@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('present_address')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->date('joining_date')->nullable();
-            $table->integer('nid_no')->nullable();
+            $table->unsignedBigInteger('nid_no')->index();
             $table->enum('gender',['male','female','other'])->nullable();
             $table->string('blood_group');
 

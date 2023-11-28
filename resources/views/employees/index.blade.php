@@ -46,7 +46,7 @@
                                 <td>{{$e->joining_date}}</td>
                                 <td>{{$e->nid_no}}</td>
                                 <td>{{$e->blood_group}}</td>
-                                <td><img width="50px" src="{{asset('public/uploads/users/'.$e->image)}}" alt=""></td>
+                                <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
                                 
                                 <td class="white-space-nowrap">
                                     <a href="{{route('employees.edit',encryptor('encrypt',$e->id))}}">

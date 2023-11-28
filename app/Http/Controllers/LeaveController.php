@@ -12,7 +12,7 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $leave = Leave::all();
+        $leave = Leave::get();
         return view('leave.index', compact('leave'));
     }
 

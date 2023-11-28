@@ -119,89 +119,103 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                  <label for="name_en" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                    <input name="name_en" type="text" class="form-control" id="name_en" value="{{ old('name_en')}}">
+                  </div>
+                </div>
+
+               <div class="row mb-3">
+                  <label for="email" class="col-md-4 col-lg-3 col-form-label"> Email</label>
+                  <div class="col-md-8 col-lg-9">
+                    <input name="email" type="text" class="form-control" id="email" value="{{ old('email')}}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                  <label for="contact_no_en " class="col-md-4 col-lg-3 col-form-label">Contact No</label>
                   <div class="col-md-8 col-lg-9">
-                    <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                    <input name="contact_no_en " type="text" class="form-control" id="contact_no_en " value="{{ old('contact_no_en')}}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                  <label for="date_of_birth" class="col-md-4 col-lg-3 col-form-label">Date of Birth</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                    <input name="date_of_birth" type="text" class="form-control" id="date_of_birth" value="{{ old('date_of_birth')}}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                  <label for="nid_no" class="col-md-4 col-lg-3 col-form-label">NID No</label>
                   <div class="col-md-8 col-lg-9">
-                    <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                    <input name="nid_no" type="text" class="form-control" id="nid_no" value="{{ old('nid_no')}}">
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                  <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="country" type="text" class="form-control" id="Country" value="USA">
+                      <div class="form-group">
+                          <label for="blood_group" class="col-md-4 col-lg-3 col-form-label">Blood Group</label>
+                          <select id="blood_group" class="form-control" name="blood_group">
+                              <option value="">Select Blood Group</option>
+                              <option value="A+" {{ old('blood_group') == 'A+' ? 'selected' : '' }}>A+</option>
+                              <option value="A-" {{ old('blood_group') == 'A-' ? 'selected' : '' }}>A-</option>
+                              <option value="B+" {{ old('blood_group') == 'B+' ? 'selected' : '' }}>B+</option>
+                              <option value="B-" {{ old('blood_group') == 'B-' ? 'selected' : '' }}>B-</option>
+                              <option value="AB+" {{ old('blood_group') == 'AB+' ? 'selected' : '' }}>AB+</option>
+                              <option value="AB-" {{ old('blood_group') == 'AB-' ? 'selected' : '' }}>AB-</option>
+                              <option value="O+" {{ old('blood_group') == 'O+' ? 'selected' : '' }}>O+</option>
+                              <option value="O-" {{ old('blood_group') == 'O-' ? 'selected' : '' }}>O-</option>
+                              <option value="unknown" {{ old('blood_group') == 'unknown' ? 'selected' : '' }}>Unknown</option>
+                          </select>
+                          @if($errors->has('blood_group'))
+                              <span class="text-danger"> {{ $errors->first('blood_group') }}</span>
+                          @endif
+                      </div>
                   </div>
-                </div>
 
-                <div class="row mb-3">
-                  <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
-                  </div>
+              {{-- <div class="row mb-3">
+                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
                 </div>
+              </div>
 
-                <div class="row mb-3">
-                  <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-                  </div>
+              <div class="row mb-3">
+                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
                 </div>
+              </div>
 
-                <div class="row mb-3">
-                  <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-                  </div>
+              <div class="row mb-3">
+                <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
                 </div>
+              </div>
 
-                <div class="row mb-3">
-                  <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                  </div>
+              <div class="row mb-3">
+                <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
                 </div>
+              </div>
 
-                <div class="row mb-3">
-                  <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                  </div>
+              <div class="row mb-3">
+                <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
                 </div>
+              </div>
 
-                <div class="row mb-3">
-                  <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                  </div>
+              <div class="row mb-3">
+                <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                <div class="col-md-8 col-lg-9">
+                  <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
                 </div>
-
-                <div class="row mb-3">
-                  <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                  <div class="col-md-8 col-lg-9">
-                    <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
-                  </div>
-                </div>
-
+              </div>
+--}}
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>

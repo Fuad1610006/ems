@@ -18,6 +18,7 @@ return new class extends Migration
             $table->datetime('end_date');
             $table->string('leave_type');
             $table->integer('no_of_days');
+            $table->integer('allotted_leaves');
             $table->text('reason');
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();

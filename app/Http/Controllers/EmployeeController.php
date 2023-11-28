@@ -58,6 +58,8 @@ class EmployeeController extends Controller
             $employee->blood_group = $request->blood_group;
             $employee->gender = $request->gender;
             $employee->date_of_birth = $request->date_of_birth;
+            $employee->joining_date = $request->joining_date;
+            $employee->nid_no = $request->nid_no;
             $employee->role_id = $request->roleId;
             $employee->password = Hash::make($request->password);
             // $employee->status = $request->status;
@@ -97,7 +99,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -130,6 +132,8 @@ class EmployeeController extends Controller
             $employee->blood_group = $request->blood_group;
             $employee->gender = $request->gender;
             $employee->date_of_birth = $request->date_of_birth;
+            $employee->joining_date = $request->joining_date;
+            $employee->nid_no = $request->nid_no;
             $employee->role_id = $request->roleId;
             $employee->status = $request->status;
             if ($request->hasFile('image')) {

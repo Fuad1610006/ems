@@ -17,6 +17,12 @@
                 <textarea id="reason" name="reason" rows="4" cols="50">
                 </textarea>
             </div>
+
+             <div class="form-group col-md-8">
+                <label for="no_of_days">No. of Days</label>
+                <input type="text" class="form-control" id="no_of_days" name="no_of_days">
+                </input>
+            </div>
             
              <div class="form-group col-md-8">
                 <label for="start_date">Start Date</label>
