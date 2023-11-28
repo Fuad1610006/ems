@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" enctype="multipart/form-data" action="{{route('employee.update', $employee->id)}}">
+                        <form class="form" method="post" enctype="multipart/form-data" action="{{route('employees.update', $employee->id)}}">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$employee->id)}}">
@@ -156,7 +156,7 @@
                                     <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
                                     @endif
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">

@@ -196,32 +196,55 @@ class EmployeeController extends Controller
     /**
      * To update employee profile.
      */
-    public function updateProfile(Employee $employee)
+    public function updateProfile(UpdateProfileRequest $request, Employee $employee)
     {
-        $employee = Employee::findOrFail(\encryptor('decryptor',$id));
-        $employee->name_en = $request->name_en;
-        $employee->name_bn = $request->name_bn;
-        $employee->email = $request->EmailAddress;
-        $employee->contact_no_en = $request->contact_no_en;
-        $employee->contact_no_bn = $request->contact_no_bn;
-        $employee->present_address = $request->present_address;
-        $employee->permanent_address = $request->permanent_address;
-        $employee->blood_group = $request->blood_group;
-        $employee->gender = $request->gender;
-        $employee->date_of_birth = $request->date_of_birth;
-        $employee->joining_date = $request->joining_date;
-        $employee->nid_no = $request->nid_no;
-        $employee->role_id = $request->roleId;
-        $employee->status = $request->status;
-        if ($request->hasFile('image')) {
-            $imageName = rand(111, 999) . time() . '.' .
-                $request->image->extension();
-            $request->image->move(public_path('uploads/employees'), $imageName);
-            $employee->image = $imageName;
-        }
+        try {
+            DB::beginTransaction();
+            $employee = Employee::findOrFail(\encryptor('decryptor',$id));
+            $employee->name_en = $request->name_en;
+            $employee->name_bn = $request->name_bn;
+            $employee->email = $request->EmailAddress;
+            $employee->contact_no_en = $request->contact_no_en;
+            $employee->contact_no_bn = $request->contact_no_bn;
+            $employee->present_address = $request->present_address;
+            $employee->permanent_address = $request->permanent_address;
+            $employee->blood_group = $request->blood_group;
+            $employee->gender = $request->gender;
+            $employee->date_of_birth = $request->date_of_birth;
+            $employee->joining_date = $request->joining_date;
+            $employee->nid_no = $request->nid_no;
+            $employee->role_id = $request->roleId;
+            $employee->status = $request->status;
+            if ($request->hasFile('image')) {
+                $imageName = rand(111, 999) . time() . '.' .
+                    $request->image->extension();
+                $request->image->move(public_path('uploads/employees'), $imageName);
+                $employee->image = $imageName;
+            }
 
-        return redirect()->route('employees.profile');
-         $this->notice::success('Profile Updated Successfully');
+            $employee->save;
+
+            $user=User::where('employee_id',$employee->id)->first();
+            $user->employee_id = $employee->id;
+            $user->name_en = $request->name_en;
+            $user->email = $request->EmailAddress;
+            $user->contact_no_en = $request->contactNumber_en;
+            $user->role_id = $request->roleId;
+            $user->status = $request->status;
+            $user->password = Hash::make($request->password);
+
+            $user->save;
+
+            DB::commit();
+            return redirect()->route('employees.profile');
+            $this->notice::success('Profile Updated Successfully');
+
+        } catch (Exception $e) {
+            DB::rollback();
+            dd($e);
+            return redirect()->back();
+            $this->notice::error('Please try again');
+        }
 
     }
 
