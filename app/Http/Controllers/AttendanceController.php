@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
+use Exception;
 
 class AttendanceController extends Controller
 {
@@ -12,7 +14,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendance = Attendance::get();
+        $attendance = Attendance::all();
         return view('attendance.index', compact('attendance'));
     }
 
@@ -21,7 +23,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::all();
+        return view('attendance.create', compact('employees'));
     }
 
     /**

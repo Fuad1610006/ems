@@ -14,8 +14,8 @@
             <div class="form-group">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
-                    @foreach($departments as $department)
-                        <option value="{{ $department->id }}" {{ $department->id == $department->department_id ? 'selected' : '' }}>{{ $department->department }}</option>
+                    @foreach($department as $d)
+                        <option value="{{ $d->id }}" {{ $d->id == $d->department_id ? 'selected' : '' }}>{{ $d->department }}</option>
                     @endforeach
                 </select>
             </div>

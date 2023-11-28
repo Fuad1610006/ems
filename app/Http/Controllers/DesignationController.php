@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Designation;
 use App\Models\Department;
+use Exception;
 
 class DesignationController extends Controller
 {
     public function index()
     {
-        $designations = Designation::all();
-        return view('designations.index', compact('designations'));
+        $designation = Designation::all();
+        return view('designations.index', compact('designation'));
     }
 
     public function create()
@@ -23,11 +24,20 @@ class DesignationController extends Controller
 
     public function store(Request $request)
     {
+        try{
         $designation=new Designation;
         $designation->designation=$request->designation;
         $designation->department_id = $request->department_id;
-        $designation->save();
-        return redirect('designations');
+        if( $designation->save()){
+        $this->notice::success('Successfully saved');
+        return redirect('designations.index');
+       }
+        }catch(Exception $e){
+            dd($e);
+            $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
+
+        }
     }
 
     public function show(Designation $designation)
@@ -37,21 +47,33 @@ class DesignationController extends Controller
 
     public function edit(Designation $designation)
     {
-        $departments = Department::all();
-        return view('designations.edit', compact('designation', 'departments'));
+        $designation = Designation::findorFail($id);
+        return view('designations.edit', compact('designation', 'department'));
     }
 
     public function update(Request $request, Designation $designation)
     {
-        $designation->designation=$request->designation;
-        $designation->department_id=$request->department_id;
-        $designation->save();
-        return redirect('designations');
-    }
+        try{
+            $designation=Designation::findOrFail($id);
+            $designation->designation=$request->designation;
+            $designation->department_id=$request->department_id;
+        if($designation->save()){
+            $this->notice::success('Successfully updated');
+            return redirect()->route('designations.index');
+        }
+        }catch(Exception $e){
+            $this->notice::error('Please try again');
+            //dd($e);
+            return redirect()->back()->withInput();
+        }
+     }
 
     public function destroy(Designation $designation)
     {
-        $designation->delete();
-        return redirect('designations');
+        $designation= Designation::findOrFail($id);
+        if($designation->delete()){
+            $this->notice::warning('Deleted Permanently!');
+            return redirect()->back();
+        }
     }
 }

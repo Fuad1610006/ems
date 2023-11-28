@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Leave;
 use Illuminate\Http\Request;
+use Exception;
 
 class LeaveController extends Controller
 {
@@ -21,7 +23,8 @@ class LeaveController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::all();
+        return view('leave.create', compact('employees'));
     }
 
     /**

@@ -16,12 +16,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($designations as $d)
+                @foreach ($designation as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->designation }}</td>
                         <td>{{ $d->department->department }}</td>
-                        <td>                         
+                        <td>
                         <form action="{{ route('designations.destroy', $d->id) }}" method="post">
                             <a href="{{ route('designations.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 @csrf

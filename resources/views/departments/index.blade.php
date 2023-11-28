@@ -15,12 +15,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($departments as $d)
+                @foreach ($department as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->department }}</td>
-                        <td>                          
-                           
+                        <td>
+
                             <form action="{{ route('departments.destroy', $d->id) }}" method="post">
                             <a href="{{ route('departments.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 @csrf
@@ -28,7 +28,7 @@
 
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
-                           
+
                         </td>
                     </tr>
                 @endforeach
