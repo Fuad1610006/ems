@@ -3,6 +3,7 @@
 namespace App\Http\Requests\employee;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class UpdateRequest extends FormRequest
 {
@@ -19,12 +20,13 @@ class UpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
+    public function rules(Request $e): array
+    {   
+         $id=encryptor('decrypt',$e->uptoken);
         return [
             'name_en'=>'required',
-            'EmailAddress'=>'nullable|unique:users,email,'.$id,
-            'contact_no_en'=>'required|unique:users,contact_no_en,'.$id
+            'EmailAddress'=>'nullable|unique:employees,email,'.$id,
+            'contact_no_en'=>'required|unique:employees,contact_no_en,'.$id,
         ];
     }
 }

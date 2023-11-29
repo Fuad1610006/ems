@@ -21,8 +21,8 @@
                         <td>{{ $d->department }}</td>
                         <td>
 
-                            <form action="{{ route('department.destroy', $d->id) }}" method="post">
-                            <a href="{{ route('department.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('department.destroy',encryptor('encrypt',$d->id)) }}" method="post">
+                            <a href="{{ route('department.edit', encryptor('encrypt',$d->id)) }}" class="btn btn-warning btn-sm">Edit</a>
                                 @csrf
                                 @method('DELETE')
 

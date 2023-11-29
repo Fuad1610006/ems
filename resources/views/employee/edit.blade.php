@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" enctype="multipart/form-data" action="{{route('employee.update', $employee->id)}}">
+                        <form class="form" method="post" enctype="multipart/form-data" action="{{route('employee.update', encryptor('encrypt', $employee->id))}}">
                             @csrf
                             @method('PATCH')
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$employee->id)}}">
@@ -93,7 +93,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="present_address">Present Address</label>
-                                        <input type="text" id="present_address" class="form-control" name="present_address">
+                                        <input type="text" id="present_address" class="form-control" name="present_address" value="{{ old('present_address',$employee->present_address)}}">
                                         @if($errors->has('present_address'))
                                         <span class="text-danger"> {{ $errors->first('present_address') }}</span>
                                         @endif
@@ -102,7 +102,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="permanent_address">Permanent Address</label>
-                                        <input type="text" id="permanent_address" class="form-control" name="permanent_address">
+                                        <input type="text" id="permanent_address" class="form-control" name="permanent_address" value="{{ old('permanent_address',$employee->permanent_address)}}">
                                         @if($errors->has('permanent_address'))
                                         <span class="text-danger"> {{ $errors->first('permanent_address') }}</span>
                                         @endif
@@ -111,7 +111,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="joining_date">Joining Date</label>
-                                        <input type="date" id="joining_date" class="form-control" name="joining_date">
+                                        <input type="date" id="joining_date" class="form-control" name="joining_date" value="{{ old('joining_date',$employee->joining_date)}}">
                                         @if($errors->has('joining_date'))
                                         <span class="text-danger"> {{ $errors->first('joining_date') }}</span>
                                         @endif
@@ -120,7 +120,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="date_of_birth">Date of Birth</label>
-                                        <input type="date" id="date_of_birth" class="form-control" name="date_of_birth">
+                                        <input type="date" id="date_of_birth" class="form-control" name="date_of_birth" value="{{ old('date_of_birth',$employee->date_of_birth)}}">
                                         @if($errors->has('date_of_birth'))
                                         <span class="text-danger"> {{ $errors->first('date_of_birth') }}</span>
                                         @endif
@@ -150,7 +150,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="nid_no">NID No:</label>
-                                        <input type="text" id="nid_no" class="form-control" name="nid_no">
+                                        <input type="text" id="nid_no" class="form-control" name="nid_no" value="{{ old('nid_no',$employee->nid_no)}}">
                                     </div>
                                     @if($errors->has('nid_no'))
                                     <span class="text-danger"> {{ $errors->first('nid_no') }}</span>

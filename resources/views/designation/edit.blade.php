@@ -4,9 +4,9 @@
     <div class="container">
         <h2>Edit Designation</h2>
 
-        <form action="{{ route('designation.update', $designation->id) }}" method="POST">
+        <form action="{{ route('designation.update', encryptor('encrypt',$designation->id)) }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('PATCH')
             <div class="form-group">
                 <label for="designation">Name:</label>
                 <input type="text" class="form-control" id="designation" name="designation" value="{{ $designation->designation }}" required>

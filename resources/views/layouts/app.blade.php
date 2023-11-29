@@ -281,7 +281,7 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+{{--
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -451,7 +451,7 @@
           </li>
         </ul>
       </li><!-- End Icons Nav -->
-
+--}}
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
@@ -490,13 +490,6 @@
       </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="bi bi-person"></i>
-          <span>Other</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('attendance.index')}}">
           <i class="bi bi-person"></i>
           <span>Attendance</span>
@@ -510,6 +503,13 @@
         </a>
       </li>
 
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-person"></i>
+          <span>Other</span>
+        </a>
+      </li>
+      
     </ul>
 
   </aside><!-- End Sidebar-->

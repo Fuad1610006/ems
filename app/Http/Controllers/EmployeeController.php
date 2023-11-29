@@ -108,9 +108,9 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        $employee = Employee::findOrFail(\encryptor('decrypt', $id));
+        $employee = Employee::findOrFail(encryptor('decrypt', $id));
         $role = Role::get();
         $department= Department::get();
         $designation= Designation::get();
@@ -120,11 +120,11 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, Employee $employee)
+    public function update(UpdateRequest $request, $id)
     {
         try {
             DB::beginTransaction();
-            $employee = Employee::findOrFail(\encryptor('decryptor',$id));
+            $employee = Employee::findOrFail(encryptor('decryptor',$id));
             $employee->name_en = $request->name_en;
             $employee->name_bn = $request->name_bn;
             $employee->email = $request->EmailAddress;
@@ -176,7 +176,7 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
         $employee= Employee::findOrFail(encryptor('decrypt',$id));
         $image_path=public_path('uploads/employees/').$employee->image;
@@ -206,7 +206,7 @@ class EmployeeController extends Controller
     {
         try {
             DB::beginTransaction();
-            $employee = Employee::findOrFail(\encryptor('decryptor',$id));
+            $employee = Employee::findOrFail(encryptor('decryptor',$id));
             $employee->name_en = $request->name_en;
             $employee->name_bn = $request->name_bn;
             $employee->email = $request->EmailAddress;

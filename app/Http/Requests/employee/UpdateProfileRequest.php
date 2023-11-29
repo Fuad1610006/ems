@@ -23,8 +23,8 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name_en'=>'required',
-            'EmailAddress'=>'nullable|unique:users,email,'.$id,
-            'contact_no_en'=>'required|unique:users,contact_no_en,'.$id
+            'EmailAddress'=>'nullable|unique:users,email,',
+            'contact_no_en'=>'required|unique:users,contact_no_en,'
         ];
     }
 }

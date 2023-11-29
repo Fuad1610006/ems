@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\employee;
+namespace App\Http\Requests\department;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddNewRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,7 @@ class AddNewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_en'=>'required|max:255',
-            'roleId'=>'required|max:2',
-            'contact_no_en'=>'required|unique:employees',
-            'EmailAddress'=>'required|unique:employees,email',
-            'password'=>'required'
+             'department'=>'required|max:40,'
         ];
     }
 }

@@ -22,8 +22,8 @@
                         <td>{{ $d->designation }}</td>
                         <td>{{ $d->department->department }}</td>
                         <td>
-                        <form action="{{ route('designation.destroy', $d->id) }}" method="post">
-                            <a href="{{ route('designation.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('designation.destroy', encryptor('encrypt',$d->id)) }}" method="post">
+                            <a href="{{ route('designation.edit', encryptor('encrypt',$d->id)) }}" class="btn btn-warning btn-sm">Edit</a>
                                 @csrf
                                 @method('DELETE')
 

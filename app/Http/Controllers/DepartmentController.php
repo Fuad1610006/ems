@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\department\AddNewRequest;
+use App\Http\Requests\department\UpdateRequest;
 use App\Models\Department;
 use App\Models\Designation;
 use Exception;
@@ -20,7 +22,7 @@ class DepartmentController extends Controller
         return view('department.create');
     }
 
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $department=new Department;
@@ -47,11 +49,11 @@ class DepartmentController extends Controller
 
     public function edit($id)
     {
-        $department=Department::findorFail(encryptor('decrypt', $id));
+        $department=Department::findOrFail(encryptor('decrypt', $id));
         return view('department.edit', compact('department'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         try{
             $department=Department::findOrFail(encryptor('decrypt', $id));

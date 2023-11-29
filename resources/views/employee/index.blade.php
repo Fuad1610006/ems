@@ -49,15 +49,11 @@
                                 <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
 
                                 <td class="white-space-nowrap">
-                                    <a href="{{route('employee.edit',encryptor('encrypt',$e->id))}}">
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                    </a>
-                                    <a href="javascript:void()" onclick="$('#form{{$e->id}}').submit()">
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                    </a>
-                                    <form id="form{{$e->id}}" action="{{route('employee.destroy',encryptor('encrypt',$e->id))}}" method="post">
-                                        @csrf
+                                <form action="{{route('employee.destroy',encryptor('encrypt',$e->id))}}" method="post">
+                                <a href="{{route('employee.edit',encryptor('encrypt',$e->id))}}" class="btn btn-warning btn-sm">Edit  </a>
+                                         @csrf
                                         @method('delete')
+                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -68,8 +64,6 @@
                             @endforelse
                         </tbody>
                 </table>
-                <!-- End Table with stripped rows -->
-
                 </div>
             </div>
 
