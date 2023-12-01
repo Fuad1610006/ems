@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
             $table->string('employee_id');
-            $table->datetime('start_date');
-            $table->datetime('end_date');
-            $table->string('leave_type');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->tinyInteger('leave_type');
             $table->integer('no_of_days');
             $table->integer('allotted_leaves');
             $table->text('reason');

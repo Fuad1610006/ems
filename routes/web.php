@@ -23,7 +23,8 @@ use App\Http\Controllers\LeaveController as leave;
 |
 */
 
-Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+// Route::resource('employee', employee::class);
+// Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 // Route::get('/register', [auth::class,'signUpForm'])->name('register');
 // Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
@@ -31,7 +32,7 @@ Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
-    // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::get('profile', [employee::class,'displayProfile'])->name('profile');
     Route::resource('department', department::class);
     Route::resource('designation', designation::class);

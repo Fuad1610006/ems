@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('designation');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->timestamps();         
+            $table->double('basic_salary');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
