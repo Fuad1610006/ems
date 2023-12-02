@@ -52,11 +52,11 @@ class UserController extends Controller
             $user->language='en';
             $user->password=Hash::make($request->password);
 
-            // if($request->hasFile('image')){
-            //     $imageName = rand(111,999).time().'.'.$request->image->extension();
-            //     $request->image->move(public_path('uploads/users'), $imageName);
-            //     $user->image=$imageName;
-            // }
+            if($request->hasFile('image')){
+                $imageName = rand(111,999).time().'.'.$request->image->extension();
+                $request->image->move(public_path('uploads/employees'), $imageName);
+                $user->image=$imageName;
+            }
 
             if($user->save()){
                 return redirect()->route('user.index');
@@ -110,11 +110,11 @@ class UserController extends Controller
             if($request->password)
                 $user->password=Hash::make($request->password);
 
-            // if($request->hasFile('image')){
-            //     $imageName = rand(111,999).time().'.'.$request->image->extension();
-            //     $request->image->move(public_path('uploads/users'), $imageName);
-            //     $user->image=$imageName;
-            // }
+            if($request->hasFile('image')){
+                $imageName = rand(111,999).time().'.'.$request->image->extension();
+                $request->image->move(public_path('uploads/employees'), $imageName);
+                $user->image=$imageName;
+            }
 
             if($user->save()){
                 return redirect()->route('user.index');
@@ -136,14 +136,14 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user= User::findOrFail(encryptor('decrypt',$id));
-        $image_path=public_path('uploads/users/').$user->image;
-        
+        $image_path=public_path('uploads/employees/').$user->image;
+
         if($user->delete()){
-            if(File::exists($image_path)) 
+            if(File::exists($image_path))
                 File::delete($image_path);
-            
+
             Toastr::warning('Deleted Permanently!');
             return redirect()->back();
-        }      
+        }
     }
 }

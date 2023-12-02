@@ -138,7 +138,7 @@ class EmployeeController extends Controller
             $employee->joining_date = $request->joining_date;
             $employee->nid_no = $request->nid_no;
             $employee->role_id = $request->roleId;
-            $employee->status = $request->status;
+            // $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();

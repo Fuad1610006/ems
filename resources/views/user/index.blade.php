@@ -47,7 +47,7 @@
                                 <td>{{$e->contact_no_en}}</td>
 
                                 <td>{{$e->role?->name}}</td>
-                                <td><img width="50px" src="{{asset('public/uploads/users/'.$e->image)}}" alt=""></td>
+                                <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
                                 <td>@if($e->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
                                  <!-- <td>{{ $e->status == 1?"Active":"Inactive" }}</td>  -->
                                 <td class="white-space-nowrap">
