@@ -11,6 +11,12 @@ use App\Http\Controllers\RoleController as role;
 use App\Http\Controllers\EmployeeController as employee;
 use App\Http\Controllers\AttendanceController as attendance;
 use App\Http\Controllers\LeaveController as leave;
+use App\Http\Controllers\SalaryController as salary;
+use App\Http\Controllers\ShiftController as shift;
+use App\Http\Controllers\OvertimeController as overtime;
+use App\Http\Controllers\PromotionController as promotion;
+use App\Http\Controllers\ResignationController as resignation;
+use App\Http\Controllers\TerminationController as termination;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +45,12 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::resource('employee', employee::class);
     Route::resource('attendance', attendance::class);
     Route::resource('leave', leave::class);
+    Route::resource('shift', shift::class);
+    Route::resource('salary', salary::class);
+    Route::resource('overtime', overtime::class);
+    Route::resource('promotion', promotion::class);
+    Route::resource('resignation', resignation::class);
+    Route::resource('termination', termination::class);
 });
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
