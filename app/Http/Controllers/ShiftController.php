@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Shift;
 use Illuminate\Http\Request;
+use Exception;
+use Toastr;
 
 class ShiftController extends Controller
 {
@@ -12,7 +15,8 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        //
+        $shift = Shift::all();
+        return view('shift.index', compact('shift'));
     }
 
     /**
@@ -20,7 +24,7 @@ class ShiftController extends Controller
      */
     public function create()
     {
-        //
+        return view('shift.create');
     }
 
     /**
@@ -28,7 +32,23 @@ class ShiftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $shift=new Shift;
+            $shift->shift=$request->shift;
+            $shift->start_time=$request->start_time;
+            $shift->end_time=$request->end_time;
+           if( $shift->save()){
+            return redirect->route('shift.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -44,7 +64,8 @@ class ShiftController extends Controller
      */
     public function edit(Shift $shift)
     {
-        //
+        $shift=Shift::findOrFail(encryptor('decrypt', $id));
+        return view('shift.edit', compact('shift'));
     }
 
     /**
@@ -52,7 +73,25 @@ class ShiftController extends Controller
      */
     public function update(Request $request, Shift $shift)
     {
-        //
+        try{
+            $shift=Shift::findOrFail(encryptor('decrypt', $id));
+
+            $shift->shift=$request->shift;
+            $shift->start_time=$request->start_time;
+            $shift->end_time=$request->end_time;
+
+            if($shift->save()){
+                return redirect()->route('shift.index');
+                $this->notice::success('Successfully updated');
+             }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -60,6 +99,10 @@ class ShiftController extends Controller
      */
     public function destroy(Shift $shift)
     {
-        //
+        $shift= Shift::findOrFail(encryptor('decrypt', $id));
+        if($shift->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }
