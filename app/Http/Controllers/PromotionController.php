@@ -63,7 +63,7 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Promotion $promotion)
+    public function edit($id)
     {
         $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
         return view('promotion.edit', compact('promotion'));
@@ -72,7 +72,7 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Promotion $promotion)
+    public function update(Request $request, $id)
     {
         try{
             $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
@@ -100,9 +100,8 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Promotion $promotion)
+    public function destroy($id)
     {
-
         $promotion= Promotion::findOrFail(encryptor('decrypt', $id));
         if($promotion->delete()){
             return redirect()->back();

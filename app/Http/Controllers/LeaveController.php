@@ -32,7 +32,30 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         try{
+            $leave=new Leave;
+            $leave->employee_id=$request->employee_id;
+            $leave->application_file=$request->application_file;
+            $leave->start_date=$request->start_date;
+            $leave->end_date=$request->end_date;
+            $leave->leave_type=$request->leave_type;
+            $leave->no_of_days=$request->no_of_days;
+            $leave->allotted_leaves=$request->allotted_leaves;
+            $leave->reason=$request->reason;
+            $leave->status=$request->status;
+
+           if( $leave->save()){
+            return redirect->route('leave.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -48,7 +71,8 @@ class LeaveController extends Controller
      */
     public function edit(Leave $leave)
     {
-        //
+        $leave=Leave::findOrFail(encryptor('decrypt', $id));
+        return view('leave.edit', compact('leave'));
     }
 
     /**
@@ -56,7 +80,30 @@ class LeaveController extends Controller
      */
     public function update(Request $request, Leave $leave)
     {
-        //
+        try{
+            $leave=Leave::findOrFail(encryptor('decrypt', $id));
+            $leave->employee_id=$request->employee_id;
+            $leave->application_file=$request->application_file;
+            $leave->start_date=$request->start_date;
+            $leave->end_date=$request->end_date;
+            $leave->leave_type=$request->leave_type;
+            $leave->no_of_days=$request->no_of_days;
+            $leave->allotted_leaves=$request->allotted_leaves;
+            $leave->reason=$request->reason;
+            $leave->status=$request->status;
+
+           if( $leave->save()){
+            return redirect->route('leave.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -64,6 +111,10 @@ class LeaveController extends Controller
      */
     public function destroy(Leave $leave)
     {
-        //
+        $leave= Leave::findOrFail(encryptor('decrypt', $id));
+        if($leave->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }

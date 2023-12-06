@@ -63,7 +63,7 @@ class TerminationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Termination $termination)
+    public function edit($id)
     {
         $termination=Termination::findOrFail(encryptor('decrypt', $id));
         return view('termination.edit', compact('termination'));
@@ -72,7 +72,7 @@ class TerminationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Termination $termination)
+    public function update(Request $request, $id)
     {
         try{
             $termination=Termination::findOrFail(encryptor('decrypt', $id));
@@ -100,7 +100,7 @@ class TerminationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Termination $termination)
+    public function destroy($id)
     {
 
         $termination= Termination::findOrFail(encryptor('decrypt', $id));

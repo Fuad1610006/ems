@@ -29,6 +29,7 @@ return new class extends Migration
             $table->decimal('bonus');
             $table->decimal('tax');
             $table->decimal('provident_fund');
+            $table->decimal('leave_deduction');
             $table->timestamps();
             $table->softDeletes();
         });

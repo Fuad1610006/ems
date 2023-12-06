@@ -66,7 +66,7 @@ class OvertimeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Overtime $overtime)
+    public function edit($id)
     {
         $overtime = Overtime::findOrFail(encryptor('decrypt', $id));
         $employee=Employee::all();
@@ -76,7 +76,7 @@ class OvertimeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Overtime $overtime)
+    public function update(Request $request, $id)
     {
         try{
             $overtime=Overtime::findOrFail(encryptor('decrypt', $id));
@@ -101,7 +101,7 @@ class OvertimeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Overtime $overtime)
+    public function destroy($id)
     {
         $overtime= Overtime::findOrFail(encryptor('decrypt', $id));
         if($overtime->delete()){

@@ -63,7 +63,7 @@ class ResignationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Resignation $resignation)
+    public function edit($id)
     {
         $resignation=Resignation::findOrFail(encryptor('decrypt', $id));
         return view('resignation.edit', compact('resignation'));
@@ -72,7 +72,7 @@ class ResignationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Resignation $resignation)
+    public function update(Request $request, $id)
     {
         try{
             $resignation=Resignation::findOrFail(encryptor('decrypt', $id));
@@ -100,7 +100,7 @@ class ResignationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Resignation $resignation)
+    public function destroy($id)
     {
         $resignation= Resignation::findOrFail(encryptor('decrypt', $id));
         if($resignation->delete()){
