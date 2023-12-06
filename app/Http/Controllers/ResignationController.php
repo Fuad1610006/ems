@@ -12,7 +12,8 @@ class ResignationController extends Controller
      */
     public function index()
     {
-        //
+        $resignation = Resignation::all();
+        return view('resignation.index', compact('resignation'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ResignationController extends Controller
      */
     public function create()
     {
-        //
+        return view('resignation.create');
     }
 
     /**
@@ -28,7 +29,27 @@ class ResignationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $resignation=new Resignation;
+            $resignation->employee_id=$request->employee_id;
+            $resignation->department_id=$request->department_id;
+            $resignation->designation_id=$request->designation_id;
+            $resignation->notice_date=$request->notice_date;
+            $resignation->resignation_date=$request->resignation_date;
+            $resignation->type=$request->type;
+            $resignation->reason=$request->reason;
+           if( $resignation->save()){
+            return redirect->route('resignation.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -44,7 +65,8 @@ class ResignationController extends Controller
      */
     public function edit(Resignation $resignation)
     {
-        //
+        $resignation=Resignation::findOrFail(encryptor('decrypt', $id));
+        return view('resignation.edit', compact('resignation'));
     }
 
     /**
@@ -52,7 +74,27 @@ class ResignationController extends Controller
      */
     public function update(Request $request, Resignation $resignation)
     {
-        //
+        try{
+            $resignation=Resignation::findOrFail(encryptor('decrypt', $id));
+            $resignation->employee_id=$request->employee_id;
+            $resignation->department_id=$request->department_id;
+            $resignation->designation_id=$request->designation_id;
+            $resignation->notice_date=$request->notice_date;
+            $resignation->resignation_date=$request->resignation_date;
+            $resignation->type=$request->type;
+            $resignation->reason=$request->reason;
+            if($resignation->save()){
+                return redirect()->route('resignation.index');
+                $this->notice::success('Successfully updated');
+             }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -60,6 +102,10 @@ class ResignationController extends Controller
      */
     public function destroy(Resignation $resignation)
     {
-        //
+        $resignation= Resignation::findOrFail(encryptor('decrypt', $id));
+        if($resignation->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }

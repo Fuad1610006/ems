@@ -15,7 +15,9 @@ class OvertimeController extends Controller
      */
     public function index()
     {
-        //
+        $employee=Employee::all();
+        $overtime = Overtime::all();
+        return view('overtime.index', compact('overtime','employee'));
     }
 
     /**
@@ -23,7 +25,9 @@ class OvertimeController extends Controller
      */
     public function create()
     {
-        //
+        $employee=Employee::all();
+        $overtime=Overtime::all();
+        return view('overtime.create',compact('employee','overtime'));
     }
 
     /**
@@ -31,7 +35,24 @@ class OvertimeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $overtime=new Overtime;
+            $overtime->employee_id=$request->employee_id;
+            $overtime->date=$request->date;
+            $overtime->hours = $request->hours;
+            $overtime->status = $request->status;
+            if( $overtime->save()){
+            return redirect->route('overtime.index');
+            $this->notice::success('Successfully saved');
+            }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
+            }
+            }catch(Exception $e){
+                dd($e);
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again');
+            }
     }
 
     /**
@@ -47,7 +68,9 @@ class OvertimeController extends Controller
      */
     public function edit(Overtime $overtime)
     {
-        //
+        $overtime = Overtime::findOrFail(encryptor('decrypt', $id));
+        $employee=Employee::all();
+        return view('overtime.edit', compact('overtime', 'employee'));
     }
 
     /**
@@ -55,7 +78,24 @@ class OvertimeController extends Controller
      */
     public function update(Request $request, Overtime $overtime)
     {
-        //
+        try{
+            $overtime=Overtime::findOrFail(encryptor('decrypt', $id));
+            $overtime->employee_id=$request->employee_id;
+            $overtime->date=$request->date;
+            $overtime->hours = $request->hours;
+            $overtime->status = $request->status;
+        if($overtime->save()){
+            return redirect()->route('overtime.index');
+            $this->notice::success('Successfully updated');
+        }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -63,6 +103,10 @@ class OvertimeController extends Controller
      */
     public function destroy(Overtime $overtime)
     {
-        //
+        $overtime= Overtime::findOrFail(encryptor('decrypt', $id));
+        if($overtime->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }

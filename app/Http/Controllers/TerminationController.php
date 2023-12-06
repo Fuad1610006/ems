@@ -12,7 +12,8 @@ class TerminationController extends Controller
      */
     public function index()
     {
-        //
+        $termination = Termination::all();
+        return view('termination.index', compact('termination'));
     }
 
     /**
@@ -20,7 +21,7 @@ class TerminationController extends Controller
      */
     public function create()
     {
-        //
+        return view('termination.create');
     }
 
     /**
@@ -28,7 +29,27 @@ class TerminationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $termination=new Termination;
+            $termination->employee_id=$request->employee_id;
+            $termination->department_id=$request->department_id;
+            $termination->designation_id=$request->designation_id;
+            $termination->notice_date=$request->notice_date;
+            $termination->termination_date=$request->termination_date;
+            $termination->type=$request->type;
+            $termination->reason=$request->reason;
+           if( $termination->save()){
+            return redirect->route('termination.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -44,7 +65,8 @@ class TerminationController extends Controller
      */
     public function edit(Termination $termination)
     {
-        //
+        $termination=Termination::findOrFail(encryptor('decrypt', $id));
+        return view('termination.edit', compact('termination'));
     }
 
     /**
@@ -52,7 +74,27 @@ class TerminationController extends Controller
      */
     public function update(Request $request, Termination $termination)
     {
-        //
+        try{
+            $termination=Termination::findOrFail(encryptor('decrypt', $id));
+            $termination->employee_id=$request->employee_id;
+            $termination->department_id=$request->department_id;
+            $termination->designation_id=$request->designation_id;
+            $termination->notice_date=$request->notice_date;
+            $termination->termination_date=$request->termination_date;
+            $termination->type=$request->type;
+            $termination->reason=$request->reason;
+            if($termination->save()){
+                return redirect()->route('termination.index');
+                $this->notice::success('Successfully updated');
+             }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -60,6 +102,11 @@ class TerminationController extends Controller
      */
     public function destroy(Termination $termination)
     {
-        //
+
+        $termination= Termination::findOrFail(encryptor('decrypt', $id));
+        if($termination->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }

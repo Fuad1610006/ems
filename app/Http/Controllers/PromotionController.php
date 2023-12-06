@@ -12,7 +12,8 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $promotion = Promotion::all();
+        return view('promotion.index', compact('promotion'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        return view('promotion.create');
     }
 
     /**
@@ -28,7 +29,27 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $promotion=new Promotion;
+            $promotion->employee_id=$request->employee_id;
+            $promotion->department_id=$request->department_id;
+            $promotion->designation_id=$request->designation_id;
+            $promotion->notice_date=$request->notice_date;
+            $promotion->promotion_date=$request->promotion_date;
+            $promotion->new_designation=$request->new_designation;
+
+           if( $promotion->save()){
+            return redirect->route('promotion.index');
+            $this->notice::success('Successfully saved');
+           }else{
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again!');
+        }
+    }catch(Exception $e){
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -44,7 +65,8 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        //
+        $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
+        return view('promotion.edit', compact('promotion'));
     }
 
     /**
@@ -52,7 +74,27 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
-        //
+        try{
+            $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
+            $promotion->employee_id=$request->employee_id;
+            $promotion->department_id=$request->department_id;
+            $promotion->designation_id=$request->designation_id;
+            $promotion->notice_date=$request->notice_date;
+            $promotion->promotion_date=$request->promotion_date;
+            $promotion->new_designation=$request->new_designation;
+
+            if($promotion->save()){
+                return redirect()->route('promotion.index');
+                $this->notice::success('Successfully updated');
+             }else{
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again!');
+            }
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
@@ -60,6 +102,11 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+
+        $promotion= Promotion::findOrFail(encryptor('decrypt', $id));
+        if($promotion->delete()){
+            return redirect()->back();
+            $this->notice::warning('Deleted Permanently!');
+        }
     }
 }
