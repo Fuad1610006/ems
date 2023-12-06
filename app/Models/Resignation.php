@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Resignation extends Model
 {
     use HasFactory;
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+    }
 }

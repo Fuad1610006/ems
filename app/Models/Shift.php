@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Shift extends Model
 {
     use HasFactory;
+
+     public function employee()
+    {
+        return $this->hasMany(Employee::class, 'employee_id');
+    }
 }

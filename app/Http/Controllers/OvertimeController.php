@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Overtime;
 use Illuminate\Http\Request;
 use Exception;

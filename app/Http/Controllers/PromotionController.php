@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Promotion;
+use App\Models\Department;
+use App\Models\Designation;
 use Illuminate\Http\Request;
+use Exception;
+use Toastr;
 
 class PromotionController extends Controller
 {

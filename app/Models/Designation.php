@@ -13,6 +13,7 @@ class Designation extends Model
     {
         return $this->belongsTo(Department::class);
     }
+    
     public function employee()
     {
         return $this->belongsTo(Employee::class);

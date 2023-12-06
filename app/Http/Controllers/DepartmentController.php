@@ -8,6 +8,7 @@ use App\Http\Requests\department\UpdateRequest;
 use App\Models\Department;
 use App\Models\Designation;
 use Exception;
+use Toastr;
 
 class DepartmentController extends Controller
 {

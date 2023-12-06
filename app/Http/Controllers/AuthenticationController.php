@@ -11,7 +11,7 @@ use App\Http\Requests\Authentication\SignupRequest;
 use App\Http\Requests\Authentication\SigninRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
-
+use Toastr;
 
 class AuthenticationController extends Controller
 {

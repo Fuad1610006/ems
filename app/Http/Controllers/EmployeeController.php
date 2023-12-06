@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Exception;
-use File;
 use Illuminate\Support\Facades\Hash;
-use DB;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Employee;
 use App\Models\Department;
 use App\Models\Designation;
+use App\Models\Shift;
 use App\Http\Requests\employee\AddNewRequest;
 use App\Http\Requests\employee\UpdateRequest;
+use Toastr;
+use DB;
+use Exception;
+use File;
 
 class EmployeeController extends Controller
 {
@@ -32,9 +34,10 @@ class EmployeeController extends Controller
     public function create()
     {
         $role= Role::get();
+        $shift= Shift::get();
         $department= Department::get();
         $designation= Designation::get();
-        return view('employee.create', compact('role','department','designation'));
+        return view('employee.create', compact('role','department','designation','shift'));
     }
 
     /**
@@ -112,9 +115,10 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrFail(encryptor('decrypt', $id));
         $role = Role::get();
+        $shift= Shift::get();
         $department= Department::get();
         $designation= Designation::get();
-        return view('employee.edit', compact('role', 'employee','department','designation'));
+        return view('employee.edit', compact('role', 'employee','department','designation','shift'));
     }
 
     /**

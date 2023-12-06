@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     use HasFactory;
-
     
     protected $fillable = [
         'employee_id',
@@ -21,4 +20,8 @@ class Attendance extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+    }
 }

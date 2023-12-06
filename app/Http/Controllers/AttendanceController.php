@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Exception;
+use Toastr;
 
 class AttendanceController extends Controller
 {

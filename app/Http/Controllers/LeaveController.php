@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Leave;
 use Illuminate\Http\Request;
 use Exception;
+use Toastr;
+use File;
 
 class LeaveController extends Controller
 {
