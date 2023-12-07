@@ -29,7 +29,7 @@ class DepartmentController extends Controller
             $department=new Department;
             $department->department=$request->department;
            if( $department->save()){
-            return redirect->route('department.index');
+            return redirect()->route('department.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();

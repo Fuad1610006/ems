@@ -32,7 +32,7 @@ class DesignationController extends Controller
         $designation->designation=$request->designation;
         $designation->department_id = $request->department_id;
         if( $designation->save()){
-        return redirect->route('designation.index');
+        return redirect()->route('designation.index');
         $this->notice::success('Successfully saved');
         }else{
             return redirect()->back()->withInput();

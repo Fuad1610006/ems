@@ -509,6 +509,13 @@
           <span>Profile</span>
         </a>
       </li>
+
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('shift.index')}}">
+          <i class="bi bi-person"></i>
+          <span>Shift</span>
+        </a>
+      </li>
       
     </ul>
 

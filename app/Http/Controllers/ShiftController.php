@@ -40,7 +40,7 @@ class ShiftController extends Controller
             $shift->start_time=$request->start_time;
             $shift->end_time=$request->end_time;
            if( $shift->save()){
-            return redirect->route('shift.index');
+            return redirect()->route('shift.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();
@@ -77,11 +77,9 @@ class ShiftController extends Controller
     {
         try{
             $shift=Shift::findOrFail(encryptor('decrypt', $id));
-
             $shift->shift=$request->shift;
             $shift->start_time=$request->start_time;
             $shift->end_time=$request->end_time;
-
             if($shift->save()){
                 return redirect()->route('shift.index');
                 $this->notice::success('Successfully updated');

@@ -44,7 +44,7 @@ class OvertimeController extends Controller
             $overtime->hours = $request->hours;
             $overtime->status = $request->status;
             if( $overtime->save()){
-            return redirect->route('overtime.index');
+            return redirect()->route('overtime.index');
             $this->notice::success('Successfully saved');
             }else{
                 return redirect()->back()->withInput();

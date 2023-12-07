@@ -44,7 +44,7 @@ class ResignationController extends Controller
             $resignation->type=$request->type;
             $resignation->reason=$request->reason;
            if( $resignation->save()){
-            return redirect->route('resignation.index');
+            return redirect()->route('resignation.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();

@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
             $table->string('shift');
-            $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-            $table->dateTime('start_time')->nullable();
-            $table->dateTime('end_time')->nullable();
+            $table->time('start_time')->format('H:i')->nullable();
+            $table->time('end_time')->format('H:i')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

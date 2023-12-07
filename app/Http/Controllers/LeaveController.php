@@ -49,7 +49,7 @@ class LeaveController extends Controller
             $leave->status=$request->status;
 
            if( $leave->save()){
-            return redirect->route('leave.index');
+            return redirect()->route('leave.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();

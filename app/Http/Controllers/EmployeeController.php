@@ -64,6 +64,7 @@ class EmployeeController extends Controller
             $employee->joining_date = $request->joining_date;
             $employee->nid_no = $request->nid_no;
             $employee->role_id = $request->roleId;
+            $employee->shift_id = $request->shift_id;
             $employee->password = Hash::make($request->password);
             // $employee->status = $request->status;
             if ($request->hasFile('image')) {
@@ -142,6 +143,7 @@ class EmployeeController extends Controller
             $employee->joining_date = $request->joining_date;
             $employee->nid_no = $request->nid_no;
             $employee->role_id = $request->roleId;
+            $employee->shift_id = $request->shift_id;
             // $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .

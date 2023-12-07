@@ -44,7 +44,7 @@ class TerminationController extends Controller
             $termination->type=$request->type;
             $termination->reason=$request->reason;
            if( $termination->save()){
-            return redirect->route('termination.index');
+            return redirect()->route('termination.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();

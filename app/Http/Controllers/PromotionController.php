@@ -44,7 +44,7 @@ class PromotionController extends Controller
             $promotion->new_designation=$request->new_designation;
 
            if( $promotion->save()){
-            return redirect->route('promotion.index');
+            return redirect()->route('promotion.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();

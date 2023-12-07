@@ -55,7 +55,7 @@ class SalaryController extends Controller
             $salary->leave_deduction=$request->leave_deduction;
 
            if( $salary->save()){
-            return redirect->route('salary.index');
+            return redirect()->route('salary.index');
             $this->notice::success('Successfully saved');
            }else{
             return redirect()->back()->withInput();
