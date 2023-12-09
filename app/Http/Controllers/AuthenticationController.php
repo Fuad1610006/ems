@@ -77,7 +77,7 @@ class AuthenticationController extends Controller
         );
     }
 
-    public function singOut(){
+    public function signOut(){
         request()->session()->flush();
         return redirect('login')->with('danger','Successfully Logged Out');
     }

@@ -4,41 +4,42 @@
     <div class="container">
         <h2>Employee Attendance</h2>
 
-        <a href="{{ route('attendance.create') }}" class="btn btn-primary mb-3">Add New</a>
-
         <div class="card">
+            <div class="card-header">
+                <div class="col-lg-12">
+                    <div class="form-group col-md-6">
+                            <h4>Attendance Date: {{$date}}</h4>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Attendance Date')}}</th>
-                                <th scope="col">{{__('Present')}}</th>
-                                <th scope="col">{{__('Absent')}}</th>
-                                <th class="white-space-nowrap">{{__('Action') }}</th>
+                                <th scope="col">{{__('Employee')}}</th>
+                                <th scope="col">{{__('Status')}}</th>
+                                <th scope="col">{{__('Update')}}</th>
                             </tr>
                         </thead>
                         <tbody>
                           @forelse($attendance as $t)
                                     <tr role="row" class="odd">
                                         <td>{{++$loop->index}}</td>
-                                        <td>{{$t->date}}</td>
-                                        <td>{{$t->present}}</td>
-                                        <td>{{$t->absent}}</td>
-
+                                        <td>{{ $t->employee?->name_en }}
+                                        </td>
                                         <td>
-                                            <div class="d-flex">
-                                                <a href="{{ route('attendance.show', ['date' => $t->date]) }}"><i class="fas fa-eye"></i></a>
-
-                                            </a>
-                                            </div>
+                                            {{($t->status==1?'Present':'Absent')}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('attendance.singleEdit',encryptor('encrypt',$t->id))}}" class=""><i class="fas fa-edit"></i>
                                         </td>
                                     </tr>
                                 @empty
 
                                     <tr>
-                                        <th colspan="5" class="text-center">Data not found</th>
+                                        <th colspan="4" class="text-center">Data not found</th>
                                     </tr>
                                 @endforelse
                         </tbody>

@@ -35,7 +35,7 @@ use App\Http\Controllers\TerminationController as termination;
 // Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
-Route::get('/logout', [auth::class,'singOut'])->name('logOut');
+Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
