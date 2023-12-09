@@ -27,9 +27,9 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        $employees = array();
-        $employees = Employee::all();
-        return view('attendance.create', compact('employees'));
+        $employee = array();
+        $employee = Employee::all();
+        return view('attendance.create', compact('employee'));
     }
 
     /**

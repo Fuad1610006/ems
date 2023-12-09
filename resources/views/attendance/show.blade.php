@@ -3,15 +3,9 @@
 @section('content')
     <div class="container">
         <h2>Employee Attendance</h2>
+          <h4>Date: {{$date}}</h4>
 
-        <div class="card">
-            <div class="card-header">
-                <div class="col-lg-12">
-                    <div class="form-group col-md-6">
-                            <h4>Attendance Date: {{$date}}</h4>
-                    </div>
-                </div>
-            </div>
+        <div class="card">      
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
