@@ -36,7 +36,7 @@
                                         <select class="form-control" name="department_id" id="department_id">
                                             <option value="">Select Department</option>
                                             @forelse($department as $d)
-                                            <option value="{{$d->id}}" {{ old('department_id')==$d->id?"selected":""}}> {{ $d->department}}</option>
+                                            <option value="{{$d->id}}" {{ old('department_id',$employee->department_id)==$d->id?"selected":""}}> {{ $d->department}}</option>
                                             @empty
                                             <option value="">No Data found</option>
                                             @endforelse
@@ -52,7 +52,7 @@
                                         <select class="form-control" name="designation_id" id="designation_id">
                                             <option value="">Select Designation</option>
                                             @forelse($designation as $d)
-                                            <option value="{{$d->id}}" {{ old('designation_id')==$d->id?"selected":""}}> {{ $d->designation}}</option>
+                                            <option value="{{$d->id}}" {{ old('designation_id',$employee->designation_id)==$d->id?"selected":""}}> {{ $d->designation}}</option>
                                             @empty
                                             <option value="">No Data found</option>
                                             @endforelse
@@ -62,6 +62,22 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="roleId">Shift  <i class="text-danger">*</i></label>
+                                            <select class="form-control" name="shift_id" id="shift_id">
+                                                <option value="">Select Shift</option>
+                                                @forelse($shift as $d)
+                                                    <option value="{{$d->id}}" {{ old('shift_id',$employee->shift_id)==$d->id?"selected":""}}> {{ $d->shift}}</option>
+                                                @empty
+                                                    <option value="">No Data found</option>
+                                                @endforelse
+                                            </select>
+                                            @if($errors->has('shift_id'))
+                                                <span class="text-danger"> {{ $errors->first('shift_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="name_en">Name <i class="text-danger">*</i></label>
@@ -74,21 +90,30 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="EmailAddress">Email <i class="text-danger">*</i></label>
-                                        <input type="text" id="EmailAddress" class="form-control" value="{{ old('EmailAddress',$employee->email)}}" name="EmailAddress">
-                                        @if($errors->has('EmailAddress'))
-                                        <span class="text-danger"> {{ $errors->first('EmailAddress') }}</span>
+                                        <label for="email">Email <i class="text-danger">*</i></label>
+                                        <input type="text" id="email" class="form-control" value="{{ old('email',$employee->email)}}" name="email">
+                                        @if($errors->has('email'))
+                                        <span class="text-danger"> {{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="contactNumber_en">Contact Number <i class="text-danger">*</i></label>
-                                        <input type="text" id="contactNumber_en" class="form-control" value="{{ old('contactNumber_en',$employee->contact_no_en)}}" name="contactNumber_en">
-                                        @if($errors->has('contactNumber_en'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                        <label for="contact_no_en">Contact Number <i class="text-danger">*</i></label>
+                                        <input type="text" id="contact_no_en" class="form-control" value="{{ old('contact_no_en',$employee->contact_no_en)}}" name="contact_no_en">
+                                        @if($errors->has('contact_no_en'))
+                                        <span class="text-danger"> {{ $errors->first('contact_no_en') }}</span>
                                         @endif
                                     </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="nid_no">NID No:</label>
+                                        <input type="text" id="nid_no" class="form-control" name="nid_no" value="{{ old('nid_no',$employee->nid_no)}}">
+                                    </div>
+                                    @if($errors->has('nid_no'))
+                                    <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
@@ -145,18 +170,13 @@
                                         <span class="text-danger"> {{ $errors->first('blood_group') }}</span>
                                         @endif
                                     </div>
-                                </div>
-
+                                </div>                              
                                 <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="nid_no">NID No:</label>
-                                        <input type="text" id="nid_no" class="form-control" name="nid_no" value="{{ old('nid_no',$employee->nid_no)}}">
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
+                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
+                                        </div>
                                     </div>
-                                    @if($errors->has('nid_no'))
-                                    <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
-                                    @endif
-                                </div>
-
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -167,12 +187,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">

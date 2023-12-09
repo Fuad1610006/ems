@@ -61,7 +61,7 @@ class AttendanceController extends Controller
      */
     public function show($date)
     {
-        $attendance = attendance::where('date',$date)->get();
+        $attendance = Attendance::where('date',$date)->get();
         return view('attendance.show',compact('attendance','date'));
     }
 

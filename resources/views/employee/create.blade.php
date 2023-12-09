@@ -62,6 +62,22 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
+                                            <label for="roleId">Shift  <i class="text-danger">*</i></label>
+                                            <select class="form-control" name="shift_id" id="shift_id">
+                                                <option value="">Select Shift</option>
+                                                @forelse($shift as $d)
+                                                    <option value="{{$d->id}}" {{ old('shift_id')==$d->id?"selected":""}}> {{ $d->shift}}</option>
+                                                @empty
+                                                    <option value="">No Data found</option>
+                                                @endforelse
+                                            </select>
+                                            @if($errors->has('shift_id'))
+                                                <span class="text-danger"> {{ $errors->first('shift_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
                                             <label for="name_en">Name (English) <i class="text-danger">*</i></label>
                                             <input type="text" id="name_en" class="form-control" value="{{ old('name_en')}}" name="name_en">
                                             @if($errors->has('name_en'))
@@ -73,10 +89,10 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="EmailAddress">Email <i class="text-danger">*</i></label>
-                                            <input type="text" id="EmailAddress" class="form-control" value="{{ old('EmailAddress')}}" name="EmailAddress">
-                                            @if($errors->has('EmailAddress'))
-                                                <span class="text-danger"> {{ $errors->first('EmailAddress') }}</span>
+                                            <label for="email">Email <i class="text-danger">*</i></label>
+                                            <input type="text" id="email" class="form-control" value="{{ old('email')}}" name="email">
+                                            @if($errors->has('email'))
+                                                <span class="text-danger"> {{ $errors->first('email') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -89,6 +105,15 @@
                                                 <span class="text-danger"> {{ $errors->first('contact_no_en') }}</span>
                                             @endif
                                         </div>
+                                    </div>
+                                     <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="nid_no">NID No:</label>
+                                            <input type="text" id="nid_no" class="form-control" name="nid_no">
+                                        </div>
+                                        @if($errors->has('nid_no'))
+                                                <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
+                                            @endif
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -146,18 +171,13 @@
                                             @endif
                                         </div>
                                     </div>
-
+                       
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="nid_no">NID No:</label>
-                                            <input type="text" id="nid_no" class="form-control" name="nid_no">
+                                            <label for="image">Image</label>
+                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
                                         </div>
-                                        @if($errors->has('nid_no'))
-                                                <span class="text-danger"> {{ $errors->first('nid_no') }}</span>
-                                            @endif
                                     </div>
-
-
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password <i class="text-danger">*</i></label>
@@ -167,14 +187,6 @@
                                                 @endif
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <input type="file" id="image" class="form-control" placeholder="Image" name="image">
-                                        </div>
-                                    </div>
-
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary px-5 mt-3">Save</button>

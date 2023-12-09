@@ -6,7 +6,7 @@
     <section class="section">
       <div class="row">
         <div class="col-md-12">
-
+        <h2 class="my-0">Employee List</h2>
         <a href="{{route('employee.create')}}">
             <button type="button" class="btn btn-primary my-2">Add New</button>
         </a>
