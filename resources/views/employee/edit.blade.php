@@ -90,10 +90,10 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="email">Email <i class="text-danger">*</i></label>
-                                        <input type="text" id="email" class="form-control" value="{{ old('email',$employee->email)}}" name="email">
-                                        @if($errors->has('email'))
-                                        <span class="text-danger"> {{ $errors->first('email') }}</span>
+                                        <label for="EmailAddress">Email <i class="text-danger">*</i></label>
+                                        <input type="text" id="EmailAddress" class="form-control" value="{{ old('EmailAddress',$employee->email)}}" name="EmailAddress">
+                                        @if($errors->has('EmailAddress'))
+                                        <span class="text-danger"> {{ $errors->first('EmailAddress') }}</span>
                                         @endif
                                     </div>
                                 </div>
