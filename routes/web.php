@@ -45,7 +45,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::resource('employee', employee::class);
     Route::resource('attendance', attendance::class);
     Route::get('attendance/show/{date}', [attendance::class,'show'])->name('attendance.show');
-    Route::get('attendance/singleEdit', [attendance::class,'singleEdit'])->name('attendance.singleEdit');
+    Route::get('attendance/singleEdit/{id}', [attendance::class,'singleEdit'])->name('attendance.singleEdit');
     Route::resource('leave', leave::class);
     Route::resource('shift', shift::class);
     Route::resource('salary', salary::class);

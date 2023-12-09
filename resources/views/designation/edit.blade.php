@@ -14,6 +14,7 @@
             <div class="form-group">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
+                     <option value="">Select Department</option>
                     @foreach($department as $d)
                         <option value="{{ $d->id }}" {{ $d->id == $d->department_id ? 'selected' : '' }}>{{ $d->department }}</option>
                     @endforeach

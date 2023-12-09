@@ -28,12 +28,12 @@
                 </select>
             </div>
              <div class="form-group col-md-9 my-2">
-                <label for="">Date:</label>
-                <input type="date" class="form-control" id="" name="" required>
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
             </div>
              <div class="form-group col-md-9 my-2">
-                <label for="">Hours:</label>
-                <input type="text" class="form-control" id="" name="" required>
+                <label for="hours">Hours:</label>
+                <input type="text" class="form-control" id="hours" name="hours" required>
             </div>
             <button type="submit" class="btn btn-primary my-2">Update</button>
         </form>
