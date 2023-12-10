@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
- 
+
 <div class="pagetitle">
   <h1>Profile</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="">Home</a></li>
       <li class="breadcrumb-item">Users</li>
       <li class="breadcrumb-item active">Profile</li>
     </ol>
@@ -20,8 +20,8 @@
       <div class="card">
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <h2>Kevin Anderson</h2>
+          <img src="{{asset('public/uploads/employees/'.$employee->image)}}" alt="Profile" class="rounded-circle">
+          <h2>{{$employee->name_en}}</h2>
           <h3>Web Designer</h3>
           <div class="social-links mt-2">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -68,37 +68,37 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Company</div>
-                <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Job</div>
-                <div class="col-lg-9 col-md-8">Web Designer</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Country</div>
-                <div class="col-lg-9 col-md-8">USA</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Address</div>
-                <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Phone</div>
-                <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                <div class="col-lg-9 col-md-8">{{$employee->name_en}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Email</div>
-                <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                <div class="col-lg-9 col-md-8">{{$employee->email}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Contact No</div>
+                <div class="col-lg-9 col-md-8">{{$employee->contact_no_en}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Present Address</div>
+                <div class="col-lg-9 col-md-8">{{$employee->present_address}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Permanent Address</div>
+                <div class="col-lg-9 col-md-8">{{$employee->permanent_address}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">NID No</div>
+                <div class="col-lg-9 col-md-8">{{$employee->nid_no}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Date of Birth</div>
+                <div class="col-lg-9 col-md-8">{{$employee->date_of_birth}}</div>
               </div>
 
             </div>
