@@ -19,9 +19,9 @@
 
       <div class="card">
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-          <img src="{{asset('public/uploads/employees/'.$employee->image)}}" alt="Profile" class="rounded-circle">
-          <h2>{{$employee->name_en}}</h2>
+            @foreach ($employee as $e)
+          <img src="{{asset('public/uploads/employees/'.$e->image)}}" alt="Profile" class="rounded-circle">
+          <h2>{{$e->name_en}}</h2>
           <h3>Web Designer</h3>
           <div class="social-links mt-2">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -68,41 +68,41 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                <div class="col-lg-9 col-md-8">{{$employee->name_en}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->name_en}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Email</div>
-                <div class="col-lg-9 col-md-8">{{$employee->email}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->email}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Contact No</div>
-                <div class="col-lg-9 col-md-8">{{$employee->contact_no_en}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->contact_no_en}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Present Address</div>
-                <div class="col-lg-9 col-md-8">{{$employee->present_address}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->present_address}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Permanent Address</div>
-                <div class="col-lg-9 col-md-8">{{$employee->permanent_address}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->permanent_address}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">NID No</div>
-                <div class="col-lg-9 col-md-8">{{$employee->nid_no}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->nid_no}}</div>
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Date of Birth</div>
-                <div class="col-lg-9 col-md-8">{{$employee->date_of_birth}}</div>
+                <div class="col-lg-9 col-md-8">{{$e->date_of_birth}}</div>
               </div>
 
             </div>
-
+            @endforeach
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
               <!-- Profile Edit Form -->
@@ -110,7 +110,7 @@
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                   <div class="col-md-8 col-lg-9">
-                    <img src="assets/img/profile-img.jpg" alt="Profile">
+                    <img src="{{asset('public/uploads/employees/'.$e->image)}}" alt="Profile">
                     <div class="pt-2">
                       <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                       <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -148,31 +148,12 @@
 
                 <div class="row mb-3">
                   <label for="nid_no" class="col-md-4 col-lg-3 col-form-label">NID No</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-6 col-lg-9">
                     <input name="nid_no" type="text" class="form-control" id="nid_no" value="{{ old('nid_no')}}">
                   </div>
                 </div>
 
-                <div class="row mb-3">
-                      <div class="form-group">
-                          <label for="blood_group" class="col-md-4 col-lg-3 col-form-label">Blood Group</label>
-                          <select id="blood_group" class="form-control" name="blood_group">
-                              <option value="">Select Blood Group</option>
-                              <option value="A+" {{ old('blood_group') == 'A+' ? 'selected' : '' }}>A+</option>
-                              <option value="A-" {{ old('blood_group') == 'A-' ? 'selected' : '' }}>A-</option>
-                              <option value="B+" {{ old('blood_group') == 'B+' ? 'selected' : '' }}>B+</option>
-                              <option value="B-" {{ old('blood_group') == 'B-' ? 'selected' : '' }}>B-</option>
-                              <option value="AB+" {{ old('blood_group') == 'AB+' ? 'selected' : '' }}>AB+</option>
-                              <option value="AB-" {{ old('blood_group') == 'AB-' ? 'selected' : '' }}>AB-</option>
-                              <option value="O+" {{ old('blood_group') == 'O+' ? 'selected' : '' }}>O+</option>
-                              <option value="O-" {{ old('blood_group') == 'O-' ? 'selected' : '' }}>O-</option>
-                              <option value="unknown" {{ old('blood_group') == 'unknown' ? 'selected' : '' }}>Unknown</option>
-                          </select>
-                          @if($errors->has('blood_group'))
-                              <span class="text-danger"> {{ $errors->first('blood_group') }}</span>
-                          @endif
-                      </div>
-                  </div>
+              
 
               {{-- <div class="row mb-3">
                 <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
