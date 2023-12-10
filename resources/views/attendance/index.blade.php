@@ -29,7 +29,7 @@
 
                                         <td>
                                             <div class="d-flex">
-                                                <a href="{{ route('attendance.show', ['date' => $t->date]) }}"><i class="fas fa-eye"></i></a> 
+                                                <a href="{{ route('attendance.show') }}"><i class="fas fa-eye"></i></a>
 
                                             </a>
                                             </div>

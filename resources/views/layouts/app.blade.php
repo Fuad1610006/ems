@@ -212,7 +212,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('public/uploads/employees/'.request()->session()->get('image'))}}" alt="Profile" class="rounded-circle">
+            <img src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{encryptor('decrypt', request()->session()->get('userName'))}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -306,6 +306,11 @@
           <i class="bi bi-journal-text"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+                <a href="{{route('employee.index')}}">
+                  <i class="bi bi-circle"></i><span>All Employees</span>
+                </a>
+             </li>
           <li>
             <a href="{{route('shift.index')}}">
               <i class="bi bi-circle"></i><span>Shifts</span>
@@ -321,11 +326,7 @@
               <i class="bi bi-circle"></i><span>Designations</span>
             </a>
           </li>
-          <li>
-            <a href="{{route('employee.index')}}">
-              <i class="bi bi-circle"></i><span>All Employees</span>
-            </a>
-          </li>
+
         </ul>
       </li><!-- End Forms Nav -->
 
