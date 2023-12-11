@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Employee Attendance</h2>
-          <h4>Date: {{$date}}</h4>
+          <h4>Date: </h4>
 
         <div class="card">      
             <div class="card-body">
@@ -27,7 +27,7 @@
                                             {{($t->status==1?'Present':'Absent')}}
                                         </td>
                                         <td>
-                                            <a href="{{route('attendance.singleEdit',encryptor('encrypt',$t->id))}}" class=""><i class="fas fa-edit"></i>
+                                            <a href="{{route('attendance_singleEdit',encryptor('encrypt',$t->id))}}" class=""><i class="fas fa-edit"></i>
                                         </td>
                                     </tr>
                                 @empty

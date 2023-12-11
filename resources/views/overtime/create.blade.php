@@ -13,16 +13,18 @@
             <div class="form-group col-md-9 my-2">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
+                    <option value="">Select Department</option>
                     @foreach($department as $d)
                         <option value="{{ $d->id }}">{{ $d->department }}</option>
                     @endforeach
                 </select>
             </div>
              <div class="form-group col-md-9 my-2">
-                <label for="department_id">Designation:</label>
-                <select class="form-control" id="department_id" name="department_id" required>
-                    @foreach($department as $d)
-                        <option value="{{ $d->id }}">{{ $d->department }}</option>
+                <label for="designation_id">Designation:</label>
+                <select class="form-control" id="designation_id" name="department_id" required>
+                    <option value="">Select Designation</option>
+                    @foreach($designation as $d)
+                        <option value="{{ $d->id }}">{{ $d->designation }}</option>
                     @endforeach
                 </select>
             </div>

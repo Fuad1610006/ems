@@ -14,16 +14,18 @@
             <div class="form-group">
                 <label for="department_id">Department:</label>
                 <select class="form-control" id="department_id" name="department_id" required>
+                      <option value="">Select Department</option>
                     @foreach($department as $d)
                         <option value="{{ $d->id }}" {{ $d->id == $d->department_id ? 'selected' : '' }}>{{ $d->department }}</option>
                     @endforeach
                 </select>
             </div>
              <div class="form-group col-md-9 my-2">
-                <label for="department_id">Designation:</label>
-                <select class="form-control" id="department_id" name="department_id" required>
+                <label for="designation_id">Designation:</label>
+                <select class="form-control" id="designation_id" name="designation_id" required>
+                      <option value="">Select Designation</option>
                     @foreach($department as $d)
-                        <option value="{{ $d->id }}">{{ $d->department }}</option>
+                        <option value="{{ $d->id }}">{{ $d->designation }}</option>
                     @endforeach
                 </select>
             </div>

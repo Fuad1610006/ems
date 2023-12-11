@@ -7,7 +7,7 @@
         <a href="{{ route('attendance.create') }}" class="btn btn-primary mb-3">Add New</a>
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body pt-4">
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead class="bg-dark text-white">
@@ -29,7 +29,7 @@
 
                                         <td>
                                             <div class="d-flex">
-                                                <a href="{{ route('attendance.show') }}"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('attendance_show',$t->date) }}"><i class="fas fa-eye"></i></a>
 
                                             </a>
                                             </div>

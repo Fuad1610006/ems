@@ -28,8 +28,9 @@ class OvertimeController extends Controller
     public function create()
     {
         $employee=Employee::all();
-        $overtime=Overtime::all();
-        return view('overtime.create',compact('employee','overtime'));
+        $department= Department::get();
+        $designation=Designation::get();
+        return view('overtime.create',compact('employee','department','designation'));
     }
 
     /**

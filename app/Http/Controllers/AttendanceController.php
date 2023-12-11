@@ -47,9 +47,8 @@ class AttendanceController extends Controller
                     $attendance->status = $attendanceData['status'];
                     $attendance->save();
             }
-
-            $this->notice::success('Data successfully saved');
             return redirect()->route('attendance.index');
+            $this->notice::success('Data successfully saved');
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->withInput()->with('error', 'Please try again');
