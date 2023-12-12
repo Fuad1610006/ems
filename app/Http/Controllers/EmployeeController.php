@@ -104,9 +104,14 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-        //
+        $role= Role::get();
+        $shift= Shift::get();
+        $department= Department::get();
+        $designation= Designation::get();
+        $employee = Employee::findOrFail(encryptor('decrypt', $id));
+        return view('employee.show', compact('role','department','designation','shift','employee'));
     }
 
     /**

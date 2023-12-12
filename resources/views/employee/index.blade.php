@@ -24,11 +24,12 @@
                                 <th scope="col">{{__('Email')}}</th>
                                 <th scope="col">{{__('Contact')}}</th>
                                 <th scope="col">{{__('Present Address')}}</th>
-                                <th scope="col">{{__('Permanent Address')}}</th>
-                                <th scope="col">{{__('Date of Birth')}}</th>
+                                
                                 <th scope="col">{{__('Joining Date')}}</th>
                                 <th scope="col">{{__('NID No.')}}</th>
-                                <th scope="col">{{__('Blood Group')}}</th>
+                               {{-- <th scope="col">{{__('Permanent Address')}}</th>
+                                <th scope="col">{{__('Date of Birth')}}</th>
+                                <th scope="col">{{__('Blood Group')}}</th> --}}
                                 <th scope="col">{{__('Image')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
@@ -40,21 +41,25 @@
                                 <td>{{$e->name_en}}</td>
                                 <td>{{$e->email}}</td>
                                 <td>{{$e->contact_no_en}}</td>
-                                <td>{{$e->present_address}}</td>
-                                <td>{{$e->permanent_address}}</td>
-                                <td>{{$e->date_of_birth}}</td>
+                                <td>{{$e->present_address}}</td>                   
                                 <td>{{$e->joining_date}}</td>
                                 <td>{{$e->nid_no}}</td>
-                                <td>{{$e->blood_group}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
-
+                                 {{-- <td>{{$e->permanent_address}}</td>
+                                <td>{{$e->date_of_birth}}</td>
+                                <td>{{$e->blood_group}}</td> --}}
                                 <td class="white-space-nowrap">
+                                    <a href="{{route('employee.edit',encryptor('encrypt',$e->id))}}">
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{route('employee.show',encryptor('encrypt',$e->id))}}">
+                                      <i class="fa fa-eye"></i>
+                                    </a>
                                 <form action="{{route('employee.destroy',encryptor('encrypt',$e->id))}}" method="post">
-                                <a href="{{route('employee.edit',encryptor('encrypt',$e->id))}}" class="btn btn-warning btn-sm">Edit  </a>
                                          @csrf
                                         @method('delete')
-                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
+                                 <i class="fa fa-trash"></i>
+                                </form>
                                 </td>
                             </tr>
                             @empty

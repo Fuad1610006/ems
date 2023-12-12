@@ -43,6 +43,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::resource('department', department::class);
     Route::resource('designation', designation::class);
     Route::resource('employee', employee::class);
+    Route::get('employee_details/{id}', [employee::class,'show'])->name('employee_details');
     Route::resource('attendance', attendance::class);
     Route::get('attendance_show/{date}', [attendance::class,'show'])->name('attendance_show');
     Route::get('attendance_singleEdit/{id}', [attendance::class,'singleEdit'])->name('attendance_singleEdit');
