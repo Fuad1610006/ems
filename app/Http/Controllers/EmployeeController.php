@@ -210,9 +210,20 @@ class EmployeeController extends Controller
     $shift = Shift::get();
     $department = Department::get();
     $designation = Designation::get();
-    $employee = Employee::findOrFail(encryptor('decrypt', $id));
+    $employee = Employee::find($CurrentUserId);
 
-    return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
+    // Check if the employee exists
+    if ($employee) {
+        // If the employee exists, pass it to the view
+        return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
+    } else {
+        // If the employee is not found, you might want to redirect or handle it accordingly
+        return redirect()->route('employee.index')->with('error', 'Employee not found.');
+    }
+
+    // $employee = Employee::findOrFail(encryptor('decrypt', $id));
+
+    // return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
 }
 
     /**
@@ -235,7 +246,7 @@ class EmployeeController extends Controller
             $employee->date_of_birth = $request->date_of_birth;
             $employee->joining_date = $request->joining_date;
             $employee->nid_no = $request->nid_no;
-           
+
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();
@@ -250,7 +261,7 @@ class EmployeeController extends Controller
             $user->name_en = $request->name_en;
             $user->email = $request->EmailAddress;
             $user->contact_no_en = $request->contactNumber_en;
-           
+
             $user->password = Hash::make($request->password);
 
             $user()->save();
