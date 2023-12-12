@@ -63,19 +63,20 @@ class AuthenticationController extends Controller
         }
     }
 
-    public function setSession($user){
-        return request()->session()->put([
-                'userId'=>encryptor('encrypt',$user->id),
-                'userName'=>encryptor('encrypt',$user->name_en),
-                'role_id'=>encryptor('encrypt',$user->role_id),
-                'accessType'=>encryptor('encrypt',$user->full_access),
-                'role'=>encryptor('encrypt',$user->role->type),
-                'roleIdentity'=>encryptor('encrypt',$user->role->identity),
-                'language'=>encryptor('encrypt',$user->language),
-                'image'=>$user->employee?->image
-            ]
-        );
-    }
+   public function setSession($user){
+    $employee = $user->employee;
+
+    return request()->session()->put([
+        'userId' => encryptor('encrypt', $user->id),
+        'userName' => encryptor('encrypt', $user->name_en),
+        'role_id' => encryptor('encrypt', $user->role_id),
+        'accessType' => encryptor('encrypt', $user->full_access),
+        'role' => encryptor('encrypt', $user->role->type),
+        'roleIdentity' => encryptor('encrypt', $user->role->identity),
+        'language' => encryptor('encrypt', $user->language),
+        'image' => $employee ? $employee->image : null, 
+    ]);
+}
 
     public function signOut(){
         request()->session()->flush();

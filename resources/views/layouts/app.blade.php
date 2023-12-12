@@ -210,7 +210,10 @@
         </li><!-- End Messages Nav -->
 
         <li class="nav-item dropdown pe-3">
-
+             @php
+                $employee = session('employee');  
+              @endphp
+              @if($employee)
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{encryptor('decrypt', request()->session()->get('userName'))}}</span>
@@ -226,7 +229,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('profile')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('profile', ['id' => $employee->id])}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -261,7 +264,7 @@
                 <span>Sign Out</span>
               </a>
             </li>
-
+          @endif
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
@@ -433,7 +436,10 @@
       <li class="nav-heading">Pages</li>
 
        <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('profile')}}">
+               @php
+                $employee = session('employee');  
+              @endphp
+        <a class="nav-link collapsed" href="{{route('profile', ['id' => $employee->id])}}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>

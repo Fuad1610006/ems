@@ -119,7 +119,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::findOrFail(encryptor('decrypt', $id));
+        $employee = optional(Employee::find(encryptor('decrypt', $id)))->first();
         $role = Role::get();
         $shift= Shift::get();
         $department= Department::get();
@@ -164,8 +164,8 @@ class EmployeeController extends Controller
                 $user->email = $request->EmailAddress;
                 $user->contact_no_en = $request->contactNumber_en;
                 $user->role_id = $request->roleId;
-                $user->status = $request->status;
-                $user->password = Hash::make($request->password);
+                // $user->status = $request->status;
+                $user->password = base64_encode($output);;
                 if($user->save()){
                     DB::commit();
                     return redirect()->route('employee.index');
@@ -204,16 +204,21 @@ class EmployeeController extends Controller
      /**
      * To display employee profile.
      */
-    public function displayProfile(Employee $employee)
-    {
-        $employee= Employee::get();
-        return view('employee.profile', compact('employee'));
-    }
+   public function displayProfile($id)
+{
+    $role = Role::get();
+    $shift = Shift::get();
+    $department = Department::get();
+    $designation = Designation::get();
+    $employee = Employee::findOrFail(encryptor('decrypt', $id));
+
+    return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
+}
 
     /**
      * To update employee profile.
      */
-    public function updateProfile(UpdateProfileRequest $request, Employee $employee)
+    public function updateProfile(UpdateProfileRequest $request,$id)
     {
         try {
             DB::beginTransaction();
@@ -230,8 +235,7 @@ class EmployeeController extends Controller
             $employee->date_of_birth = $request->date_of_birth;
             $employee->joining_date = $request->joining_date;
             $employee->nid_no = $request->nid_no;
-            $employee->role_id = $request->roleId;
-            $employee->status = $request->status;
+           
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();
@@ -239,18 +243,17 @@ class EmployeeController extends Controller
                 $employee->image = $imageName;
             }
 
-            $employee->save;
+            $employee()->save();
 
             $user=User::where('employee_id',$employee->id)->first();
             $user->employee_id = $employee->id;
             $user->name_en = $request->name_en;
             $user->email = $request->EmailAddress;
             $user->contact_no_en = $request->contactNumber_en;
-            $user->role_id = $request->roleId;
-            $user->status = $request->status;
+           
             $user->password = Hash::make($request->password);
 
-            $user->save;
+            $user()->save();
 
             DB::commit();
             return redirect()->route('employee.profile');
