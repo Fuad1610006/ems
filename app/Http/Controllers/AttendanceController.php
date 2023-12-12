@@ -47,8 +47,8 @@ class AttendanceController extends Controller
                     $attendance->status = $attendanceData['status'];
                     $attendance->save();
             }
-            return redirect()->route('attendance.index');
             $this->notice::success('Data successfully saved');
+            return redirect()->route('attendance.index');
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->withInput()->with('error', 'Please try again');
@@ -83,9 +83,9 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, Attendance $attendance)
     {
-        $attendance = Attendance:: findOrFail(encryptor('decrypt',$id));
+        $attendance = Attendance:: findOrFail(encryptor('decrypt',$request->$id));
         $attendance->status= $request->status;
-        if(attendance->save())
+        if($attendance->save())
         return redirect()->route('attendance.show',[$attendance->date]);
     }
 
