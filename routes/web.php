@@ -38,8 +38,8 @@ Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
-    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
-    Route::get('profile', [employee::class,'displayProfile'])->name('profile');
+    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('/profile/{employeeId}', [employee::class,'showProfile'])->name('profile');
     Route::resource('department', department::class);
     Route::resource('designation', designation::class);
     Route::resource('employee', employee::class);
@@ -57,7 +57,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
 });
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
-    // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');

@@ -204,27 +204,25 @@ class EmployeeController extends Controller
      /**
      * To display employee profile.
      */
-   public function displayProfile($id)
-{
-    $role = Role::get();
-    $shift = Shift::get();
-    $department = Department::get();
-    $designation = Designation::get();
-    $employee = Employee::find($CurrentUserId);
+   public function showProfile($employeeId)
+  {
 
-    // Check if the employee exists
-    if ($employee) {
-        // If the employee exists, pass it to the view
-        return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
-    } else {
-        // If the employee is not found, you might want to redirect or handle it accordingly
-        return redirect()->route('employee.index')->with('error', 'Employee not found.');
-    }
+     // Retrieve employee information based on ID
+     $employee = Employee::where('employee_id', $employeeId)->first();
+
+     // Check if the employee exists
+     if (!$employee) {
+         abort(404, 'Employee not found');
+     }
+
+     // Pass the employee data to the view
+     return view('employee.profile', compact('employee'));
+
 
     // $employee = Employee::findOrFail(encryptor('decrypt', $id));
 
     // return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
-}
+   }
 
     /**
      * To update employee profile.
