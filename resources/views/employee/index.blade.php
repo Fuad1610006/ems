@@ -24,7 +24,6 @@
                                 <th scope="col">{{__('Email')}}</th>
                                 <th scope="col">{{__('Contact')}}</th>
                                 <th scope="col">{{__('Present Address')}}</th>
-
                                 <th scope="col">{{__('Joining Date')}}</th>
                                 <th scope="col">{{__('NID No.')}}</th>
                                {{-- <th scope="col">{{__('Permanent Address')}}</th>
