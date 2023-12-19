@@ -23,8 +23,8 @@
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->employee->name_en }}</td>
-                        <td>{{ $d->department->department_id }}</td>
-                        <td>{{ $d->designation->designation_id }}</td>
+                        <td>{{ $d->department?->department_id }}</td>
+                        <td>{{ $d->designation?->designation_id }}</td>
                         <td>{{ $d->date }}</td>
                         <td>{{ $d->hours }}</td>
                         <td>

@@ -338,11 +338,11 @@
               <i class="bi bi-circle"></i><span>View- List</span>
             </a>
           </li>
-          <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>Records</span>
-            </a>
-          </li>
+        {{-- <li>
+          <a href="">
+            <i class="bi bi-circle"></i><span>Records</span>
+          </a>
+        </li> --}}
         </ul>
       </li><!-- End Tables Nav -->
 
@@ -374,11 +374,11 @@
               <i class="bi bi-circle"></i><span>Records</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="">
               <i class="bi bi-circle"></i><span>Calculation</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li><!-- End Tables Nav -->
 
@@ -386,7 +386,7 @@
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Salary</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('salary.index')}}">
               <i class="bi bi-circle"></i><span>List</span>
@@ -409,7 +409,7 @@
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Performance</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('promotion.index')}}">
               <i class="bi bi-circle"></i><span>Promotion</span>
