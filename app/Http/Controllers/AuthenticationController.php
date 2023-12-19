@@ -27,15 +27,20 @@ class AuthenticationController extends Controller
             $user->email=$request->EmailAddress;
             $user->password=Hash::make($request->password);
             $user->role_id=3;
-            if($user->save())
-                return redirect('login')->with('success','Successfully Registered');
-            else
-                return redirect('login')->with('danger','Please try again');
+            if($user->save()){
+              $this->notice::success('Successfully Registered');
+                return redirect('login');
+        }else{
+            $this->notice::error('Please try again');
+                return redirect('login');
+        }
         }catch(Exception $e){
             // dd($e);
-            return redirect('login')->with('danger','Please try again');;
+            $this->notice::error('Please try again');
+            return redirect('login');
         }
-
+        
+    
     }
 
     public function signInForm(){
@@ -74,7 +79,7 @@ class AuthenticationController extends Controller
         'role' => encryptor('encrypt', $user->role->type),
         'roleIdentity' => encryptor('encrypt', $user->role->identity),
         'language' => encryptor('encrypt', $user->language),
-        'image' => $employee ? $employee->image : null, 
+        'image' => $employee->image ?? 'No Image Found', 
     ]);
 }
 

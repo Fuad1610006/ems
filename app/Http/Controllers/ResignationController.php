@@ -44,16 +44,19 @@ class ResignationController extends Controller
             $resignation->type=$request->type;
             $resignation->reason=$request->reason;
            if( $resignation->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('resignation.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again!');
+            return redirect()->back()->withInput();
+            
         }
     }catch(Exception $e){
             dd($e);
+             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+           
         }
     }
 
@@ -89,16 +92,17 @@ class ResignationController extends Controller
             $resignation->type=$request->type;
             $resignation->reason=$request->reason;
             if($resignation->save()){
+                 $this->notice::success('Successfully updated');
                 return redirect()->route('resignation.index');
-                $this->notice::success('Successfully updated');
+               
              }else{
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again!');
+                return redirect()->back()->withInput();              
             }
         }catch(Exception $e){
             //dd($e);
-            return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();         
         }
     }
 
@@ -109,8 +113,8 @@ class ResignationController extends Controller
     {
         $resignation= Resignation::findOrFail(encryptor('decrypt', $id));
         if($resignation->delete()){
-            return redirect()->back();
             $this->notice::warning('Deleted Permanently!');
+            return redirect()->back();          
         }
     }
 }

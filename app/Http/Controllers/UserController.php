@@ -59,16 +59,18 @@ class UserController extends Controller
             }
 
             if($user->save()){
+                 $this->notice::success('Successfully saved');
                 return redirect()->route('user.index');
-                Toastr::success('Successfully Saved User!');
             }else{
+                 $this->notice::error('Please try again!');
+                //  Toastr::error('Please try again!');
                 return redirect()->back()->withInput();
-                Toastr::error('Please try again!');
+               
             }
         }catch(Exception $e){
             //dd($e);
+            $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            Toastr::error('Please try again!');
         }
     }
 
@@ -117,16 +119,18 @@ class UserController extends Controller
             }
 
             if($user->save()){
-                return redirect()->route('user.index');
-                Toastr::success('Successfully Updated User!');
+                 $this->notice::success('Successfully updated');
+                return redirect()->route('user.index');              
             }else{
+                 $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-                Toastr::error('Please try again!');
+               
             }
         }catch(Exception $e){
             dd($e);
+             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            Toastr::error('Please try again!');
+          
         }
     }
 
@@ -142,7 +146,7 @@ class UserController extends Controller
             if(File::exists($image_path))
                 File::delete($image_path);
 
-            Toastr::warning('Deleted Permanently!');
+            $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
         }
     }

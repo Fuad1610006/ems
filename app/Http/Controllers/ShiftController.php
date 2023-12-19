@@ -40,16 +40,19 @@ class ShiftController extends Controller
             $shift->start_time=$request->start_time;
             $shift->end_time=$request->end_time;
            if( $shift->save()){
+              $this->notice::success('Successfully saved');
             return redirect()->route('shift.index');
-            $this->notice::success('Successfully saved');
+          
            }else{
+             $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+           
         }
     }catch(Exception $e){
             dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -81,16 +84,19 @@ class ShiftController extends Controller
             $shift->start_time=$request->start_time;
             $shift->end_time=$request->end_time;
             if($shift->save()){
+                  $this->notice::success('Successfully updated');
                 return redirect()->route('shift.index');
-                $this->notice::success('Successfully updated');
+              
              }else{
+                 $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-                $this->notice::error('Please try again!');
+               
             }
         }catch(Exception $e){
             //dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -101,8 +107,9 @@ class ShiftController extends Controller
     {
         $shift= Shift::findOrFail(encryptor('decrypt', $id));
         if($shift->delete()){
+             $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-            $this->notice::warning('Deleted Permanently!');
+           
         }
     }
 }

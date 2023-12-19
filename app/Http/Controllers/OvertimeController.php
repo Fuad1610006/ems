@@ -45,16 +45,19 @@ class OvertimeController extends Controller
             $overtime->hours = $request->hours;
             $overtime->status = $request->status;
             if( $overtime->save()){
-            return redirect()->route('overtime.index');
             $this->notice::success('Successfully saved');
+            return redirect()->route('overtime.index');
+          
             }else{
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again!');
+                return redirect()->back()->withInput();
+              
             }
             }catch(Exception $e){
                 dd($e);
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
+              
             }
     }
 
@@ -88,16 +91,19 @@ class OvertimeController extends Controller
             $overtime->hours = $request->hours;
             $overtime->status = $request->status;
         if($overtime->save()){
-            return redirect()->route('overtime.index');
             $this->notice::success('Successfully updated');
+            return redirect()->route('overtime.index');
+            
         }else{
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again!');
+            return redirect()->back()->withInput();
+            
         }
         }catch(Exception $e){
             //dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
+          
         }
     }
 
@@ -108,8 +114,9 @@ class OvertimeController extends Controller
     {
         $overtime= Overtime::findOrFail(encryptor('decrypt', $id));
         if($overtime->delete()){
-            return redirect()->back();
             $this->notice::warning('Deleted Permanently!');
+            return redirect()->back();
+          
         }
     }
 }

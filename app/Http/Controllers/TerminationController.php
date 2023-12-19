@@ -44,16 +44,19 @@ class TerminationController extends Controller
             $termination->type=$request->type;
             $termination->reason=$request->reason;
            if( $termination->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('termination.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
+              $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+          
         }
     }catch(Exception $e){
             dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -89,16 +92,19 @@ class TerminationController extends Controller
             $termination->type=$request->type;
             $termination->reason=$request->reason;
             if($termination->save()){
+                 $this->notice::success('Successfully updated');
                 return redirect()->route('termination.index');
-                $this->notice::success('Successfully updated');
+               
              }else{
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again!');
+                return redirect()->back()->withInput();
+                
             }
         }catch(Exception $e){
             //dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -110,8 +116,9 @@ class TerminationController extends Controller
 
         $termination= Termination::findOrFail(encryptor('decrypt', $id));
         if($termination->delete()){
+             $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-            $this->notice::warning('Deleted Permanently!');
+           
         }
     }
 }

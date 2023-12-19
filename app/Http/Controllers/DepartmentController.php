@@ -29,16 +29,17 @@ class DepartmentController extends Controller
             $department=new Department;
             $department->department=$request->department;
            if( $department->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('department.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
-            return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+             $this->notice::error('Please try again!');
+            return redirect()->back()->withInput();         
         }
     }catch(Exception $e){
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();        
         }
 
     }
@@ -62,16 +63,17 @@ class DepartmentController extends Controller
             $department->department=$request->department;
 
             if($department->save()){
+                 $this->notice::success('Successfully updated');
                 return redirect()->route('department.index');
-                $this->notice::success('Successfully updated');
+               
              }else{
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again!');
+                return redirect()->back()->withInput();               
             }
         }catch(Exception $e){
             //dd($e);
-            return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();           
         }
     }
 
@@ -79,8 +81,8 @@ class DepartmentController extends Controller
     {
         $department= Department::findOrFail(encryptor('decrypt', $id));
         if($department->delete()){
-            return redirect()->back();
-            $this->notice::warning('Deleted Permanently!');
+              $this->notice::warning('Deleted Permanently!');
+              return redirect()->back();        
         }
     }
 }

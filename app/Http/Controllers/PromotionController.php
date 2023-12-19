@@ -44,16 +44,19 @@ class PromotionController extends Controller
             $promotion->new_designation=$request->new_designation;
 
            if( $promotion->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('promotion.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
+             $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+           
         }
     }catch(Exception $e){
             dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -89,16 +92,19 @@ class PromotionController extends Controller
             $promotion->new_designation=$request->new_designation;
 
             if($promotion->save()){
+                 $this->notice::success('Successfully updated');
                 return redirect()->route('promotion.index');
-                $this->notice::success('Successfully updated');
+               
              }else{
+                 $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-                $this->notice::error('Please try again!');
+               
             }
         }catch(Exception $e){
             //dd($e);
+              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+          
         }
     }
 
@@ -109,8 +115,9 @@ class PromotionController extends Controller
     {
         $promotion= Promotion::findOrFail(encryptor('decrypt', $id));
         if($promotion->delete()){
+             $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-            $this->notice::warning('Deleted Permanently!');
+           
         }
     }
 }

@@ -168,19 +168,21 @@ class EmployeeController extends Controller
                 $user->password = base64_encode($output);;
                 if($user->save()){
                     DB::commit();
+                     $this->notice::success('Successfully updated!');
                     return redirect()->route('employee.index');
-                    $this->notice::success('Employee Successfully Added');
+                   
                 }else{
-                return redirect()->back()->withInput();
-                $this->notice::error('Please try again!');
+                    $this->notice::error('Please try again!');
+                    return redirect()->back()->withInput();
                 }
             }
 
         } catch (Exception $e) {
             DB::rollback();
             dd($e);
-            return redirect()->back();
             $this->notice::error('Please try again');
+            return redirect()->back();
+           
         }
     }
 
@@ -265,14 +267,16 @@ class EmployeeController extends Controller
             $user()->save();
 
             DB::commit();
+             $this->notice::success('Profile Updated Successfully');
             return redirect()->route('employee.profile');
-            $this->notice::success('Profile Updated Successfully');
+           
 
         } catch (Exception $e) {
             DB::rollback();
             dd($e);
+             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+           
         }
 
     }

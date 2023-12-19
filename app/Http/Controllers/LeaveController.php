@@ -49,16 +49,19 @@ class LeaveController extends Controller
             $leave->status=$request->status;
 
            if( $leave->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('leave.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again!');
+            return redirect()->back()->withInput();
+            
         }
     }catch(Exception $e){
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
+           
         }
     }
 
@@ -97,16 +100,19 @@ class LeaveController extends Controller
             $leave->status=$request->status;
 
            if( $leave->save()){
+             $this->notice::success('Successfully saved');
             return redirect->route('leave.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
+             $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+           
         }
     }catch(Exception $e){
             dd($e);
+             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+           
         }
     }
 
@@ -117,8 +123,9 @@ class LeaveController extends Controller
     {
         $leave= Leave::findOrFail(encryptor('decrypt', $id));
         if($leave->delete()){
-            return redirect()->back();
             $this->notice::warning('Deleted Permanently!');
+            return redirect()->back();
+           
         }
     }
 }
