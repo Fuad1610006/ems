@@ -17,9 +17,8 @@ class OvertimeController extends Controller
      */
     public function index()
     {
-        $employee=Employee::all();
-        $overtime = Overtime::all();
-        return view('overtime.index', compact('overtime','employee'));
+        $overtime = Overtime::with('employee.department', 'employee.designation')->get();
+        return view('overtime.index', compact('overtime'));
     }
 
     /**
@@ -45,21 +44,21 @@ class OvertimeController extends Controller
             $overtime->designation_id = $request->designation_id;
             $overtime->date=$request->date;
             $overtime->hours = $request->hours;
-           
+
             if( $overtime->save()){
             $this->notice::success('Successfully saved');
             return redirect()->route('overtime.index');
-          
+
             }else{
                 $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-              
+
             }
             }catch(Exception $e){
                 dd($e);
                 $this->notice::error('Please try again');
                 return redirect()->back()->withInput();
-              
+
             }
     }
 
@@ -96,17 +95,17 @@ class OvertimeController extends Controller
         if($overtime->save()){
             $this->notice::success('Successfully updated');
             return redirect()->route('overtime.index');
-            
+
         }else{
             $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            
+
         }
         }catch(Exception $e){
             //dd($e);
             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 
@@ -119,7 +118,7 @@ class OvertimeController extends Controller
         if($overtime->delete()){
             $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-          
+
         }
     }
 }

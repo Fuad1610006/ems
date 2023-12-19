@@ -26,7 +26,9 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        return view('promotion.create');
+        $employee = Employee::all();
+        $designation = Designation::all();
+        return view('promotion.create', compact('employee', 'designation'));
     }
 
     /**
@@ -46,17 +48,17 @@ class PromotionController extends Controller
            if( $promotion->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('promotion.index');
-           
+
            }else{
              $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-           
+
         }
     }catch(Exception $e){
             dd($e);
               $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 
@@ -94,17 +96,17 @@ class PromotionController extends Controller
             if($promotion->save()){
                  $this->notice::success('Successfully updated');
                 return redirect()->route('promotion.index');
-               
+
              }else{
                  $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-               
+
             }
         }catch(Exception $e){
             //dd($e);
               $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 
@@ -117,7 +119,7 @@ class PromotionController extends Controller
         if($promotion->delete()){
              $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-           
+
         }
     }
 }
