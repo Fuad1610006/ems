@@ -3,9 +3,10 @@
 @section('content')
     <div class="container">
         <h2>Employee Attendance</h2>
-          <h4>Date: </h4>
+        @if($attendance->isNotEmpty())
+            <h4>Date: {{$attendance->pluck('date')->first()}} </h4>
 
-        <div class="card">      
+        <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
@@ -18,7 +19,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @forelse($attendance as $t)
+                            @forelse($attendance as $t)
                                     <tr role="row" class="odd">
                                         <td>{{++$loop->index}}</td>
                                         <td>{{ $t->employee?->name_en }}
@@ -31,7 +32,6 @@
                                         </td>
                                     </tr>
                                 @empty
-
                                     <tr>
                                         <th colspan="4" class="text-center">Data not found</th>
                                     </tr>
@@ -42,5 +42,8 @@
                 </div>
             </div>
         </div>
+        @else
+            <p>No attendance records found</p>
+        @endif
     </div>
 @endsection('content')

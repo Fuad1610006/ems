@@ -90,7 +90,7 @@ class AuthenticationController extends Controller
 
     public function signOut(){
         request()->session()->flush();
-          $this->notice::error('Successfully Logged Out');
+          $this->notice::error('Successfully Logged Out!');
           return redirect('login');
     }
 }

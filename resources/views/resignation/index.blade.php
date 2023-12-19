@@ -22,9 +22,9 @@
                 @foreach ($resignation as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
-                        <td>{{ $d->employee->name }}</td>
-                        <td>{{ $d->department->department_id }}</td>
-                        <td>{{ $d->designation->designation_id }}</td>
+                        <td>{{ $d->employee->name_en}}</td>
+                        <td>{{ $d->employee->department ? $d->employee->department->department : 'N/A' }}</td>
+                        <td>{{ $d->employee->designation ? $d->employee->designation->designation : 'N/A' }}</td>
                         <td>{{ $d->notice_date }}</td>
                         <td>{{ $d->resignation_date }}</td>
                         <td>
