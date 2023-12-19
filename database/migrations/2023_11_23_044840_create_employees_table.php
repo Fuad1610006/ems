@@ -27,7 +27,8 @@ return new class extends Migration
             $table->unsignedBigInteger('nid_no')->index();
             $table->enum('gender',['male','female','other'])->nullable();
             $table->string('blood_group');
-
+            $table->decimal('basic',10,2)->nullable();
+            $table->decimal('bonus',10,2)->nullable();
             $table->unsignedBigInteger('department_id')->index();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 

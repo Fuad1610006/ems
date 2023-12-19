@@ -18,7 +18,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendance = DB::select("SELECT attendances.date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `attendances` order by attendances.date DESC");
+        $attendance = DB::select("SELECT attendances.date,sum(if(`status`=1,1,0)) as present,sum(if(`status`=0,1,0)) as absent FROM `attendances` group by attendances.date order by attendances.date DESC");
         return view('attendance.index', compact('attendance'));
     }
 

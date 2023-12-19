@@ -29,8 +29,7 @@ class SalaryController extends Controller
         $department=Department::all();
         $designation=Designation::all();
         $employee= Employee::all();
-        $salary = Salary::all();
-         return view('salary.create', compact('salary'));
+        return view('salary.create', compact('salary'));
     }
 
     /**
