@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Employee Resignation</h2>
 
-        <a href="{{ route('resignation.create') }}" class="btn btn-primary mb-3">Add New</a>
+      {{--  <a href="{{ route('resignation.create') }}" class="btn btn-primary mb-3">Add New</a>--}}
 
         <table class="table">
             <thead>

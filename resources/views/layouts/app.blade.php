@@ -282,9 +282,9 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-person-fill-gear"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('user.index')}}">
               <i class="bi bi-circle"></i><span>List</span>
@@ -301,9 +301,9 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-person-square"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{route('employee.index')}}">
                   <i class="bi bi-circle"></i><span>All Employees</span>
@@ -330,9 +330,9 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendance-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-clock-fill"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="attendance-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="attendance-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('attendance.index')}}">
               <i class="bi bi-circle"></i><span>View- List</span>
@@ -344,31 +344,31 @@
           </a>
         </li> --}}
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#leave-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Leave</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-hourglass"></i><span>Leave</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="leave-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="leave-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('leave.index')}}">
               <i class="bi bi-circle"></i><span>View- List</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="{{route('leave.create')}}">
               <i class="bi bi-circle"></i><span>Apply- Leave</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Overtime</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-watch"></i><span>Overtime</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('overtime.index')}}">
               <i class="bi bi-circle"></i><span>Records</span>
@@ -380,7 +380,7 @@
             </a>
           </li> --}}
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -397,13 +397,13 @@
               <i class="bi bi-circle"></i><span>Add New</span>
             </a>
           </li>
-          <li>
+         {{-- <li>
             <a href="">
               <i class="bi bi-circle"></i><span>Payslip</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
-      </li><!-- End Charts Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
@@ -428,7 +428,7 @@
         </ul>
       </li><!-- End Icons Nav -->
 
-      <li class="nav-heading">Pages</li>
+      {{-- <li class="nav-heading">Pages</li>
 
        <li class="nav-item">
                @php
@@ -440,7 +440,24 @@
           <span>Profile</span>
         </a>
 
-      </li>
+      </li> --}}
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#component-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>For You</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="component-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('leave.create')}}">
+              <i class="bi bi-circle"></i><span>Apply-Leave</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('resignation.create')}}">
+              <i class="bi bi-circle"></i><span>Apply-Resignation</span>
+            </a>
+          </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->
