@@ -41,9 +41,11 @@ class OvertimeController extends Controller
         try{
             $overtime=new Overtime;
             $overtime->employee_id=$request->employee_id;
+            $overtime->department_id = $request->department_id;
+            $overtime->designation_id = $request->designation_id;
             $overtime->date=$request->date;
             $overtime->hours = $request->hours;
-            $overtime->status = $request->status;
+           
             if( $overtime->save()){
             $this->notice::success('Successfully saved');
             return redirect()->route('overtime.index');
@@ -87,9 +89,10 @@ class OvertimeController extends Controller
         try{
             $overtime=Overtime::findOrFail(encryptor('decrypt', $id));
             $overtime->employee_id=$request->employee_id;
+            $overtime->department_id = $request->department_id;
+            $overtime->designation_id = $request->designation_id;
             $overtime->date=$request->date;
             $overtime->hours = $request->hours;
-            $overtime->status = $request->status;
         if($overtime->save()){
             $this->notice::success('Successfully updated');
             return redirect()->route('overtime.index');
