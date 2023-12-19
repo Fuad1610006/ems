@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 04:22 AM
+-- Generation Time: Dec 19, 2023 at 08:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,7 +58,207 @@ INSERT INTO `attendances` (`id`, `employee_id`, `date`, `status`, `check_in_time
 (71, 13, '2023-12-11', '1', NULL, NULL, '2023-12-10 22:46:15', '2023-12-10 22:46:15'),
 (72, 14, '2023-12-11', '1', NULL, NULL, '2023-12-10 22:46:15', '2023-12-10 22:46:15'),
 (73, 15, '2023-12-11', '1', NULL, NULL, '2023-12-10 22:46:15', '2023-12-10 22:46:15'),
-(74, 16, '2023-12-11', '1', NULL, NULL, '2023-12-10 22:46:15', '2023-12-10 22:46:15');
+(74, 16, '2023-12-11', '1', NULL, NULL, '2023-12-10 22:46:15', '2023-12-10 22:46:15'),
+(91, 5, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(92, 10, '2023-12-19', '0', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(93, 11, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(94, 12, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(95, 13, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(96, 14, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(97, 15, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(98, 16, '2023-12-19', '1', NULL, NULL, '2023-12-18 23:03:51', '2023-12-18 23:03:51'),
+(100, 5, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(101, 10, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(102, 11, '2023-12-24', '0', NULL, NULL, NULL, NULL),
+(103, 12, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(104, 13, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(105, 14, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(106, 5, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(107, 10, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(108, 11, '2023-12-25', '0', NULL, NULL, NULL, NULL),
+(109, 12, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(110, 13, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(111, 14, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(112, 15, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(113, 16, '2023-12-25', '1', NULL, NULL, NULL, NULL),
+(114, 15, '2023-12-24', '0', NULL, NULL, NULL, NULL),
+(115, 16, '2023-12-24', '1', NULL, NULL, NULL, NULL),
+(116, 5, '2023-12-26', '0', NULL, NULL, NULL, NULL),
+(117, 10, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(118, 11, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(119, 12, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(120, 13, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(121, 14, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(122, 15, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(123, 16, '2023-12-26', '1', NULL, NULL, NULL, NULL),
+(124, 5, '2023-12-27', '0', NULL, NULL, NULL, NULL),
+(125, 10, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(126, 11, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(127, 12, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(128, 13, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(129, 14, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(130, 15, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(131, 16, '2023-12-27', '1', NULL, NULL, NULL, NULL),
+(132, 5, '2023-12-28', '0', NULL, NULL, NULL, NULL),
+(133, 10, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(134, 11, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(135, 12, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(136, 13, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(137, 14, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(138, 15, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(139, 16, '2023-12-28', '1', NULL, NULL, NULL, NULL),
+(140, 5, '2023-12-29', '0', NULL, NULL, NULL, NULL),
+(141, 10, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(142, 11, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(143, 12, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(144, 13, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(145, 14, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(146, 15, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(147, 16, '2023-12-29', '1', NULL, NULL, NULL, NULL),
+(148, 5, '2023-12-30', '0', NULL, NULL, NULL, NULL),
+(149, 10, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(150, 11, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(151, 12, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(152, 13, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(153, 14, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(154, 15, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(155, 16, '2023-12-30', '1', NULL, NULL, NULL, NULL),
+(156, 5, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(157, 10, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(158, 11, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(159, 12, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(160, 13, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(161, 14, '2023-12-31', '0', NULL, NULL, NULL, NULL),
+(162, 15, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(163, 16, '2023-12-31', '1', NULL, NULL, NULL, NULL),
+(164, 5, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(165, 10, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(166, 11, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(167, 12, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(168, 13, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(169, 14, '2023-12-02', '0', NULL, NULL, NULL, NULL),
+(170, 15, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(171, 16, '2023-12-02', '1', NULL, NULL, NULL, NULL),
+(172, 5, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(173, 10, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(174, 11, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(175, 12, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(176, 13, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(177, 14, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(178, 15, '2023-12-03', '1', NULL, NULL, NULL, NULL),
+(179, 16, '2023-12-03', '0', NULL, NULL, NULL, NULL),
+(180, 5, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(181, 10, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(182, 11, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(183, 12, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(184, 13, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(185, 14, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(186, 15, '2023-12-04', '1', NULL, NULL, NULL, NULL),
+(187, 16, '2023-12-04', '0', NULL, NULL, NULL, NULL),
+(188, 5, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(189, 10, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(190, 11, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(191, 12, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(192, 13, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(193, 14, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(194, 15, '2023-12-05', '1', NULL, NULL, NULL, NULL),
+(195, 16, '2023-12-05', '0', NULL, NULL, NULL, NULL),
+(196, 5, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(197, 10, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(198, 11, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(199, 12, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(200, 13, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(201, 14, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(202, 15, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(203, 16, '2023-12-06', '1', NULL, NULL, NULL, NULL),
+(204, 5, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(205, 10, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(206, 11, '2023-12-07', '0', NULL, NULL, NULL, NULL),
+(207, 12, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(208, 13, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(209, 14, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(210, 15, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(211, 16, '2023-12-07', '1', NULL, NULL, NULL, NULL),
+(212, 5, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(213, 10, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(214, 11, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(215, 12, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(216, 13, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(217, 14, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(218, 15, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(219, 16, '2023-12-08', '1', NULL, NULL, NULL, NULL),
+(220, 5, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(221, 10, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(222, 11, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(223, 12, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(224, 13, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(225, 14, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(226, 15, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(227, 16, '2023-12-12', '1', NULL, NULL, NULL, NULL),
+(228, 5, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(229, 10, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(230, 11, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(231, 12, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(232, 13, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(233, 14, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(234, 15, '2023-12-13', '1', NULL, NULL, NULL, NULL),
+(235, 16, '2023-12-13', '0', NULL, NULL, NULL, NULL),
+(236, 5, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(237, 10, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(238, 11, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(239, 12, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(240, 13, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(241, 14, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(242, 15, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(243, 16, '2023-12-14', '1', NULL, NULL, NULL, NULL),
+(244, 5, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(245, 10, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(246, 11, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(247, 12, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(248, 13, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(249, 14, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(250, 15, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(251, 16, '2023-12-16', '1', NULL, NULL, NULL, NULL),
+(252, 5, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(253, 10, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(254, 11, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(255, 12, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(256, 13, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(257, 14, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(258, 15, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(259, 16, '2023-12-17', '1', NULL, NULL, NULL, NULL),
+(260, 5, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(261, 10, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(262, 11, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(263, 12, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(264, 13, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(265, 14, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(266, 15, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(267, 16, '2023-12-18', '1', NULL, NULL, NULL, NULL),
+(268, 5, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(269, 10, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(270, 11, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(271, 12, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(272, 13, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(273, 14, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(274, 15, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(275, 16, '2023-12-20', '1', NULL, NULL, NULL, NULL),
+(276, 5, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(277, 10, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(278, 11, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(279, 12, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(280, 13, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(281, 14, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(282, 15, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(283, 16, '2023-12-21', '1', NULL, NULL, NULL, NULL),
+(284, 5, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(285, 10, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(286, 11, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(287, 12, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(288, 13, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(289, 14, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(290, 15, '2023-12-23', '1', NULL, NULL, NULL, NULL),
+(291, 16, '2023-12-23', '1', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -134,6 +334,8 @@ CREATE TABLE `employees` (
   `present_address` varchar(255) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   `joining_date` date DEFAULT NULL,
+  `basic` decimal(10,2) NOT NULL,
+  `bonus` decimal(10,2) NOT NULL,
   `nid_no` bigint(50) UNSIGNED DEFAULT NULL,
   `gender` enum('male','female','other') DEFAULT NULL,
   `blood_group` varchar(255) NOT NULL,
@@ -153,15 +355,15 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `employee_id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `password`, `permanent_address`, `present_address`, `date_of_birth`, `joining_date`, `nid_no`, `gender`, `blood_group`, `department_id`, `designation_id`, `role_id`, `shift_id`, `user_id`, `image`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, NULL, 'AFM Fuad', NULL, 'admin@ems.com', '01521326979', NULL, '$2y$12$guA3/m/tpQwaSwNB5S91ze1feu2dFT2WQBCeJMEVdO9RbRlVFflpe', NULL, NULL, '1999-11-07', NULL, NULL, NULL, 'A+', 3, 3, 2, 0, NULL, '8431701055961.jpg', NULL, '2023-11-26 21:32:41', '2023-11-26 21:32:41', NULL),
-(10, NULL, 'Kamal Uddin', NULL, 'employee@ems.com', '01852117151', NULL, '$2y$12$PoykYWVLkR7mcMXulZtW1eBr2I0VTmLkEzf9Fviu.PLF.Xq.GoOEy', 'Feni', 'Chattogram', '1995-11-02', NULL, NULL, NULL, 'AB+', 1, 1, 3, 0, NULL, '8791701057657.jpg', NULL, '2023-11-26 22:00:57', '2023-11-26 22:00:57', NULL),
-(11, NULL, 'Ibrahim Khalil', NULL, 'ikshakil@gmail.com', '01645', NULL, '$2y$12$rC78qW0tnSBciVxc5/n9U..eNNDxXIofqqoguyzAgjgeT3ix8UwYC', 'CoxsBazar', 'Chattogram', '1996-11-02', NULL, NULL, NULL, 'A-', 2, 2, 3, 0, NULL, '6251701152229.jpg', NULL, '2023-11-28 00:17:10', '2023-11-28 00:17:10', NULL),
-(12, NULL, 'Asadullah Al Galib', NULL, 'galib@yahoo.com', '01985472121', NULL, '$2y$12$95xD8L3I3xSfXOi5OLUdSeubnoEi5j.0Kq7Q/F7O69I7JgrsAqDey', 'Rajshahi', 'Chattogram', '1997-11-15', '2023-10-30', 548712659865, NULL, 'A+', 3, 3, 3, 0, NULL, '4091701152712.jpg', NULL, '2023-11-28 00:25:12', '2023-11-28 00:25:12', NULL),
-(13, NULL, 'Saad Uddin', NULL, 'saad@yahoo.com', '01721002773', NULL, '$2y$12$chpxmq5e4KIGOiwN3w/Yjut0a2/wcxrtiFvb50MhnKjk25ZSbz9lm', 'Khulna', 'Chattogram', '2000-10-28', '2023-10-31', 36587412, NULL, 'A+', 5, 5, 3, 0, NULL, '8741701231480.jpg', NULL, '2023-11-28 22:18:00', '2023-11-28 22:18:00', NULL),
-(14, NULL, 'Raihan Sazzad', NULL, 'raihan@yahoo.com', '0152154879', NULL, '$2y$12$p5WoPTAw0lnrUAUD7ncYO.Rit3BzesNAq4pBi.WIVA6WuFB6YlAWG', 'Feni', 'Chattogram', '1999-05-01', '2023-09-01', 5445878754, NULL, 'O-', 2, 1, 2, 0, NULL, '3081701487626.jpg', NULL, '2023-12-01 21:27:07', '2023-12-01 21:27:07', NULL),
-(15, NULL, 'MJU Sharhrukh', NULL, 'mju@nstu.edu.bd', '3265988754', NULL, '$2y$12$PVcj.CeojRipQ/UoP8DH/.Q.xmhg5JUlLxx4VnnNOV5aoYu916iXS', 'Chattogram', 'Noakhali', '2000-09-05', '2023-10-05', 3265987, NULL, 'AB+', 3, 2, 3, 4, NULL, '9651702098047.jpg', NULL, '2023-12-08 23:00:47', '2023-12-08 23:00:47', NULL),
-(16, NULL, 'Rafsan Al Azad', NULL, 'rafsan@yahoo.com', '01968574321', NULL, '$2y$12$7pXIpMOGqF4HI39vz3V2aOvZk1/k54EKl7uGooeRnI./dkOODrGpC', 'Sylhet', 'Dhaka', '1995-11-25', '2023-11-30', 3258741, NULL, 'AB+', 7, 1, 3, 5, NULL, NULL, NULL, '2023-12-09 00:18:44', '2023-12-09 00:18:44', NULL);
+INSERT INTO `employees` (`id`, `employee_id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `password`, `permanent_address`, `present_address`, `date_of_birth`, `joining_date`, `basic`, `bonus`, `nid_no`, `gender`, `blood_group`, `department_id`, `designation_id`, `role_id`, `shift_id`, `user_id`, `image`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(5, NULL, 'AFM Fuad', NULL, 'admin@ems.com', '01521326979', NULL, '$2y$12$guA3/m/tpQwaSwNB5S91ze1feu2dFT2WQBCeJMEVdO9RbRlVFflpe', NULL, NULL, '1999-11-07', NULL, 25000.00, 50.00, NULL, NULL, 'A+', 3, 3, 2, 0, NULL, '8431701055961.jpg', NULL, '2023-11-26 21:32:41', '2023-11-26 21:32:41', NULL),
+(10, NULL, 'Kamal Uddin', NULL, 'employee@ems.com', '01852117151', NULL, '$2y$12$PoykYWVLkR7mcMXulZtW1eBr2I0VTmLkEzf9Fviu.PLF.Xq.GoOEy', 'Feni', 'Chattogram', '1995-11-02', NULL, 24500.00, 50.00, NULL, NULL, 'AB+', 1, 1, 3, 0, NULL, '8791701057657.jpg', NULL, '2023-11-26 22:00:57', '2023-11-26 22:00:57', NULL),
+(11, NULL, 'Ibrahim Khalil', NULL, 'ikshakil@gmail.com', '01645', NULL, '$2y$12$rC78qW0tnSBciVxc5/n9U..eNNDxXIofqqoguyzAgjgeT3ix8UwYC', 'CoxsBazar', 'Chattogram', '1996-11-02', NULL, 28000.00, 50.00, NULL, NULL, 'A-', 2, 2, 3, 0, NULL, '6251701152229.jpg', NULL, '2023-11-28 00:17:10', '2023-11-28 00:17:10', NULL),
+(12, NULL, 'Asadullah Al Galib', NULL, 'galib@yahoo.com', '01985472121', NULL, '$2y$12$95xD8L3I3xSfXOi5OLUdSeubnoEi5j.0Kq7Q/F7O69I7JgrsAqDey', 'Rajshahi', 'Chattogram', '1997-11-15', '2023-10-30', 27500.00, 50.00, 548712659865, NULL, 'A+', 3, 3, 3, 0, NULL, '4091701152712.jpg', NULL, '2023-11-28 00:25:12', '2023-11-28 00:25:12', NULL),
+(13, NULL, 'Saad Uddin', NULL, 'saad@yahoo.com', '01721002773', NULL, '$2y$12$chpxmq5e4KIGOiwN3w/Yjut0a2/wcxrtiFvb50MhnKjk25ZSbz9lm', 'Khulna', 'Chattogram', '2000-10-28', '2023-10-31', 29000.00, 50.00, 36587412, NULL, 'A+', 5, 5, 3, 0, NULL, '8741701231480.jpg', NULL, '2023-11-28 22:18:00', '2023-11-28 22:18:00', NULL),
+(14, NULL, 'Raihan Sazzad', NULL, 'raihan@yahoo.com', '0152154879', NULL, '$2y$12$p5WoPTAw0lnrUAUD7ncYO.Rit3BzesNAq4pBi.WIVA6WuFB6YlAWG', 'Feni', 'Chattogram', '1999-05-01', '2023-09-01', 27850.00, 50.00, 5445878754, NULL, 'O-', 2, 1, 2, 0, NULL, '3081701487626.jpg', NULL, '2023-12-01 21:27:07', '2023-12-01 21:27:07', NULL),
+(15, NULL, 'MJU Sharhrukh', NULL, 'mju@nstu.edu.bd', '3265988754', NULL, '$2y$12$PVcj.CeojRipQ/UoP8DH/.Q.xmhg5JUlLxx4VnnNOV5aoYu916iXS', 'Chattogram', 'Noakhali', '2000-09-05', '2023-10-05', 26950.00, 50.00, 3265987, NULL, 'AB+', 3, 2, 3, 4, NULL, '9651702098047.jpg', NULL, '2023-12-08 23:00:47', '2023-12-08 23:00:47', NULL),
+(16, NULL, 'Rafsan Al Azad', NULL, 'rafsan@yahoo.com', '01968574321', NULL, '$2y$12$7pXIpMOGqF4HI39vz3V2aOvZk1/k54EKl7uGooeRnI./dkOODrGpC', 'Sylhet', 'Dhaka', '1995-11-25', '2023-11-30', 30000.00, 50.00, 3258741, NULL, 'AB+', 7, 1, 3, 5, NULL, NULL, NULL, '2023-12-09 00:18:44', '2023-12-09 00:18:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -172,8 +374,8 @@ INSERT INTO `employees` (`id`, `employee_id`, `name_en`, `name_bn`, `email`, `co
 CREATE TABLE `leaves` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `employee_id` varchar(255) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
   `leave_type` varchar(255) NOT NULL,
   `no_of_days` int(11) NOT NULL,
   `allotted_leaves` int(11) NOT NULL,
@@ -182,6 +384,14 @@ CREATE TABLE `leaves` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `leaves`
+--
+
+INSERT INTO `leaves` (`id`, `employee_id`, `start_date`, `end_date`, `leave_type`, `no_of_days`, `allotted_leaves`, `reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, '14', '2023-12-02', '2023-12-03', '', 2, 15, '', 'Pending', NULL, NULL),
+(2, '13', '2023-12-20', '2023-12-21', '', 2, 15, '', 'Pending', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -210,11 +420,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2023_11_27_003204_create_attendances_table', 2),
 (9, '2023_11_27_063444_create_leaves_table', 3),
 (11, '2023_12_01_140311_create_overtimes_table', 4),
-(12, '2023_12_01_140342_create_promotions_table', 4),
 (13, '2023_12_01_140358_create_resignations_table', 4),
 (14, '2023_12_01_140413_create_terminations_table', 4),
 (15, '2023_12_01_140443_create_salaries_table', 4),
-(17, '2023_12_01_140223_create_shifts_table', 5);
+(17, '2023_12_01_140223_create_shifts_table', 5),
+(18, '2023_12_01_140342_create_promotions_table', 6);
 
 -- --------------------------------------------------------
 
@@ -232,6 +442,17 @@ CREATE TABLE `overtimes` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `overtimes`
+--
+
+INSERT INTO `overtimes` (`id`, `employee_id`, `date`, `hours`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 13, '2023-12-02', 2, '', '2023-12-18 23:08:36', '2023-12-18 23:08:36', NULL),
+(2, 14, '2023-12-04', 2, '', NULL, NULL, NULL),
+(3, 14, '2023-12-14', 2, '', NULL, NULL, NULL),
+(4, 15, '2023-12-11', 2, '', NULL, NULL, NULL),
+(5, 11, '2023-12-05', 2, '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,13 +498,21 @@ CREATE TABLE `promotions` (
   `employee_id` bigint(20) UNSIGNED NOT NULL,
   `department_id` bigint(20) UNSIGNED NOT NULL,
   `designation_id` bigint(20) UNSIGNED NOT NULL,
-  `new_designation` bigint(20) UNSIGNED NOT NULL,
+  `to_designation` bigint(20) UNSIGNED NOT NULL,
+  `to_department` bigint(20) UNSIGNED NOT NULL,
   `notice_date` date NOT NULL,
   `promotion_date` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `promotions`
+--
+
+INSERT INTO `promotions` (`id`, `employee_id`, `department_id`, `designation_id`, `to_designation`, `to_department`, `notice_date`, `promotion_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 10, 1, 1, 3, 1, '2023-12-28', '2024-01-02', '2023-12-19 11:31:46', '2023-12-19 11:31:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -396,6 +625,14 @@ CREATE TABLE `terminations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `terminations`
+--
+
+INSERT INTO `terminations` (`id`, `employee_id`, `department_id`, `designation_id`, `notice_date`, `termination_date`, `type`, `reason`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 10, 1, 1, '2023-12-27', '2024-01-01', 0, 'xyz', '2023-12-19 10:42:21', '2023-12-19 10:42:21', NULL),
+(2, 14, 2, 1, '2023-11-25', '2023-12-01', 0, 'xyz', '2023-12-19 11:23:07', '2023-12-19 11:23:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -517,7 +754,8 @@ ALTER TABLE `promotions`
   ADD KEY `promotions_employee_id_foreign` (`employee_id`),
   ADD KEY `promotions_department_id_index` (`department_id`),
   ADD KEY `promotions_designation_id_index` (`designation_id`),
-  ADD KEY `promotions_new_designation_index` (`new_designation`);
+  ADD KEY `promotions_to_designation_index` (`to_designation`),
+  ADD KEY `promotions_to_department_index` (`to_department`);
 
 --
 -- Indexes for table `resignations`
@@ -579,7 +817,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendances`
 --
 ALTER TABLE `attendances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -603,19 +841,19 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `overtimes`
 --
 ALTER TABLE `overtimes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -633,7 +871,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `promotions`
 --
 ALTER TABLE `promotions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `resignations`
@@ -663,7 +901,7 @@ ALTER TABLE `shifts`
 -- AUTO_INCREMENT for table `terminations`
 --
 ALTER TABLE `terminations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

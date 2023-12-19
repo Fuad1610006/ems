@@ -39,8 +39,8 @@ class AuthenticationController extends Controller
             $this->notice::error('Please try again');
             return redirect('login');
         }
-        
-    
+
+
     }
 
     public function signInForm(){
@@ -55,7 +55,7 @@ class AuthenticationController extends Controller
                 if($user->status==1){
                     if(Hash::check($request->password , $user->password)){
                         $this->setSession($user);
-                         $this->notice::success('Successfully login');
+                         $this->notice::success('Successfully logged in!');
                         return redirect()->route('dashboard');
                     }else
                      $this->notice::error('Your phone number or password is wrong!');
@@ -84,7 +84,7 @@ class AuthenticationController extends Controller
         'role' => encryptor('encrypt', $user->role->type),
         'roleIdentity' => encryptor('encrypt', $user->role->identity),
         'language' => encryptor('encrypt', $user->language),
-        'image' => $employee->image ?? 'No Image Found', 
+        'image' => $employee->image ?? 'No Image Found',
     ]);
 }
 
