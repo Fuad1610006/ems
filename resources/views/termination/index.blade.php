@@ -13,7 +13,7 @@
                     <th>Name</th>
                     <th>Department</th>
                     <th>Designation</th>
-                    <th>Type</th>
+                   {{-- <th>Type</th>--}}
                     <th>Reason</th>
                     <th>Notice Date</th>
                     <th>Termination Date</th>
@@ -24,10 +24,10 @@
                 @foreach ($termination as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
-                        <td>{{ $d->employee->name }}</td>
-                        <td>{{ $d->department->department_id }}</td>
-                        <td>{{ $d->designation->designation_id }}</td>
-                        <td>{{ $d->type }}</td>
+                        <td>{{ $d->employee->name_en}}</td>
+                        <td>{{ $d->employee->department ? $d->employee->department->department : 'N/A' }}</td>
+                        <td>{{ $d->employee->designation ? $d->employee->designation->designation : 'N/A' }}</td>
+                        {{--<td>{{ $d->type }}</td>--}}
                         <td>{{ $d->reason }}</td>
                         <td>{{ $d->notice_date}}</td>
                         <td>{{ $d->termination_date }}</td>

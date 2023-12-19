@@ -39,7 +39,7 @@ Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
-    Route::get('/profile/{employeeId}', [employee::class,'showProfile'])->name('profile');
+    // Route::get('/profile/{employeeId}', [employee::class,'showProfile'])->name('profile');
     Route::resource('department', department::class);
     Route::resource('designation', designation::class);
     Route::resource('employee', employee::class);
@@ -63,6 +63,16 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
     Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
 });
+
+Route::middleware(['checkEmployee'])->prefix('employee')->group(function(){
+    Route::get('/dashboard', [employee::class,'index'])->name('employee.dashboard');
+    Route::get('/profile', [employee::class,'showProfile'])->name('profile');
+    Route::get('/leave/create', [leave::class,'create'])->name('leave.create');
+    Route::post('/leave/store', [leave::class,'store'])->name('leave.store');
+    Route::get('/leave/{id}/edit', [leave::class,'edit'])->name('leave.edit');
+    Route::put('/leave/{id}/update', [leave::class,'update'])->name('leave.update');
+});
+
 
 Route::get('/', function () {
     return view('dashboard');

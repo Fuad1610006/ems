@@ -26,7 +26,10 @@ class TerminationController extends Controller
      */
     public function create()
     {
-        return view('termination.create');
+        $employee=Employee::all();
+        $department= Department::all();
+        $designation=Designation::all();
+        return view('termination.create',compact('employee','department','designation'));
     }
 
     /**
@@ -41,22 +44,22 @@ class TerminationController extends Controller
             $termination->designation_id=$request->designation_id;
             $termination->notice_date=$request->notice_date;
             $termination->termination_date=$request->termination_date;
-            $termination->type=$request->type;
+            // $termination->type=$request->type;
             $termination->reason=$request->reason;
            if( $termination->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('termination.index');
-           
+
            }else{
               $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-          
+
         }
     }catch(Exception $e){
             dd($e);
               $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 
@@ -89,22 +92,22 @@ class TerminationController extends Controller
             $termination->designation_id=$request->designation_id;
             $termination->notice_date=$request->notice_date;
             $termination->termination_date=$request->termination_date;
-            $termination->type=$request->type;
+            // $termination->type=$request->type;
             $termination->reason=$request->reason;
             if($termination->save()){
                  $this->notice::success('Successfully updated');
                 return redirect()->route('termination.index');
-               
+
              }else{
                 $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-                
+
             }
         }catch(Exception $e){
             //dd($e);
               $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 
@@ -118,7 +121,7 @@ class TerminationController extends Controller
         if($termination->delete()){
              $this->notice::warning('Deleted Permanently!');
             return redirect()->back();
-           
+
         }
     }
 }

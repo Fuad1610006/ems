@@ -28,7 +28,8 @@ class PromotionController extends Controller
     {
         $employee = Employee::all();
         $designation = Designation::all();
-        return view('promotion.create', compact('employee', 'designation'));
+        $department= Department::all();
+        return view('promotion.create', compact('employee', 'designation', 'department'));
     }
 
     /**
@@ -41,10 +42,11 @@ class PromotionController extends Controller
             $promotion->employee_id=$request->employee_id;
             $promotion->department_id=$request->department_id;
             $promotion->designation_id=$request->designation_id;
+            $promotion->to_department = $request->to_department;
+            $promotion->to_designation = $request->to_designation;
             $promotion->notice_date=$request->notice_date;
             $promotion->promotion_date=$request->promotion_date;
-            $promotion->new_designation=$request->new_designation;
-
+           
            if( $promotion->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('promotion.index');
@@ -85,14 +87,14 @@ class PromotionController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
-            $promotion->employee_id=$request->employee_id;
+            $promotion = new Promotion;
+            $promotion->employee_id = $request->employee_id;
             $promotion->department_id=$request->department_id;
             $promotion->designation_id=$request->designation_id;
-            $promotion->notice_date=$request->notice_date;
-            $promotion->promotion_date=$request->promotion_date;
-            $promotion->new_designation=$request->new_designation;
-
+            $promotion->to_department = $request->to_department;
+            $promotion->to_designation = $request->to_designation;
+            $promotion->notice_date = $request->notice_date;
+            $promotion->promotion_date = $request->promotion_date;
             if($promotion->save()){
                  $this->notice::success('Successfully updated');
                 return redirect()->route('promotion.index');

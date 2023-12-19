@@ -170,7 +170,7 @@ class EmployeeController extends Controller
                     DB::commit();
                      $this->notice::success('Successfully updated!');
                     return redirect()->route('employee.index');
-                   
+
                 }else{
                     $this->notice::error('Please try again!');
                     return redirect()->back()->withInput();
@@ -182,7 +182,7 @@ class EmployeeController extends Controller
             dd($e);
             $this->notice::error('Please try again');
             return redirect()->back();
-           
+
         }
     }
 
@@ -206,25 +206,23 @@ class EmployeeController extends Controller
      /**
      * To display employee profile.
      */
-   public function showProfile($employeeId)
-  {
+    public function showProfile()
+    {
+        // Retrieve the logged-in user's ID using your custom function
+        $loggedInEmployeeId = currentUserId();
 
-     // Retrieve employee information based on ID
-     $employee = Employee::where('employee_id', $employeeId)->first();
+        // Retrieve employee information based on the logged-in user's ID
+        $employee = Employee::where('id', $loggedInEmployeeId)->first();
 
-     // Check if the employee exists
-     if (!$employee) {
-         abort(404, 'Employee not found');
-     }
+        // Check if the employee exists
+        if (!$employee) {
+            abort(404, 'Employee not found');
+        }
 
-     // Pass the employee data to the view
-     return view('employee.profile', compact('employee'));
+        // Pass the employee data to the view
+        return view('employee.profile', compact('employee'));
+    }
 
-
-    // $employee = Employee::findOrFail(encryptor('decrypt', $id));
-
-    // return view('employee.profile', compact('role', 'department', 'designation', 'shift', 'employee'));
-   }
 
     /**
      * To update employee profile.
@@ -269,14 +267,14 @@ class EmployeeController extends Controller
             DB::commit();
              $this->notice::success('Profile Updated Successfully');
             return redirect()->route('employee.profile');
-           
+
 
         } catch (Exception $e) {
             DB::rollback();
             dd($e);
              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-           
+
         }
 
     }

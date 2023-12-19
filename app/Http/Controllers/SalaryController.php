@@ -29,6 +29,7 @@ class SalaryController extends Controller
         $department=Department::all();
         $designation=Designation::all();
         $employee= Employee::all();
+        $salary= array();
         return view('salary.create', compact('salary'));
     }
 
@@ -57,17 +58,17 @@ class SalaryController extends Controller
            if( $salary->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('salary.index');
-           
+
            }else{
              $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-           
+
         }
     }catch(Exception $e){
             dd($e);
              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-           
+
         }
     }
 
@@ -114,15 +115,15 @@ class SalaryController extends Controller
             $salary->leave_deduction=$request->leave_deduction;
             if($salary->save()){
                  $this->notice::success('Successfully updated');
-                return redirect()->route('salary.index');             
+                return redirect()->route('salary.index');
              }else{
                   $this->notice::error('Please try again!');
-                return redirect()->back()->withInput();            
+                return redirect()->back()->withInput();
             }
         }catch(Exception $e){
             //dd($e);
               $this->notice::error('Please try again');
-            return redirect()->back()->withInput();        
+            return redirect()->back()->withInput();
         }
     }
 

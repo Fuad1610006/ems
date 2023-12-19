@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->unsignedBigInteger('designation_id')->index();
             $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
-            $table->unsignedBigInteger('new_designation')->index();
+            $table->unsignedBigInteger('to_designation')->index();
+            $table->unsignedBigInteger('to_department')->index();
             $table->date('notice_date');
             $table->date('promotion_date');
             $table->timestamps();

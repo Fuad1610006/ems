@@ -7,21 +7,36 @@
         <form action="{{ route('termination.store') }}" method="POST">
             @csrf
             <div class="form-group col-md-8">
-                <label for="shift">Name:</label>
-                <input type="text" class="form-control" id="shift" name="shift" required>
-            </div>
-             <div class="form-group col-md-8">
-                <label for="department_id">Department</label>
-                <input type="text" class="form-control" id="department_id" name="department_id" required>
-            </div>
-             <div class="form-group col-md-8">
-                <label for="designation_id">Designation</label>
-                <input type="text" class="form-control" id="designation_id" name="designation_id" required>
+                <label for="department_id">Department:</label>
+                <select class="form-control" id="department_id" name="department_id" onchange="filterEmployees()" required>
+                    <option value="" disabled selected>Select Department</option>
+                    @foreach ($department as $d)
+                        <option value="{{ $d->id }}">{{ $d->department }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group col-md-8">
+                <label for="designation_id">Designation:</label>
+                <select class="form-control" id="designation_id" name="designation_id" onchange="filterEmployees()" required>
+                    <option value="" disabled selected>Select Designation</option>
+                    @foreach ($designation as $d)
+                        <option value="{{ $d->id }}">{{ $d->designation }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="employee_id">Employee:</label>
+                <select class="form-control" id="employee_id" name="employee_id" required>
+                    <option value="" disabled selected>Select Employee</option>
+                    @foreach ($employee as $e)
+                        <option class="employee-option emp-dept-{{ $e->department_id }} emp-desig-{{ $e->designation_id }}" value="{{ $e->id }}">{{ $e->name_en }}</option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- <div class="form-group col-md-8">
                 <label for="type">Type</label>
                 <input type="text" class="form-control" id="type" name="type" required>
-            </div>
+            </div> --}}
             <div class="form-group col-md-8">
                 <label for="reason">Reason</label>
                 <textarea class="form-control"  id="reason" name="reason">
@@ -39,3 +54,15 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function filterEmployees() {
+            var selectedDept = $('#department_id').val();
+            var selectedDesig = $('#designation_id').val();
+
+            $('.employee-option').hide();
+            $('.emp-dept-' + selectedDept + '.emp-desig-' + selectedDesig).show();
+        }
+    </script>
+@endpush

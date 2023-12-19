@@ -11,9 +11,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Department</th>
-                    <th>Designation</th>
-                    <th>New Designation</th>
+                    <th>From Department</th>
+                    <th>From Designation</th>
+                    <th>To Department</th>
+                    <th>To Designation</th>
                     <th>Notice Date</th>
                     <th>Promotion Date</th>
                     <th>Actions</th>
@@ -23,10 +24,11 @@
                 @foreach ($promotion as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
-                        <td>{{ $d->employee->name }}</td>
-                        <td>{{ $d->department->department_id }}</td>
-                        <td>{{ $d->designation->designation_id }}</td>
-                        <td>{{ $d->designation->new_designation_id }}</td>
+                        <td>{{ $d->employee->name_en }}</td>
+                        <td>{{ optional($d->employee->department)->department ?? 'N/A' }}</td>
+                        <td>{{ optional($d->employee->designation)->designation ?? 'N/A' }}</td>
+                        <td>{{ optional($d->department)->new_department_id ?? 'N/A' }}</td>
+                        <td>{{ optional($d->designation)->new_designation_id ?? 'N/A' }}</td>
                         <td>{{ $d->notice_date }}</td>
                         <td>{{ $d->promotion_date }}</td>
                         <td>

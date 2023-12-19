@@ -225,7 +225,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('profile', '$employeeId')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -435,7 +435,7 @@
                 $employee = session('employee');
               @endphp
 
-        <a class="nav-link collapsed" href="{{route('profile','$employeeId')}}">
+        <a class="nav-link collapsed" href="{{route('profile')}}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
