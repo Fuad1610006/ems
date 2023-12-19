@@ -25,8 +25,8 @@
                         <td>{{ $d->employee->name }}</td>
                         <td>{{ $d->department->department_id }}</td>
                         <td>{{ $d->designation->designation_id }}</td>
-                        <td>{{ $d-> notice_date }}</td>
-                        <td>{{ $d-> resignation_date }}</td>
+                        <td>{{ $d->notice_date }}</td>
+                        <td>{{ $d->resignation_date }}</td>
                         <td>
 
                             <form action="{{ route('resignation.destroy',encryptor('encrypt',$d->id)) }}" method="post">
