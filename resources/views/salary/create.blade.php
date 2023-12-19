@@ -33,7 +33,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                            @forelse($employee as $e)
+                            @forelse($salary as $e)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
                                 <td>{{$e->name_en}}</td>

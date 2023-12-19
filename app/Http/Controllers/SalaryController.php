@@ -29,7 +29,8 @@ class SalaryController extends Controller
         $department=Department::all();
         $designation=Designation::all();
         $employee= Employee::all();
-         return view('salary.create');
+        $salary = Salary::all();
+         return view('salary.create', compact('salary'));
     }
 
     /**
@@ -55,16 +56,19 @@ class SalaryController extends Controller
             $salary->leave_deduction=$request->leave_deduction;
 
            if( $salary->save()){
+             $this->notice::success('Successfully saved');
             return redirect()->route('salary.index');
-            $this->notice::success('Successfully saved');
+           
            }else{
+             $this->notice::error('Please try again!');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again!');
+           
         }
     }catch(Exception $e){
             dd($e);
+             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+           
         }
     }
 
@@ -110,16 +114,16 @@ class SalaryController extends Controller
             $salary->provident_fund=$request->provident_fund;
             $salary->leave_deduction=$request->leave_deduction;
             if($salary->save()){
-                return redirect()->route('salary.index');
-                $this->notice::success('Successfully updated');
+                 $this->notice::success('Successfully updated');
+                return redirect()->route('salary.index');             
              }else{
-                return redirect()->back()->withInput();
-                $this->notice::error('Please try again!');
+                  $this->notice::error('Please try again!');
+                return redirect()->back()->withInput();            
             }
         }catch(Exception $e){
             //dd($e);
-            return redirect()->back()->withInput();
-            $this->notice::error('Please try again');
+              $this->notice::error('Please try again');
+            return redirect()->back()->withInput();        
         }
     }
 
