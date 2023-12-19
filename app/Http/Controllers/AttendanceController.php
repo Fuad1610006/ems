@@ -51,7 +51,8 @@ class AttendanceController extends Controller
             return redirect()->route('attendance.index');
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+             $this->notice::error('Please try again!');
+            return redirect()->back()->withInput();
         }
     }
 

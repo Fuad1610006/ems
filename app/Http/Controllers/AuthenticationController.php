@@ -29,10 +29,10 @@ class AuthenticationController extends Controller
             $user->role_id=3;
             if($user->save()){
               $this->notice::success('Successfully Registered');
-                return redirect('login');
+              return redirect('login');
         }else{
             $this->notice::error('Please try again');
-                return redirect('login');
+             return redirect('login');
         }
         }catch(Exception $e){
             // dd($e);
@@ -55,16 +55,21 @@ class AuthenticationController extends Controller
                 if($user->status==1){
                     if(Hash::check($request->password , $user->password)){
                         $this->setSession($user);
-                        return redirect()->route('dashboard')->with('success','Successfully login');
+                         $this->notice::success('Successfully login');
+                        return redirect()->route('dashboard');
                     }else
-                        return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+                     $this->notice::error('Your phone number or password is wrong!');
+                     return redirect()->route('login');
                 }else
-                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!');
+                 $this->notice::error('You are not active user. Please contact to authority!');
+                 return redirect()->route('login');
         }else
-                return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+         $this->notice::error('Your phone number or password is wrong!');
+         return redirect()->route('login');
         }catch(Exception $e){
             dd($e);
-            return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+             $this->notice::error('Your phone number or password is wrong!');
+             return redirect()->route('login');
         }
     }
 
@@ -85,6 +90,7 @@ class AuthenticationController extends Controller
 
     public function signOut(){
         request()->session()->flush();
-        return redirect('login')->with('danger','Successfully Logged Out');
+          $this->notice::error('Successfully Logged Out');
+          return redirect('login');
     }
 }
