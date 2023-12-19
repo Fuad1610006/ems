@@ -27,8 +27,8 @@
                         <td>{{ $d->department->department_id }}</td>
                         <td>{{ $d->designation->designation_id }}</td>
                         <td>{{ $d->designation->new_designation_id }}</td>
-                        <td>{{ $d-> notice_date }}</td>
-                        <td>{{ $d-> promotion_date }}</td>
+                        <td>{{ $d->notice_date }}</td>
+                        <td>{{ $d->promotion_date }}</td>
                         <td>
 
                             <form action="{{ route('promotion.destroy',encryptor('encrypt',$d->id)) }}" method="post">
