@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
             $table->date('notice_date');
             $table->date('resignation_date');
+            $table->string('application_file');
+            $table->text('reason');
             $table->timestamps();
             $table->softDeletes();
         });

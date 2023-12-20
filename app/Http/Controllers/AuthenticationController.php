@@ -28,6 +28,7 @@ class AuthenticationController extends Controller
             $user->password=Hash::make($request->password);
             $user->role_id=3;
             if($user->save()){
+              $this->setSession($user);
               $this->notice::success('Successfully Registered');
               return redirect('login');
         }else{
@@ -75,6 +76,7 @@ class AuthenticationController extends Controller
 
    public function setSession($user){
     $employee = $user->employee;
+     $employeeName = $employee ? $employee->name_en : 'N/A';
 
     return request()->session()->put([
         'userId' => encryptor('encrypt', $user->id),

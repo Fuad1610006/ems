@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Resignation\AddNewRequest;
+use App\Http\Requests\Resignation\UpdateRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Employee;
 use App\Models\Resignation;
 use App\Models\Department;
@@ -26,23 +29,25 @@ class ResignationController extends Controller
      */
     public function create()
     {
-        return view('resignation.create');
+         $currentUserId = encryptor('decrypt', session('userId'));
+        return view('resignation.create',compact('currentUserId'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
         try{
             $resignation=new Resignation;
             $resignation->employee_id=$request->employee_id;
-            $resignation->department_id=$request->department_id;
-            $resignation->designation_id=$request->designation_id;
+            // $resignation->department_id=$request->department_id;
+            // $resignation->designation_id=$request->designation_id;
             $resignation->notice_date=$request->notice_date;
             $resignation->resignation_date=$request->resignation_date;
-            $resignation->type=$request->type;
+            // $resignation->type=$request->type;
             $resignation->reason=$request->reason;
+            $resignation->application_file=$request->application_file;
            if( $resignation->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('resignation.index');
@@ -80,17 +85,18 @@ class ResignationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         try{
             $resignation=Resignation::findOrFail(encryptor('decrypt', $id));
             $resignation->employee_id=$request->employee_id;
-            $resignation->department_id=$request->department_id;
-            $resignation->designation_id=$request->designation_id;
+            // $resignation->department_id=$request->department_id;
+            // $resignation->designation_id=$request->designation_id;
             $resignation->notice_date=$request->notice_date;
             $resignation->resignation_date=$request->resignation_date;
-            $resignation->type=$request->type;
+            // $resignation->type=$request->type;
             $resignation->reason=$request->reason;
+            $resignation->application_file=$request->application_file;
             if($resignation->save()){
                  $this->notice::success('Successfully updated');
                 return redirect()->route('resignation.index');

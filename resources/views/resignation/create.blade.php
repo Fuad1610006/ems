@@ -6,6 +6,7 @@
 
         <form action="{{ route('resignation.store') }}" method="POST">
             @csrf
+             <input type="hidden" name="employee_id" value="{{ $currentUserId }}">
             <div class="form-group col-md-8">
                 <label for="reason">Reason</label>
                 <textarea class="form-control"  id="reason" name="reason">

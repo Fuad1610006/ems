@@ -6,14 +6,15 @@
 
         <form action="{{ route('leave.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
-             <div class="form-group col-md-8">
-                <label for="type">Type</label>
-                <select class="form-control" id="type" name="type" required>
-                    <option value="1">Casual leave</option>
-                    <option value="2">Sick leave</option>
-                    <option value="3">Maternity leave</option>
-                </select>
-            </div>
+           <input type="hidden" name="employee_id" value="{{ $currentUserId }}">
+            <div class="form-group col-md-8">
+            <label for="leave_type">Type</label>
+            <select class="form-control" id="leave_type" name="leave_type" required>
+                <option value="1" selected>Casual leave</option>
+                <option value="2">Sick leave</option>
+                <option value="3">Maternity leave</option>
+            </select>
+        </div>
 
             <div class="form-group col-md-8">
                 <label for="reason">Reason</label>
@@ -24,7 +25,6 @@
              <div class="form-group col-md-8">
                 <label for="no_of_days">No. of Days</label>
                 <input type="text" class="form-control" id="no_of_days" name="no_of_days">
-                </input>
             </div>
 
              <div class="form-group col-md-8">

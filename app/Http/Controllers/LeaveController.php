@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Leave\AddNewRequest;
+use App\Http\Requests\Leave\UpdateRequest;
 use App\Models\Employee;
 use App\Models\Department;
 use App\Models\Designation;
@@ -27,14 +30,14 @@ class LeaveController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-        return view('leave.create', compact('employees'));
+         $currentUserId = encryptor('decrypt', session('userId'));
+        return view('leave.create', compact('currentUserId'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddNewRequest $request)
     {
          try{
             $leave=new Leave;
@@ -47,7 +50,7 @@ class LeaveController extends Controller
             $leave->allotted_leaves=$request->allotted_leaves;
             $leave->reason=$request->reason;
             $leave->status=$request->status;
-
+           
            if( $leave->save()){
              $this->notice::success('Successfully saved');
             return redirect()->route('leave.index');
@@ -76,7 +79,7 @@ class LeaveController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Leave $leave)
+    public function edit($id)
     {
         $leave=Leave::findOrFail(encryptor('decrypt', $id));
         return view('leave.edit', compact('leave'));
@@ -85,7 +88,7 @@ class LeaveController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Leave $leave)
+    public function update(UpdateRequest $request, $id)
     {
         try{
             $leave=Leave::findOrFail(encryptor('decrypt', $id));
@@ -119,7 +122,7 @@ class LeaveController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Leave $leave)
+    public function destroy($id)
     {
         $leave= Leave::findOrFail(encryptor('decrypt', $id));
         if($leave->delete()){

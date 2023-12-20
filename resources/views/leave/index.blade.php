@@ -25,7 +25,7 @@
                 @foreach ($leave as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
-                        <td>{{ $d->employee->name_en }}</td>
+                      <td>{{ optional($d->employee)->name_en ?? 'N/A' }}</td>
                          <td>{{ $d->leave_type }}</td>
                         <td>{{ $d->start_date }}</td>
                         <td>{{ $d->end_date }}</td>
