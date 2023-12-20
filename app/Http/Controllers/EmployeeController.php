@@ -203,19 +203,20 @@ class EmployeeController extends Controller
         }
     }
 
-     /**
+    /**
      * To display employee profile.
      */
     public function showProfile()
     {
         // Retrieve the logged-in user's ID using your custom function
-        $loggedInEmployeeId = currentUserId();
+        $loggedInEmployeeId = request()->session()->get('employeeId');
 
         // Retrieve employee information based on the logged-in user's ID
         $employee = Employee::where('id', $loggedInEmployeeId)->first();
 
         // Check if the employee exists
         if (!$employee) {
+        // dd($loggedInEmployeeId);
             abort(404, 'Employee not found');
         }
 

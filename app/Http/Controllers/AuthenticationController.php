@@ -74,23 +74,51 @@ class AuthenticationController extends Controller
         }
     }
 
-   public function setSession($user){
-    $employee = $user->employee;
-     $employeeName = $employee ? $employee->name_en : 'N/A';
+//    public function setSession($user){
+//     $employee = $user->employee;
+//      $employeeName = $employee ? $employee->name_en : 'N/A';
 
-    return request()->session()->put([
-        'userId' => encryptor('encrypt', $user->id),
-        'userName' => encryptor('encrypt', $user->name_en),
-        'role_id' => encryptor('encrypt', $user->role_id),
-        'accessType' => encryptor('encrypt', $user->full_access),
-        'role' => encryptor('encrypt', $user->role->type),
-        'roleIdentity' => encryptor('encrypt', $user->role->identity),
-        'language' => encryptor('encrypt', $user->language),
-        'employeeId' => encryptor('encrypt', $employee->id ?? null),
-        'employeeName' => encryptor('encrypt', $employeeName),
-        'employeeImage' => $employee->image ?? 'No Image Found',
-    ]);
-}
+//     return request()->session()->put([
+//         'userId' => encryptor('encrypt', $user->id),
+//         'userName' => encryptor('encrypt', $user->name_en),
+//         'role_id' => encryptor('encrypt', $user->role_id),
+//         'accessType' => encryptor('encrypt', $user->full_access),
+//         'role' => encryptor('encrypt', $user->role->type),
+//         'roleIdentity' => encryptor('encrypt', $user->role->identity),
+//         'language' => encryptor('encrypt', $user->language),
+//         'employeeId' => encryptor('encrypt', $employee->id ?? null),
+//         'employeeName' => encryptor('encrypt', $employeeName),
+//         'employeeImage' => $employee->image ?? 'No Image Found',
+//     ]);
+// }
+
+    public function setSession($user)
+    {
+        $employee = $user->employee;
+
+        // Check if the user has an associated employee
+        if ($employee) {
+            $employeeName = $employee->name_en;
+
+            return request()->session()->put([
+                'userId' => encryptor('encrypt', $user->id),
+                'userName' => encryptor('encrypt', $user->name_en),
+                'role_id' => encryptor('encrypt', $user->role_id),
+                'accessType' => encryptor('encrypt', $user->full_access),
+                'role' => encryptor('encrypt', $user->role->type),
+                'roleIdentity' => encryptor('encrypt', $user->role->identity),
+                'language' => encryptor('encrypt', $user->language),
+                'employeeId' => encryptor('encrypt', $employee->id),
+                'employeeName' => encryptor('encrypt', $employeeName),
+                'employeeImage' => $employee->image ?? 'No Image Found',
+            ]);
+        } else {
+            // Handle the case where the user doesn't have an associated employee
+            // You can set default values or handle it according to your application logic
+            $this->notice::warning('You do not have an associated employee.!');
+            return redirect()->back();
+        }
+    }
 
     public function signOut(){
         request()->session()->flush();
