@@ -86,7 +86,9 @@ class AuthenticationController extends Controller
         'role' => encryptor('encrypt', $user->role->type),
         'roleIdentity' => encryptor('encrypt', $user->role->identity),
         'language' => encryptor('encrypt', $user->language),
-        'image' => $employee->image ?? 'No Image Found',
+        'employeeId' => encryptor('encrypt', $employee->id ?? null),
+        'employeeName' => encryptor('encrypt', $employeeName),
+        'employeeImage' => $employee->image ?? 'No Image Found',
     ]);
 }
 

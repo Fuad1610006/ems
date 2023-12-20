@@ -4,9 +4,12 @@
     <div class="container">
         <h2>Employee Resignation</h2>
 
-        <form action="{{ route('resignation.store') }}" method="POST">
+       <form action="{{ route('resignation.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-             <input type="hidden" name="employee_id" value="{{ $currentUserId }}">
+            @php
+            $employeeId = session('employeeId') ? decrypt(session('employeeId')) : null;
+            @endphp
+            <input type="hidden" name="employee_id" value="{{ $employeeId }}">
             <div class="form-group col-md-8">
                 <label for="reason">Reason</label>
                 <textarea class="form-control"  id="reason" name="reason">

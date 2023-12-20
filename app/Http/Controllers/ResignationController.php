@@ -29,8 +29,8 @@ class ResignationController extends Controller
      */
     public function create()
     {
-         $currentUserId = encryptor('decrypt', session('userId'));
-        return view('resignation.create',compact('currentUserId'));
+        $employeeId = request()->session()->get('employeeId');
+        return view('resignation.create',compact('employeeId'));
     }
 
     /**

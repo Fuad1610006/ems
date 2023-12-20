@@ -29,9 +29,9 @@ class LeaveController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-         $currentUserId = encryptor('decrypt', session('userId'));
-        return view('leave.create', compact('currentUserId'));
+    {   
+        $employeeId = request()->session()->get('employeeId');
+        return view('leave.create', compact('employeeId'));
     }
 
     /**
