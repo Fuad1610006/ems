@@ -77,8 +77,11 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
+        $employee = Employee::all();
+        $designation = Designation::all();
+        $department= Department::all();
         $promotion=Promotion::findOrFail(encryptor('decrypt', $id));
-        return view('promotion.edit', compact('promotion'));
+        return view('promotion.edit', compact('promotion','employee', 'designation', 'department'));
     }
 
     /**

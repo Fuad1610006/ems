@@ -76,8 +76,11 @@ class TerminationController extends Controller
      */
     public function edit($id)
     {
+        $employee=Employee::all();
+        $department= Department::all();
+        $designation=Designation::all();
         $termination=Termination::findOrFail(encryptor('decrypt', $id));
-        return view('termination.edit', compact('termination'));
+        return view('termination.edit', compact('termination','employee','department','designation'));
     }
 
     /**
