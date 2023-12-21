@@ -7,7 +7,7 @@
         <form action="{{ route('resignation.update', encryptor('encrypt',$resignation->id)) }}" method="POST">
             @csrf
             @method('PATCH')
-            <input type="hidden" name="employee_id" value="{{ $employeeId }}">
+            <input type="hidden" name="employee_id">
             <div class="form-group col-md-8">
                 <label for="reason">Reason</label>
                 <textarea class="form-control"  id="reason" name="reason">

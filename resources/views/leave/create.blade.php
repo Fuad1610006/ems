@@ -4,13 +4,10 @@
     <div class="container">
         <h2>Employee Leave</h2>
 
-       <?php
-       $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null;
-       ?>
 
         <form action="{{ route('leave.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
-          <input type="hidden" name="employee_id" value="{{ decrypt($employeeId)}}">
+          <input type="hidden" name="employee_id">
             <div class="form-group col-md-8">
             <label for="leave_type">Type</label>
             <select class="form-control" id="leave_type" name="leave_type" required>
