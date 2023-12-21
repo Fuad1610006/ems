@@ -38,7 +38,7 @@
                       <div class="form-group">
                           <label for="startdate">Department</label>
                           <select name="department_id" class="form-control" id="department_id">
-                              <option value="">Select Month</option>                                        
+                              <option value="">Select Department</option>                                        
                               @foreach ($department as $dpt)
                                 <option value="{{$dpt->id}}">{{$dpt->department}}</option>
                               @endforeach()
@@ -56,7 +56,7 @@
                 <div class="row">
                   <div class="col-xs-12">
                       <div class="form-group">
-                          <button type="button" class="btn btn-primary" onclick="getload()">Get Salary</button>
+                          <button type="button" class="btn btn-primary" onclick="getload()">Get List</button>
                       </div>
                   </div>
                   <div class="form-group col-md-3">

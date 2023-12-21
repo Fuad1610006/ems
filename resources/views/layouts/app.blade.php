@@ -211,7 +211,7 @@
 
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('public/uploads/users/'.request()->session()->get('employeeImage'))}}" alt="Profile" class="rounded-circle">
+        <img src="{{asset('public/uploads/users/'.request()->session()->get('employeeImage') ?: 'user-tie-solid.svg')}}" alt="Profile" class="rounded-circle" onerror="this.onerror=null; this.src='{{asset('public/assets/img/user-tie-solid.svg')}}';"  width="50" height="50">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{encryptor('decrypt', request()->session()->get('userName'))}}</span>
           </a><!-- End Profile Iamge Icon -->
 

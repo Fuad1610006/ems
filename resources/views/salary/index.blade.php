@@ -37,7 +37,7 @@
                             @forelse($salary as $e)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$e->name_en}}</td>
+                                <td>{{$e->employee->name_en}}</td>
                                 <td>{{$e->basic_salary}}</td>
                                 <td>{{$e->house_rent}}</td>
                                 <td>{{$e->medical_allowance}}</td>
@@ -48,16 +48,13 @@
                                 <td>{{$e->tax}}</td> 
                                 <td>{{$e->provident_fund}}</td> 
                                 <td>{{$e->leave_deduction}}</td> 
-                                <td>{{$e->total}}</td> 
-                                </tr>
+                                <td>{{$e->salary}}</td> 
+                                
                                 <td class="white-space-nowrap">
-                                    <a class="d-inline" href="{{route('salary.edit',encryptor('encrypt',$e->id))}}">
-                                      <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a class="d-inline"  href="{{route('salary.show',encryptor('encrypt',$e->id))}}">
+                                   <a class="d-inline"  href="{{route('salary.show',encryptor('encrypt',$e->id))}}">
                                       <i class="fa fa-eye"></i>
                                     </a>
-                                <form class="d-inline"  action="{{route('salary.destroy',encryptor('encrypt',$e->id))}}" method="post">
+                                <form class="d-inline" action="{{route('salary.destroy',encryptor('encrypt',$e->id))}}" method="post">
                                          @csrf
                                         @method('delete')
                                  <i class="fa fa-trash"></i>

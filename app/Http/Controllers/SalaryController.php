@@ -159,9 +159,12 @@ class SalaryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Salary $salary)
+    public function show($id)
     {
-        //
+        $department= Department::get();
+        $designation= Designation::get();
+        $employee = Employee::findOrFail(encryptor('decrypt', $id));
+        return view('salary.show', compact('department','designation','employee'));
     }
 
     /**
