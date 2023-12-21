@@ -53,7 +53,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::resource('leave', leave::class);
     Route::resource('resignation', resignation::class);
     Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
-    // Route::get('/profile/{employeeId}', [employee::class,'showProfile'])->name('profile');
+    Route::get('/get_salary', [salary::class,'get_salary'])->name('get_salary');
 });
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
