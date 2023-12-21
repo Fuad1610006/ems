@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
-use App\Http\Requests\authentication\SignupRequest;
-use App\Http\Requests\authentication\SigninRequest;
+use App\Http\Requests\Authentication\SignupRequest;
+use App\Http\Requests\Authentication\SigninRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use Toastr;
@@ -16,7 +16,7 @@ use Toastr;
 class AuthenticationController extends Controller
 {
     public function signUpForm(){
-        return view('authentication.register');
+        return view('Authentication.register');
     }
 
     public function signUpStore(SignupRequest $request){
@@ -45,7 +45,7 @@ class AuthenticationController extends Controller
     }
 
     public function signInForm(){
-        return view('authentication.login');
+        return view('Authentication.login');
     }
 
     public function signInCheck(SigninRequest $request){
