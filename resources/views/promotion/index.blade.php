@@ -27,8 +27,8 @@
                         <td>{{ $d->employee->name_en }}</td>
                         <td>{{ optional($d->employee->department)->department ?? 'N/A' }}</td>
                         <td>{{ optional($d->employee->designation)->designation ?? 'N/A' }}</td>
-                        <td>{{ optional($d->promotion)->to_department ?? 'N/A' }}</td>
-                        <td>{{ optional($d->promotion)->to_designation ?? 'N/A' }}</td>
+                        <td>{{ optional($d->employee->department)-> to_department ?? 'N/A'  }}</td>
+                        <td>{{ optional($d->employee->designation)-> to_department ?? 'N/A'   }}</td>
                         <td>{{ $d->notice_date }}</td>
                         <td>{{ $d->promotion_date }}</td>
                         <td>
