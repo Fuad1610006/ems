@@ -223,9 +223,8 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <? $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null; ?>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('profile',$employeeId)}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

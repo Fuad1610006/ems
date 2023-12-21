@@ -3,7 +3,9 @@
 @section('content')
     <div class="container">
         <h2>Employee Resignation</h2>
-        <? $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null; ?>
+        <?php
+         $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null;
+        ?>
        <form action="{{ route('resignation.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="employee_id" value="{{ $employeeId }}">

@@ -4,7 +4,9 @@
     <div class="container">
         <h2>Employee Leave</h2>
 
-       <? $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null; ?>
+       <?php
+       $employeeId = session('employeeId') ? encryptor(decrypt(session('employeeId'))) : null;
+       ?>
 
         <form action="{{ route('leave.store') }}" enctype="multipart/form-data" method="POST">
             @csrf

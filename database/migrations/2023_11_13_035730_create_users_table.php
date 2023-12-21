@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('language')->default('en');
             $table->string('image')->nullable();
             $table->boolean('status')->default(1)->comment('1=>active 2=>inactive');
-            $table->boolean('full_access')->default(false)->comment('1=>yes 0=>no');
+            $table->boolean('full_access')->default(0)->comment('1=>yes 0=>no');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
