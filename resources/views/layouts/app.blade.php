@@ -45,7 +45,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="{{route('dashboard')}}" class="logo d-flex align-items-center">
+      <a href="{{route('all.dashboard')}}" class="logo d-flex align-items-center">
         <img src="{{asset('public/assets/img/logo.png')}}" alt="">
         <span class="d-none d-lg-block">EMS</span>
       </a>
@@ -273,7 +273,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{{route('dashboard')}}">
+        <a class="nav-link " href="{{route('all.dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

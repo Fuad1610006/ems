@@ -22,21 +22,18 @@
 
             <div class="card">
                 <div class="card-body table-responsive">
-
-
-                <!-- Table with stripped rows -->
-                <table class="table table-striped">
+                 <table class="table table-striped">
                     <thead>
-                    <tr>
-                                <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Name')}}</th>
-                                <th scope="col">{{__('Email')}}</th>
-                                <th scope="col">{{__('Contact')}}</th>
-                                <th scope="col">{{__('Role')}}</th>
-                                <th scope="col">{{__('Image')}}</th>
-                                <th scope="col">{{__('Status')}}</th>
-                                <th class="white-space-nowrap">{{__('Action') }}</th>
-                            </tr>
+                       <tr>
+                            <th scope="col">{{__('#SL')}}</th>
+                            <th scope="col">{{__('Name')}}</th>
+                            <th scope="col">{{__('Email')}}</th>
+                            <th scope="col">{{__('Contact')}}</th>
+                            <th scope="col">{{__('Role')}}</th>
+                            <th scope="col">{{__('Image')}}</th>
+                            <th scope="col">{{__('Status')}}</th>
+                            <th class="white-space-nowrap">{{__('Action') }}</th>
+                        </tr>
                     </thead>
                     <tbody>
                             @forelse($user as $e)
@@ -45,7 +42,6 @@
                                 <td>{{$e->name_en}}</td>
                                 <td>{{$e->email}}</td>
                                 <td>{{$e->contact_no_en}}</td>
-
                                 <td>{{$e->role?->name}}</td>
                                 <td><img width="50px" src="{{asset('public/uploads/employees/'.$e->image)}}" alt=""></td>
                                 <td>@if($e->status == 1) {{__('Active') }} @else {{__('Inactive') }} @endif</td>
@@ -69,13 +65,10 @@
                             </tr>
                             @endforelse
                         </tbody>
-                </table>
-                <!-- End Table with stripped rows -->
-
+                   </table>
                 </div>
             </div>
-
-            </div>
+         </div>
     </div>
 </section>
 @endsection

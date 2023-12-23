@@ -57,7 +57,7 @@ class AuthenticationController extends Controller
                     if(Hash::check($request->password , $user->password)){
                         $this->setSession($user);
                          $this->notice::success('Successfully logged in!');
-                        return redirect()->route('dashboard');
+                        return redirect()->route('all.dashboard');
                     }else
                      $this->notice::error('Your phone number or password is wrong!');
                      return redirect()->route('login');
@@ -99,6 +99,8 @@ class AuthenticationController extends Controller
         // Check if the user has an associated employee
         if ($employee) {
             $employeeName = $employee->name_en;
+            $employeeId = $employee->id;
+            $employeeImage = $employee?->image;
 
             return request()->session()->put([
                 'userId' => encryptor('encrypt', $user->id),

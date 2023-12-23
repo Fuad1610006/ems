@@ -20,8 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $employee=Employee::get();
         $user=User::paginate(10);
-        return view('user.index',compact('user'));
+        return view('user.index',compact('user','employee'));
     }
 
     /**
@@ -65,7 +66,7 @@ class UserController extends Controller
                  $this->notice::error('Please try again!');
                 //  Toastr::error('Please try again!');
                 return redirect()->back()->withInput();
-               
+
             }
         }catch(Exception $e){
             //dd($e);
@@ -120,17 +121,17 @@ class UserController extends Controller
 
             if($user->save()){
                  $this->notice::success('Successfully updated');
-                return redirect()->route('user.index');              
+                return redirect()->route('user.index');
             }else{
                  $this->notice::error('Please try again!');
                 return redirect()->back()->withInput();
-               
+
             }
         }catch(Exception $e){
             dd($e);
              $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-          
+
         }
     }
 

@@ -50,16 +50,20 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::resource('shift', shift::class);
     Route::resource('salary', salary::class);
     Route::resource('termination', termination::class);
-    Route::resource('leave', leave::class);
-    Route::resource('resignation', resignation::class);
-    Route::get('/dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('/leave', [leave::class, 'index'])->name('leave.list');
+    Route::get('/leave/{id}/delete', [leave::class, 'destroy'])->name('leave.destroy');
+    Route::get('/resignation', [resignation::class, 'index'])->name('resignation.list');
+    Route::get('/resignation/{id}/delete', [resignation::class, 'destroy'])->name('resignation.destroy');
+    Route::get('/dashboard', [dashboard::class,'index'])->name('admin.dashboard');
     Route::get('/get_salary', [salary::class,'get_salary'])->name('get_salary');
 });
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
-    Route::get('leave', [leave::class, 'index'])->name('leave.index');
-    Route::get('resignation', [resignation::class, 'index'])->name('resignation.index');
-    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    Route::get('/leave', [leave::class, 'index'])->name('leave.index');
+    Route::get('/leave/{id}/delete', [leave::class, 'destroy'])->name('leave.destroy');
+    Route::get('/resignation/{id}/delete', [resignation::class, 'destroy'])->name('resignation.destroy');
+    Route::get('/resignation', [resignation::class, 'index'])->name('resignation.index');
+    // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
     Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
@@ -68,7 +72,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
 // Employee Routes
 Route::middleware(['checkEmployee'])->prefix('employee')->group(function () {
-    Route::get('/dashboard', [dashboard::class, 'index'])->name('dashboard');
+    // Route::get('/dashboard', [dashboard::class, 'index'])->name('employee.dashboard');
     Route::get('/profile', [employee::class, 'showProfile'])->name('profile');
 
     // Leave routes for employee
@@ -85,16 +89,12 @@ Route::middleware(['checkEmployee'])->prefix('employee')->group(function () {
 });
 
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
-
-
-
-
-// Route::get('/dashboard', function () {
-//     return view('welcome');
-// })->name('dashboard');
+Route::get('/', function () {
+    return view('authentication.login');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('all.dashboard');
 // Route::get('/', function () {
 //     return view('frontend.home');
 // });
