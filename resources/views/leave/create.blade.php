@@ -2,12 +2,20 @@
 
 @section('content')
     <div class="container">
+         @php
+          use App\Models\Employee;
+         @endphp
         <h2>Employee Leave</h2>
-
-
+         <?php
+              // Retrieve the logged-in user's ID using your custom function
+        $loggedInEmployeeId = request()->session()->get('employeeId');
+         
+        // Retrieve employee information based on the logged-in user's ID
+        $employee = Employee::where('id', $loggedInEmployeeId)->first();
+         ?>
         <form action="{{ route('leave.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
-          <input type="hidden" name="employee_id">
+          <input type="hidden" class="form-control" name="employee_id">
             <div class="form-group col-md-8">
             <label for="leave_type">Type</label>
             <select class="form-control" id="leave_type" name="leave_type" required>

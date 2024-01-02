@@ -110,9 +110,9 @@ class AuthenticationController extends Controller
                 'role' => encryptor('encrypt', $user->role->type),
                 'roleIdentity' => encryptor('encrypt', $user->role->identity),
                 'language' => encryptor('encrypt', $user->language),
-                'employeeId' => encryptor('encrypt', $employee->id),
-                'employeeName' => encryptor('encrypt', $employeeName),
-                'employeeImage' => $employee->image ?? 'No Image Found',
+                'employeeId' => $employeeId,
+                'employeeName' =>  $employeeName,
+                'employeeImage' => $employeeImage ?? 'No Image Found',
             ]);
         } else {
             // Handle the case where the user doesn't have an associated employee

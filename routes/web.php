@@ -73,7 +73,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 // Employee Routes
 Route::middleware(['checkEmployee'])->prefix('employee')->group(function () {
     // Route::get('/dashboard', [dashboard::class, 'index'])->name('employee.dashboard');
-    Route::get('/profile', [employee::class, 'showProfile'])->name('profile');
+    Route::get('/profile/{id}', [employee::class, 'showProfile'])->name('profile');
 
     // Leave routes for employee
     Route::get('/leave/create', [leave::class, 'create'])->name('leave.create');

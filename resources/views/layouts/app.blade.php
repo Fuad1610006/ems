@@ -214,7 +214,9 @@
         <img src="{{asset('public/uploads/users/'.request()->session()->get('employeeImage') ?: 'user-tie-solid.svg')}}" alt="Profile" class="rounded-circle" onerror="this.onerror=null; this.src='{{asset('public/assets/img/user-tie-solid.svg')}}';"  width="50" height="50">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{encryptor('decrypt', request()->session()->get('userName'))}}</span>
           </a><!-- End Profile Iamge Icon -->
-
+          @php
+          use App\Models\Employee;
+         @endphp
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>Kevin Anderson</h6>
@@ -224,7 +226,14 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('profile')}}">
+              <?php
+              // Retrieve the logged-in user's ID using your custom function
+        $loggedInEmployeeId = request()->session()->get('employeeId');
+         
+        // Retrieve employee information based on the logged-in user's ID
+        $employee = Employee::where('id', $loggedInEmployeeId)->first();
+         ?>
+              <a class="dropdown-item d-flex align-items-center" href="{{route('profile',  $loggedInEmployeeId)}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

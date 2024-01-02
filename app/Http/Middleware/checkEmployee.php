@@ -25,8 +25,8 @@ class checkEmployee
             $user=User::where('status',1)->where('id',currentUserId())->first();
             if(!$user){
                 return redirect()->route('logOut');
-            // }else if($user->full_access=="1"){
-            //     return $next($request);
+            }else if($user->full_access=="1"){
+                return $next($request);
             }else{
                 $auto_accept=array("POST","PUT");
                 if(in_array($request->route()->methods[0],$auto_accept)){
