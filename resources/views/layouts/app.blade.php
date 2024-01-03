@@ -305,7 +305,7 @@
           </li>
 
         </ul>
-      </li><!-- End Components Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
@@ -436,19 +436,15 @@
         </ul>
       </li><!-- End Icons Nav -->
 
-      {{-- <li class="nav-heading">Pages</li>
+       <li class="nav-heading">Pages</li>
 
        <li class="nav-item">
-               @php
-                $employee = session('employee');
-              @endphp
-
-        <a class="nav-link collapsed" href="{{route('profile')}}">
+        <a class="nav-link collapsed" href="{{route('blog')}}">
           <i class="bi bi-person"></i>
-          <span>Profile</span>
+          <span>Blog</span>
         </a>
 
-      </li> --}}
+      </li> 
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#component-nav" data-bs-toggle="collapse" href="#">

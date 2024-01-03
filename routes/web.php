@@ -17,7 +17,6 @@ use App\Http\Controllers\OvertimeController as overtime;
 use App\Http\Controllers\PromotionController as promotion;
 use App\Http\Controllers\ResignationController as resignation;
 use App\Http\Controllers\TerminationController as termination;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +27,6 @@ use App\Http\Controllers\TerminationController as termination;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 // Route::resource('employee', employee::class);
 // Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 // Route::get('/register', [auth::class,'signUpForm'])->name('register');

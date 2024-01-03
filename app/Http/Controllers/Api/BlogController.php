@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {
          $blog = Blog::all();
-        return view('blog.index', compact('blog'));
+        return response($blog, 200);
     }
 
     /**
@@ -31,7 +31,8 @@ class BlogController extends Controller
     {
         try{
             $blog=new Blog;
-            $blog->name=$request->name;
+            $blog->blog_image=$request->blog_image;
+            $blog->author_image=$request->image_image;
             $blog->category=$request->category;
             $blog->author=$request->author;
             $blog->date=$request->date;
